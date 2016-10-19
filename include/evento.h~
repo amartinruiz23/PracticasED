@@ -10,16 +10,14 @@ class evento{
 
   evento();
 
-  evento(const evento& e);
+  evento(evento e);
 
   ~evento();
 
   &evento operator=();
 
-  int getanio(const evento& e);
+  int getanio(evento e);
 
-  *string getsucesos(const evento& e); 
+  *string getsucesos(evento e); 
 
 };
-
-#endif

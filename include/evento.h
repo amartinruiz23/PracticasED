@@ -22,7 +22,7 @@ class evento{
 
   string getsucesos(const evento& e);
 
-  string getsuceso(const evemto& e, int n);
+  string getsuceso(const evento& e, int n);
 
 };
 

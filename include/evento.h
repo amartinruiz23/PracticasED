@@ -1,10 +1,12 @@
 #ifndef _EVENTO__
 #define _EVENTO__
 #include <string>
+#include <vector>
+#include <iostream>
 
 class evento{
   int anio;
-  string *sucesos;
+  vector<string> sucesos;
 
   public:
 
@@ -18,7 +20,9 @@ class evento{
 
   int getanio(const evento& e);
 
-  *string getsucesos(const evento& e); 
+  string getsucesos(const evento& e);
+
+  string getsuceso(const evemto& e, int n);
 
 };
 

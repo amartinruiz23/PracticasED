@@ -20,9 +20,13 @@ class evento{
 
   int getanio(const evento& e);
 
-  string getsucesos(const evento& e);
+  vector getsucesos(const evento& e);
 
   string getsuceso(const evento& e, int n);
+
+  void aniadesuceso(string s);
+
+  void eliminasuceso(int n);
 
 };
 

@@ -16,6 +16,12 @@ class evento{
 	*/
   evento();
 
+	/**
+	* @brief Constructor de eventos
+	* @param a año del suceso
+	* @param s suceso a crear
+	*/
+	evento(int a, const vector& s);
 
 	/**
 	* @brief Constructor copia de eventos
@@ -46,7 +52,8 @@ class evento{
 	* @brief Consulta de los sucesos de un evento
 	* @param e evento a consultar
 	* @return conjunto de sucesos del evento
-	*/ 
+	*/
+ 
   const vector& getsucesos(const evento& e); // ?
 
 	/** 

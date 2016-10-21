@@ -1,0 +1,17 @@
+~LA HISTORIA DE LA INFORMITIKA~
+
+-> Funciones de evento
+	-> Modificar y acceder a todo *falta set año
+	-> Sobrecarga de > , < , == *falta
+	-> Constructor, destructor *done
+	-> Sobrecarga de <<, >> *ayy
+
+-> Funciones de cronología
+	-> Busqueda
+		-> Palabra clave -> Minicronología de Einstein
+		-> Año
+	-> Mezcla
+	-> Orden inverso ¿? -> Afecta al invariante de representacion (no)
+	-> Sub-Cronología -> A partir de una fecha 
+	-> Constructor, destructor
+	-> Modificar y acceder a todo

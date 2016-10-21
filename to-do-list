@@ -1,7 +1,7 @@
 ~LA HISTORIA DE LA INFORMITIKA~
 
 -> Funciones de evento
-	-> Modificar y acceder a todo *falta set año
+	-> Modificar y acceder a todo *done
 	-> Sobrecarga de > , < , == *falta
 	-> Constructor, destructor *done
 	-> Sobrecarga de <<, >> *ayy

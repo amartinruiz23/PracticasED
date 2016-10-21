@@ -1,23 +1,33 @@
-#ifndef _EVENTO__
-#define _EVENTO__
+#ifndef _EVENTO_H_
+#define _EVENTO_H_
 #include <string>
+#include <vector>
+
 
 class evento{
   int anio;
-  string *sucesos;
+  vector<string> sucesos;
 
   public:
 
   evento();
 
-  evento(evento e);
+  evento(const evento& e);
 
   ~evento();
 
   &evento operator=();
 
-  int getanio(evento e);
+  int getanio(const evento& e);
 
-  *string getsucesos(evento e); 
+  const vector& getsucesos(const evento& e); // ?
+
+  string getsuceso(const evento& e, int n);
+
+  void aniodesuceso(string s);
+
+  void eliminasuceso(int n);
 
 };
+
+#endif

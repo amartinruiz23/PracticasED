@@ -36,14 +36,5 @@ sucesos.insert(p-1, s);
 
 void evento::eliminasuceso(int n){
 suceso.erase(n-1);
-
-bool evento::eliminasuceso(const string& s) {
-	for (int i = 0 ; i < vector.size() ; i++) {
-		if (sucesos[i] == s)
-			sucesos.erase(i) ;
-			return true ;
-	}
-
-	return false ;
 }
 

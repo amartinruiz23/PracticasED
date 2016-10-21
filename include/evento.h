@@ -41,6 +41,28 @@ class evento{
 	*/ 
   evento& operator=(const evento& e);
 
+	/**
+	* @brief Comprueba si dos eventos son iguales
+	* @param e evento a comparar
+	* @return 1 indica si son iguales, 0 si no lo son
+	*/ 
+	bool operator==(const evento& e);
+
+	/**
+	* @brief Comprueba si un evento es más reciente que otro
+	* @param e evento a comparar
+	* @return 1 indica que es más reciente, 0 si no lo es
+	*/
+	bool operator>(const evento& e);
+
+	/**
+	* @brief Comprueba si un evento es menos reciente que otro
+	* @param e evento a comparar
+	* @return 1 indica que es menos reciente, 0 si no lo es
+	*/
+	bool operator<(const evento& e);
+
+
 	/** 
 	* @brief Consulta del año de un evento
 	* @param e evento a consultar

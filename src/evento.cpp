@@ -24,6 +24,14 @@ evento::~evento(){
 	return *this; 
 }
 
+bool operator==(const evento& e){
+}
+bool operator>(const evento& e){
+}
+bool operator<(const evento& e){
+}
+
+
 int evento::getanio(const evento& e){
 	return anio;
 }

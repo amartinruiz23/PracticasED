@@ -2,6 +2,12 @@ evento::evento(){
 	anio = 0;
 }
 
+evento::evento(int a, const vector& s){
+	anio = a ;
+	sucesos = s ;
+}
+
+
 evento::evento(const evento& e){
 	anio = e.getanio();
 	sucesos = e.getsucesos();

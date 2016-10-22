@@ -2,11 +2,11 @@
 #define _EVENTO_H_
 #include <string>
 #include <vector>
-
+#include <iostream>
 
 class evento{
   int anio;
-  vector<string> sucesos;
+  vector<string> sucesos; // ???????????
 
   public:
 
@@ -41,7 +41,26 @@ class evento{
 	*/ 
   evento& operator=(const evento& e);
 
-	bool operator==(const evento& e
+	/**
+	* @brief Comprueba si dos eventos son iguales
+	* @param e evento a comparar
+	* @return 1 indica si son iguales, 0 si no lo son
+	*/ 
+	bool operator==(const evento& e);
+
+	/**
+	* @brief Comprueba si un evento es más reciente que otro
+	* @param e evento a comparar
+	* @return 1 indica que es más reciente, 0 si no lo es
+	*/
+	bool operator>(const evento& e);
+
+	/**
+	* @brief Comprueba si un evento es menos reciente que otro
+	* @param e evento a comparar
+	* @return 1 indica que es menos reciente, 0 si no lo es
+	*/
+	bool operator<(const evento& e);
 
 	/** 
 	* @brief Consulta del año de un evento
@@ -90,5 +109,22 @@ class evento{
 	*/ 
 	bool eliminasuceso(const string& s);
 };
+
+	/**
+	* @brief Operador para leer desde un flujo de entrada un evento 
+	* @param f flujo de entrada
+	* @param e evento a modificar o ser leído
+	* @return referencia a flujo para poder encadenar lecturas	
+	*/	
+	std::istream& operator>>(std::istream& f , evento& e); 
+
+	/**
+	* @brief Operador para escribir en un flujo de salida un evento
+	* @param f flujo de salida
+	* @param e evento a imprimir o ser escrito
+	* @return referencia a flujo para poder encadenar escrituras
+	*/
+	std::ostream& operator<<(std::ostream& f , const evento& e); 
+	
 
 #endif

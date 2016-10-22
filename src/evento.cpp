@@ -1,3 +1,5 @@
+#include <iostream>
+
 evento::evento(){
 	anio = 0;
 }
@@ -25,12 +27,25 @@ evento::~evento(){
 }
 
 bool operator==(const evento& e){
-}
-bool operator>(const evento& e){
-}
-bool operator<(const evento& e){
+	if (anio == e.getanio() && sucesos == e.getsucesos())
+		return true ;
+	else
+		return false ;
 }
 
+bool operator>(const evento& e){
+	if (anio > e.getanio())
+		return true ;
+	else 
+		return false ;
+}
+
+bool operator<(const evento& e){
+	if (anio < e.getanio())
+		return true ;
+	else
+		return false ;
+}
 
 int evento::getanio(const evento& e){
 	return anio;
@@ -61,3 +76,19 @@ bool evento::eliminasuceso(const string& s) {
 	return false ;
 }
 
+std::istream& operator>>(std::istream& s , evento& e) {
+	if (s) {
+		s >> e.anio ;
+		s >> e.sucesos ;
+	}
+
+	return s ;
+}
+
+std::ostream& operator<<(std::ostream& s , const evento& e) {
+	s << e.anio ;
+	s << '\t' ;
+	s << e.sucesos ;
+
+	return s ;
+}

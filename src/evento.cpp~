@@ -24,6 +24,27 @@ evento::~evento(){
 	return *this; 
 }
 
+bool operator==(const evento& e){
+	if (anio == e.getanio() && sucesos == e.getsucesos())
+		return true ;
+	else
+		return false ;
+}
+
+bool operator>(const evento& e){
+	if (anio > e.getanio())
+		return true ;
+	else 
+		return false ;
+}
+
+bool operator<(const evento& e){
+	if (anio < e.getanio())
+		return true ;
+	else
+		return false ;
+}
+
 int evento::getanio(const evento& e){
 	return anio;
 }

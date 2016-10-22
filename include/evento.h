@@ -2,11 +2,11 @@
 #define _EVENTO_H_
 #include <string>
 #include <vector>
-
+#include <iostream>
 
 class evento{
   int anio;
-  vector<string> sucesos;
+  vector<string> sucesos; // ???????????
 
   public:
 
@@ -62,7 +62,6 @@ class evento{
 	*/
 	bool operator<(const evento& e);
 
-
 	/** 
 	* @brief Consulta del año de un evento
 	* @param e evento a consultar
@@ -109,6 +108,23 @@ class evento{
 	* @return si ha eliminado dicho suceso
 	*/ 
 	bool eliminasuceso(const string& s);
+
+	/**
+	* @brief Operador para leer desde un flujo de entrada un evento 
+	* @param f flujo de entrada
+	* @param e evento a modificar o ser leído
+	* @return referencia a flujo para poder encadenar lecturas	
+	*/	
+	friend std::istream& operator>>(std::istream& f , evento& e); 
+
+	/**
+	* @brief Operador para escribir en un flujo de salida un evento
+	* @param f flujo de salida
+	* @param e evento a imprimir o ser escrito
+	* @return referencia a flujo para poder encadenar escrituras
+	*/
+	friend std::ostream& operator<<(std::ostream& f , const evento& e); 
+	
 };
 
 #endif

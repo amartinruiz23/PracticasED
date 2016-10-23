@@ -6,7 +6,7 @@
 
 class evento{
   int anio;
-  vector<string> sucesos; // ???????????
+  std::vector<string> sucesos; // ???????????
 
   public:
 
@@ -21,13 +21,13 @@ class evento{
 	* @param a año del suceso
 	* @param s suceso a crear
 	*/
-	evento(int a, const vector& s);
+	evento(int a, std::const vector<string>& s);
 
 	/**
 	* @brief Constructor copia de eventos
 	* @param e evento a copiar
 	*/
-  evento(const evento& e);
+  evento(std::const evento<string>& e);
 
 	/**
 	* @brief Destructor de eventos
@@ -39,35 +39,35 @@ class evento{
 	* @param e evento a asignar
 	* @return referencia al evento asignado
 	*/ 
-  evento& operator=(const evento& e);
+  evento& operator=(std::const evento<string>& e);
 
 	/**
 	* @brief Comprueba si dos eventos son iguales
 	* @param e evento a comparar
 	* @return 1 indica si son iguales, 0 si no lo son
 	*/ 
-	bool operator==(const evento& e);
+	bool operator==(std::const evento<string>& e);
 
 	/**
 	* @brief Comprueba si un evento es más reciente que otro
 	* @param e evento a comparar
 	* @return 1 indica que es más reciente, 0 si no lo es
 	*/
-	bool operator>(const evento& e);
+	bool operator>(std::const evento<string>& e);
 
 	/**
 	* @brief Comprueba si un evento es menos reciente que otro
 	* @param e evento a comparar
 	* @return 1 indica que es menos reciente, 0 si no lo es
 	*/
-	bool operator<(const evento& e);
+	bool operator<(std::const evento<string>& e);
 
 	/** 
 	* @brief Consulta del año de un evento
 	* @param e evento a consultar
 	* @return año del evento // especificamos tipo devuelto ?????????
 	*/
-  int getanio(const evento& e);
+  int getanio(std::const evento<string>& e);
 
 	/** 
 	* @brief Consulta de los sucesos de un evento
@@ -75,7 +75,7 @@ class evento{
 	* @return conjunto de sucesos del evento
 	*/
  
-  const vector& getsucesos(const evento& e); // ?
+  const vector& getsucesos(std::const evento<string>& e); // ?
 
 	/** 
 	* @brief Consulta de un suceso de un evento
@@ -84,7 +84,7 @@ class evento{
 	* @pre n debe ser mayor o igual a 1
 	* @return suceso consultado
 	*/
-  string getsuceso(const evento& e, int n);
+  string getsuceso(std::const evento<string>& e, int n);
 
 	/**
 	* @brief Inserta un suceso
@@ -115,7 +115,7 @@ class evento{
 	* @param e evento a modificar o ser leído
 	* @return referencia a flujo para poder encadenar lecturas	
 	*/	
-	friend std::istream& operator>>(std::istream& f , evento& e); 
+	friend std::istream& operator>>(std::istream& f , sd::evento<string>& e); 
 
 	/**
 	* @brief Operador para escribir en un flujo de salida un evento
@@ -123,7 +123,7 @@ class evento{
 	* @param e evento a imprimir o ser escrito
 	* @return referencia a flujo para poder encadenar escrituras
 	*/
-	friend std::ostream& operator<<(std::ostream& f , const evento& e); 
+	friend std::ostream& operator<<(std::ostream& f , std::const evento<string>& e); 
 	
 };
 

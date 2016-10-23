@@ -108,7 +108,6 @@ class evento{
 	* @return si ha eliminado dicho suceso
 	*/ 
 	bool eliminasuceso(const string& s);
-};
 
 	/**
 	* @brief Operador para leer desde un flujo de entrada un evento 
@@ -116,7 +115,7 @@ class evento{
 	* @param e evento a modificar o ser leído
 	* @return referencia a flujo para poder encadenar lecturas	
 	*/	
-	std::istream& operator>>(std::istream& f , evento& e); 
+	friend std::istream& operator>>(std::istream& f , evento& e); 
 
 	/**
 	* @brief Operador para escribir en un flujo de salida un evento
@@ -124,7 +123,8 @@ class evento{
 	* @param e evento a imprimir o ser escrito
 	* @return referencia a flujo para poder encadenar escrituras
 	*/
-	std::ostream& operator<<(std::ostream& f , const evento& e); 
+	friend std::ostream& operator<<(std::ostream& f , const evento& e); 
 	
+};
 
 #endif

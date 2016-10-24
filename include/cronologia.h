@@ -7,7 +7,7 @@ class cronologia {
 
 	std::vector<evento> eventos ; // ????????????
 
-	/** 
+	/**
 	* @brief ordena la cronología por fechas de los eventos
 	*/
 	void ordenar();
@@ -19,7 +19,7 @@ class cronologia {
 		*/
 		cronologia();
 
-		/** 
+		/**
 		* @brief Constructor copia
 		* @param c cronologia a copiar
 		*/
@@ -30,7 +30,7 @@ class cronologia {
 		*/
 		~cronologia();
 
-		/** 
+		/**
 		* @brief devuelve una cronología entre dos fechas
 		* @param anio_inicio año a partir del cual empieza la subcronología
 		* @param anio_final último año de la subcronología, por defecto, hasta hoy
@@ -67,12 +67,17 @@ class cronologia {
 		* @param s , suceso a buscar
 		* @return evento buscado
 		*/
-		vector<evento> buscaevento (const string& s);
+		vector buscaevento (const string& s);
+
+		/**
+		* @brief Devuelve el vector de eventos
+		* @return vector de eventos
+		*/
+		vector geteventos ();
 
 
-			
 };
-		
+
 
 
 

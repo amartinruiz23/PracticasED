@@ -1,5 +1,7 @@
 #include <iostream>
 
+// DUDA -> sintaxis -> std::const vector<string>& s ???????????????
+
 evento::evento(){
 	anio = 0;
 }
@@ -21,10 +23,13 @@ evento::~evento(){
 }
 
 &evento evento::operator=(std::evento<string>& e){
-	anio = e.getanio();
-	sucesos = e.getsucesos();
+	if (*this != e) {	
+		anio = e.getanio();
+		sucesos = e.getsucesos();		
+	}
+
 	return *this; 
-}
+}	
 
 bool operator==(std::const evento<string>& e){
 	if (anio == e.getanio() && sucesos == e.getsucesos())
@@ -51,15 +56,23 @@ int evento::getanio(std::const evento<string>& e){
 	return anio;
 }
 
-const vector& evento::getsucesos(std::const evento<string>& e){ // TIPO DE DATO DEVUELTO
+const vector& evento::getsucesos(std::const evento<string>& e){ 
 	return sucesos;
 }
 
-string evento::getsuceso(std::const evento<string>& e, int n){
+vector& evento::getsucesos(std::const evento<string>& e){ 
+	return sucesos;
+}
+
+const string& evento::getsuceso(std::const evento<string>& e, int n){
 	return sucesos.at(n); //at devuelve una referencia al elemento en la posición indicada del vector. Lanza excepción si fuera de rango.
 }
 
-void evento::insertasuceso(string s, int p){
+string& evento::getsuceso(std::const evento<string>& e, int n){
+	return sucesos.at(n); //at devuelve una referencia al elemento en la posición indicada del vector. Lanza excepción si fuera de rango.
+}
+
+void evento::insertasuceso(string s, int p){ // string const ???????
 	sucesos.insert(p-1, s);
 }
 
@@ -79,6 +92,9 @@ bool evento::eliminasuceso(const string& s) {
 std::istream& operator>>(std::istream& s , std::evento<string>& e) {
 	if (s) {
 		s >> e.anio ;
+		
+		int i = 0 ;					// ??????????????????
+		while (
 		s >> e.sucesos ;
 	}
 

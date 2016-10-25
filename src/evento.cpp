@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <string>
 
 // DUDA -> sintaxis -> std::const vector<string>& s ???????????????
 
@@ -12,7 +14,7 @@ evento::evento(int a, std::const vector<string>& s){
 }
 
 
-evento::evento(std::const evento<string>& e){
+evento::evento(const evento& e){
 	anio = e.getanio();
 	sucesos = e.getsucesos();
 }
@@ -22,46 +24,57 @@ evento::~evento(){
 	~sucesos; // ??? Sobra ???
 }
 
-&evento evento::operator=(std::evento<string>& e){
-	anio = e.getanio();
-	sucesos = e.getsucesos();
-	return *this; 
-}
+&evento evento::operator=(const evento& e){
+	if (*this != e) {	
+		anio = e.getanio();
+		sucesos = e.getsucesos();		
+	}
 
-bool operator==(std::const evento<string>& e){
+	return *this; 
+}	
+
+bool evento::operator==(const evento& e){
 	if (anio == e.getanio() && sucesos == e.getsucesos())
 		return true ;
 	else
 		return false ;
 }
 
-bool operator>(std::const evento<string>& e){
+bool evento::operator>(const evento& e){
 	if (anio > e.getanio())
 		return true ;
 	else 
 		return false ;
 }
 
-bool operator<(std::const evento<string>& e){
+bool evento::operator<(const evento& e){
 	if (anio < e.getanio())
 		return true ;
 	else
 		return false ;
 }
 
-int evento::getanio(std::const evento<string>& e){
+int evento::getanio(const evento& e){
 	return anio;
 }
 
-const vector& evento::getsucesos(std::const evento<string>& e){ // TIPO DE DATO DEVUELTO
+const vector& evento::getsucesos(const evento& e){ 
 	return sucesos;
 }
 
-string evento::getsuceso(std::const evento<string>& e, int n){
+vector& evento::getsucesos(const evento& e){ 
+	return sucesos;
+}
+
+const string& evento::getsuceso(const evento& e, int n){
 	return sucesos.at(n); //at devuelve una referencia al elemento en la posición indicada del vector. Lanza excepción si fuera de rango.
 }
 
-void evento::insertasuceso(string s, int p){ // string const ???????
+string& evento::getsuceso(const evento& e, int n){
+	return sucesos.at(n); //at devuelve una referencia al elemento en la posición indicada del vector. Lanza excepción si fuera de rango.
+}
+
+void evento::insertasuceso(const string s, int p){ 
 	sucesos.insert(p-1, s);
 }
 
@@ -78,19 +91,22 @@ bool evento::eliminasuceso(const string& s) {
 	return false ;
 }
 
-std::istream& operator>>(std::istream& s , std::evento<string>& e) {
+std::istream& operator>>(std::istream& s , evento& e) {
 	if (s) {
 		s >> e.anio ;
+		
+		int i = 0 ;					// ??????????????????
+		while (
 		s >> e.sucesos ;
 	}
 
 	return s ;
 }
 
-std::ostream& operator<<(std::ostream& s , std::const evento<string>& e) {
+std::ostream& operator<<(std::ostream& s , const evento& e) {
 	s << e.anio ;
 	s << '\t' ;
-	s << e.sucesos ;
+	s << e.sucesos ; // ?????????
 
 	return s ;
 }

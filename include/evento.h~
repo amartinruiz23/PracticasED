@@ -6,13 +6,12 @@
 
 class evento{
   int anio;
-  vector<string> sucesos; // ???????????
+  std::vector<string> sucesos; // ???????????
 
   public:
 
 	/** 
-	* @brief Constructor por defecto de eventos
-	* 
+	* @brief Constructor por defecto de eventos 
 	*/
   evento();
 
@@ -20,8 +19,9 @@ class evento{
 	* @brief Constructor de eventos
 	* @param a año del suceso
 	* @param s suceso a crear
+	* @pre s debe empezar por #
 	*/
-	evento(int a, const vector& s);
+	evento(int a, std::const vector<string>& s);
 
 	/**
 	* @brief Constructor copia de eventos
@@ -72,28 +72,46 @@ class evento{
 	/** 
 	* @brief Consulta de los sucesos de un evento
 	* @param e evento a consultar
+	* @return conjunto de sucesos del evento constante
+	*/
+  const vector& getsucesos(const evento& e); 
+
+	/** 
+	* @brief Consulta de los sucesos de un evento
+	* @param e evento a consultar
 	* @return conjunto de sucesos del evento
 	*/
- 
-  const vector& getsucesos(const evento& e); // ?
-
+  vector& getsucesos(const evento& e);
+	
 	/** 
 	* @brief Consulta de un suceso de un evento
 	* @param e evento a consultar
 	* @param n posicion del suceso a consultar en el vector
 	* @pre n debe ser mayor o igual a 1
+	* @pre s debe empezar por #
 	* @return suceso consultado
 	*/
-  string getsuceso(const evento& e, int n);
+  string& getsuceso(const evento& e, int n);
+	
+	/** 
+	* @brief Consulta de un suceso de un evento
+	* @param e evento a consultar
+	* @param n posicion del suceso a consultar en el vector
+	* @pre n debe ser mayor o igual a 1
+	* @pre s debe empezar por #
+	* @return suceso consultado
+	*/
+  const string& getsuceso(const evento& e, int n);
 
 	/**
 	* @brief Inserta un suceso
 	* @param s suceso a insertar
 	* @param p posicion del vector en la que se quiere insertar el suceso, si no se indica nada, será en la primera posición
 	* @pre p tiene que ser mayor o igual a 1 en caso de que se quiera indicar la posición
+	* @pre s debe empezar por #
 	* @return // ???????????????????????????
 	*/
-  void insertasuceso(string s, int p=-1);
+  void insertasuceso(const string s, int p=-1);
 
 	/**
 	* @brief Elimina un suceso de un evento
@@ -105,6 +123,7 @@ class evento{
 	/**
 	* @brief Elimina un suceso de un evento
 	* @param s suceso a eliminar
+	* @pre s debe empezar por #
 	* @return si ha eliminado dicho suceso
 	*/ 
 	bool eliminasuceso(const string& s);

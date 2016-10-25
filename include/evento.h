@@ -11,8 +11,7 @@ class evento{
   public:
 
 	/** 
-	* @brief Constructor por defecto de eventos
-	* 
+	* @brief Constructor por defecto de eventos 
 	*/
   evento();
 
@@ -20,6 +19,7 @@ class evento{
 	* @brief Constructor de eventos
 	* @param a año del suceso
 	* @param s suceso a crear
+	* @pre s debe empezar por #
 	*/
 	evento(int a, std::const vector<string>& s);
 
@@ -27,7 +27,7 @@ class evento{
 	* @brief Constructor copia de eventos
 	* @param e evento a copiar
 	*/
-  evento(std::const evento<string>& e);
+  evento(const evento& e);
 
 	/**
 	* @brief Destructor de eventos
@@ -39,61 +39,79 @@ class evento{
 	* @param e evento a asignar
 	* @return referencia al evento asignado
 	*/ 
-  evento& operator=(std::const evento<string>& e);
+  evento& operator=(const evento& e);
 
 	/**
 	* @brief Comprueba si dos eventos son iguales
 	* @param e evento a comparar
 	* @return 1 indica si son iguales, 0 si no lo son
 	*/ 
-	bool operator==(std::const evento<string>& e);
+	bool operator==(const evento& e);
 
 	/**
 	* @brief Comprueba si un evento es más reciente que otro
 	* @param e evento a comparar
 	* @return 1 indica que es más reciente, 0 si no lo es
 	*/
-	bool operator>(std::const evento<string>& e);
+	bool operator>(const evento& e);
 
 	/**
 	* @brief Comprueba si un evento es menos reciente que otro
 	* @param e evento a comparar
 	* @return 1 indica que es menos reciente, 0 si no lo es
 	*/
-	bool operator<(std::const evento<string>& e);
+	bool operator<(const evento& e);
 
 	/** 
 	* @brief Consulta del año de un evento
 	* @param e evento a consultar
-	* @return año del evento // especificamos tipo devuelto ?????????
+	* @return año del evento
 	*/
-  int getanio(std::const evento<string>& e);
+  int getanio(const evento& e);
+
+	/** 
+	* @brief Consulta de los sucesos de un evento
+	* @param e evento a consultar
+	* @return conjunto de sucesos del evento constante
+	*/
+  const vector& getsucesos(const evento& e); 
 
 	/** 
 	* @brief Consulta de los sucesos de un evento
 	* @param e evento a consultar
 	* @return conjunto de sucesos del evento
 	*/
- 
-  const vector& getsucesos(std::const evento<string>& e); // ?
-
+  vector& getsucesos(const evento& e);
+	
 	/** 
 	* @brief Consulta de un suceso de un evento
 	* @param e evento a consultar
 	* @param n posicion del suceso a consultar en el vector
 	* @pre n debe ser mayor o igual a 1
+	* @pre s debe empezar por #
 	* @return suceso consultado
 	*/
-  string getsuceso(std::const evento<string>& e, int n);
+  string& getsuceso(const evento& e, int n);
+	
+	/** 
+	* @brief Consulta de un suceso de un evento
+	* @param e evento a consultar
+	* @param n posicion del suceso a consultar en el vector
+	* @pre n debe ser mayor o igual a 1
+	* @pre s debe empezar por #
+	* @return suceso consultado
+	*/
+  const string& getsuceso(const evento& e, int n);
 
 	/**
 	* @brief Inserta un suceso
 	* @param s suceso a insertar
 	* @param p posicion del vector en la que se quiere insertar el suceso, si no se indica nada, será en la primera posición
 	* @pre p tiene que ser mayor o igual a 1 en caso de que se quiera indicar la posición
+	* @pre s debe empezar por #
 	* @return // ???????????????????????????
 	*/
-  void insertasuceso(string s, int p=-1);
+  void insertasuceso(const string s, int p=-1);
 
 	/**
 	* @brief Elimina un suceso de un evento
@@ -105,6 +123,7 @@ class evento{
 	/**
 	* @brief Elimina un suceso de un evento
 	* @param s suceso a eliminar
+	* @pre s debe empezar por #
 	* @return si ha eliminado dicho suceso
 	*/ 
 	bool eliminasuceso(const string& s);
@@ -115,7 +134,7 @@ class evento{
 	* @param e evento a modificar o ser leído
 	* @return referencia a flujo para poder encadenar lecturas	
 	*/	
-	friend std::istream& operator>>(std::istream& f , sd::evento<string>& e); 
+	friend std::istream& operator>>(std::istream& f , evento& e); 
 
 	/**
 	* @brief Operador para escribir en un flujo de salida un evento
@@ -123,7 +142,7 @@ class evento{
 	* @param e evento a imprimir o ser escrito
 	* @return referencia a flujo para poder encadenar escrituras
 	*/
-	friend std::ostream& operator<<(std::ostream& f , std::const evento<string>& e); 
+	friend std::ostream& operator<<(std::ostream& f , const evento& e); 
 	
 };
 

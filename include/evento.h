@@ -10,8 +10,8 @@ class evento{
 
   public:
 
-	/** 
-	* @brief Constructor por defecto de eventos 
+	/**
+	* @brief Constructor por defecto de eventos
 	*/
   evento();
 
@@ -38,14 +38,14 @@ class evento{
 	* @brief Operador de asignación de eventos
 	* @param e evento a asignar
 	* @return referencia al evento asignado
-	*/ 
+	*/
   evento& operator=(const evento& e);
 
 	/**
 	* @brief Comprueba si dos eventos son iguales
 	* @param e evento a comparar
 	* @return 1 indica si son iguales, 0 si no lo son
-	*/ 
+	*/
 	bool operator==(const evento& e);
 
 	/**
@@ -62,28 +62,28 @@ class evento{
 	*/
 	bool operator<(const evento& e);
 
-	/** 
+	/**
 	* @brief Consulta del año de un evento
 	* @param e evento a consultar
 	* @return año del evento
 	*/
   int getanio(const evento& e);
 
-	/** 
+	/**
 	* @brief Consulta de los sucesos de un evento
 	* @param e evento a consultar
 	* @return conjunto de sucesos del evento constante
 	*/
-  const vector& getsucesos(const evento& e); 
+  const vector& getsucesos(const evento& e);
 
-	/** 
+	/**
 	* @brief Consulta de los sucesos de un evento
 	* @param e evento a consultar
 	* @return conjunto de sucesos del evento
 	*/
   vector& getsucesos(const evento& e);
-	
-	/** 
+
+	/**
 	* @brief Consulta de un suceso de un evento
 	* @param e evento a consultar
 	* @param n posicion del suceso a consultar en el vector
@@ -92,8 +92,8 @@ class evento{
 	* @return suceso consultado
 	*/
   string& getsuceso(const evento& e, int n);
-	
-	/** 
+
+	/**
 	* @brief Consulta de un suceso de un evento
 	* @param e evento a consultar
 	* @param n posicion del suceso a consultar en el vector
@@ -125,16 +125,25 @@ class evento{
 	* @param s suceso a eliminar
 	* @pre s debe empezar por #
 	* @return si ha eliminado dicho suceso
-	*/ 
+	*/
 	bool eliminasuceso(const string& s);
 
+
+  /**
+  * @brief Operador para sumar eventos.
+  * @param e eveton a sumar
+  * @pre s debe tener el mismo año que el elemento al que se aplica la suma
+  * @return un evento como suma del evento y e
+  */
+
+  evento& operator+(const eveneto& e);
 	/**
-	* @brief Operador para leer desde un flujo de entrada un evento 
+	* @brief Operador para leer desde un flujo de entrada un evento
 	* @param f flujo de entrada
 	* @param e evento a modificar o ser leído
-	* @return referencia a flujo para poder encadenar lecturas	
-	*/	
-	friend std::istream& operator>>(std::istream& f , evento& e); 
+	* @return referencia a flujo para poder encadenar lecturas
+	*/
+	friend std::istream& operator>>(std::istream& f , evento& e);
 
 	/**
 	* @brief Operador para escribir en un flujo de salida un evento
@@ -142,8 +151,8 @@ class evento{
 	* @param e evento a imprimir o ser escrito
 	* @return referencia a flujo para poder encadenar escrituras
 	*/
-	friend std::ostream& operator<<(std::ostream& f , const evento& e); 
-	
+	friend std::ostream& operator<<(std::ostream& f , const evento& e);
+
 };
 
 #endif

@@ -39,7 +39,7 @@ class cronologia {
 		cronologia subcronologia(int anio_inicio, int anio_final=2017);
 
 
-		cronologia& operator+(const cronologia& c); // operator+ o funcion mezcla ??????????????????
+		cronologia& operator+(const cronologia& c);
 
 		/**
 		* @brief elimina un evento de la cronología

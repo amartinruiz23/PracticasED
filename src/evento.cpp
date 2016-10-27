@@ -103,7 +103,7 @@ std::istream& operator>>(std::istream& s , evento& e) {
 	if (s) {
 		s >> e.anio ;
 
-		int i = 0 ;					// ??????????????????
+		int i = 0 ;					// find, substring
 		while (
 		s >> e.sucesos ;
 	}
@@ -114,7 +114,7 @@ std::istream& operator>>(std::istream& s , evento& e) {
 std::ostream& operator<<(std::ostream& s , const evento& e) {
 	s << e.anio ;
 	s << '\t' ;
-	s << e.sucesos ; // ?????????
+	s << e.sucesos ; // find, substring
 
 	return s ;
 }

@@ -9,10 +9,10 @@
 -> Funciones de cronología
 	-> Busqueda
 		-> Palabra clave -> Minicronología de Einstein
-		-> Año
-	-> Mezcla
-	-> Sub-Cronología -> A partir de una fecha 
-	-> Constructor, destructor
-	-> Modificar y acceder a todo
+		-> Año *Done
+	-> Mezcla *Done
+	-> Sub-Cronología -> A partir de una fecha *Done 
+	-> Constructor, destructor *Done
+	-> Modificar y acceder a todo *Done
 
 -> MAKEFILE *done

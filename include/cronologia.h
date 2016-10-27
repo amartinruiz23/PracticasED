@@ -5,7 +5,7 @@
 
 class cronologia {
 
-	std::vector<evento> eventos ; // ????????????
+	std::vector<evento> eventos ;
 
 	/**
 	* @brief ordena la cronología por fechas de los eventos
@@ -36,8 +36,13 @@ class cronologia {
 		* @param anio_final último año de la subcronología, por defecto, hasta hoy
 		* @return cronología "recortada"
 		*/
-		cronologia subcronologia(int anio_inicio, int anio_final=2017);
+		cronologia& subcronologia(int anio_inicio, int anio_final=2017);
 
+		/**
+		* @brief mezcla dos cronologías
+		* @param c cronología a ser mezclada
+		* @return puntero a la cronología mezclada para poder concatenar mezclas
+		*/
 
 		cronologia& operator+(const cronologia& c);
 
@@ -65,9 +70,9 @@ class cronologia {
 		/**
 		* @brief busca un evento en la cronología
 		* @param s , suceso a buscar
-		* @return evento buscado
+		* @return cronologia con los eventos que contienen el string
 		*/
-		vector buscaevento (const string& s);
+		cronologia buscaevento (const string& s);
 
 		/**
 		* @brief Devuelve el vector de eventos

@@ -8,25 +8,29 @@ cronologia::cronologia(const cronologia& c){
 
 cronologia::~cronologia(){} //Igual que con constructor vacío
 
-cronologia& cronologia::subcronologia(int anio_inicio, int anio_final=2017){
+cronologia cronologia::subcronologia(int anio_inicio, int anio_final=2017){
   cronologia devolver;
   for (int i = 0, i < eventos.size(), i++){
-    if (eventos[i].getanio() >= anio_inicio && eventos[i].getanio() <= anio_final)
+    if (eventos[i].getanio() <= anio_inicio && eventos[i].getanio() >= anio_final)
       devolver.aniadirevento(eventos[i]);
   }
   return devolver;
 }
 
-cronologia& operator+(const cronologia& c){ //lolxd
-  vector<int> noaniadir;
+cronologia& operator+(const cronologia& c){
+  bool sumados = 0;
   for (int i = 0, i < c.eventos.size(), i++){
     for (int j = 0; j < eventos.size(), j++){
       if ( c.eventos[i] == eventos[j]{
         eventos[i] = c.eventos[i] + eventos[j];
-        noaniadir.push_back(i);
+        sumados = TRUE;
       }
     }
-	}
+    if (!sumados){
+      aniadirevento(c.eventos[i]);
+      sumados = FALSE;
+    }
+  }
   ordenar();
   return *this;
 }

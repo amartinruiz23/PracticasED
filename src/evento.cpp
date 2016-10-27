@@ -1,89 +1,88 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
-// DUDA -> sintaxis -> std::const vector<string>& s ???????????????
+#include "evento.h"
+using namespace std;
 
 evento::evento(){
 	anio = 0;
 }
 
-evento::evento(int a, std::const vector<string>& s){
+evento::evento(int a, const vector<string>& s){
 	anio = a ;
 	sucesos = s ;
 }
 
 
 evento::evento(const evento& e){
-	anio = e.getanio();
-	sucesos = e.getsucesos();
+	anio = e.anio;
+	sucesos = e.sucesos;
 }
 
 evento::~evento(){
 	anio = 0;
-	~sucesos; // ??? Sobra ???
 }
 
-&evento evento::operator=(const evento& e){
-	if (*this != e) {
-		anio = e.getanio();
-		sucesos = e.getsucesos();
+evento& evento::operator=(const evento& e){
+	if (this != &e) {
+		anio = e.anio;
+		sucesos = e.sucesos;
 	}
 
 	return *this;
 }
 
 bool evento::operator==(const evento& e){
-	if (anio == e.getanio() && sucesos == e.getsucesos())
+	if (anio == e.anio && sucesos == e.sucesos)
 		return true ;
 	else
 		return false ;
 }
 
 bool evento::operator>(const evento& e){
-	if (anio > e.getanio())
+	if (anio > e.anio)
 		return true ;
 	else
 		return false ;
 }
 
 bool evento::operator<(const evento& e){
-	if (anio < e.getanio())
+	if (anio < e.anio)
 		return true ;
 	else
 		return false ;
 }
 
-int evento::getanio(const evento& e){
+int evento::getanio(){
 	return anio;
 }
 
-const vector& evento::getsucesos(const evento& e){
+const vector<string>& evento::getsucesos(){
 	return sucesos;
 }
 
-vector& evento::getsucesos(const evento& e){
+vector<string>& evento::getsucesos(){
 	return sucesos;
 }
 
-const string& evento::getsuceso(const evento& e, int n){
+const string& evento::getsuceso(int n){
 	return sucesos.at(n); //at devuelve una referencia al elemento en la posición indicada del vector. Lanza excepción si fuera de rango.
 }
 
-string& evento::getsuceso(const evento& e, int n){
+string& evento::getsuceso(int n){
 	return sucesos.at(n); //at devuelve una referencia al elemento en la posición indicada del vector. Lanza excepción si fuera de rango.
 }
 
-void evento::insertasuceso(const string s, int p){
+void evento::insertasuceso(const string& s, int p){
 	sucesos.insert(p-1, s);
 }
 
 void evento::eliminasuceso(int n){
-	suceso.erase(n-1);
+	sucesos.erase(n-1);
 }
 
 bool evento::eliminasuceso(const string& s) {
-	for (int i = 0 ; i < vector.size() ; i++) {
+	for (int i = 0 ; i < sucesos.size() ; i++) {
 		if (sucesos[i] == s)
 			sucesos.erase(i) ;
 			return true ;
@@ -92,29 +91,47 @@ bool evento::eliminasuceso(const string& s) {
 	return false ;
 }
 
-evento& operator+(const eveneto& e){
-	for (int i=0, i < e.sucesos.size(), i++){
-		sucesos.pushback(e.sucesos[i]);
+evento& evento::operator+(const evento& e){
+	for (int i=0; i < e.sucesos.size(); i++){
+		sucesos.push_back(e.sucesos[i]);
 	}
 	return *this;
 }
 
-std::istream& operator>>(std::istream& s , evento& e) {
+istream& operator>>(istream& s , evento& e) {
 	if (s) {
 		s >> e.anio ;
 
-		int i = 0 ;					// find, substring
-		while (
-		s >> e.sucesos ;
-	}
+		bool primero = false ;				
+		string c ;
+
+		while(s.peek() != '\n') {
+			if (s.peek() == '#' && primero) {
+				s.ignore();
+				e.sucesos.push_back(c);
+				c = '\0' ; // ?????
+			}
+			else {
+				if (s.peek() != '#'){
+					c.push_back(s.get());
+					primero = true ;
+				}
+				else
+					s.ignore();
+			}
+		}
+
+		e.sucesos.push_back(c);
+			
 
 	return s ;
+	}
 }
 
-std::ostream& operator<<(std::ostream& s , const evento& e) {
+ostream& operator<<(ostream& s , const evento& e) {
 	s << e.anio ;
-	s << '\t' ;
-	s << e.sucesos ; // find, substring
-
+	for (int i = 0 ; i < e.sucesos.size() ; i++) 
+		s << '#' << e.sucesos[i]; 
+	
 	return s ;
 }

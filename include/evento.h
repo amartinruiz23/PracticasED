@@ -3,10 +3,11 @@
 #include <string>
 #include <vector>
 #include <iostream>
+using namespace std;
 
 class evento{
   int anio;
-  std::vector<string> sucesos; // ???????????
+  vector<string> sucesos; // ???????????
 
   public:
 
@@ -21,7 +22,7 @@ class evento{
 	* @param s suceso a crear
 	* @pre s debe empezar por #
 	*/
-	evento(int a, std::const vector<string>& s);
+	evento(int a, const vector<string>& s);
 
 	/**
 	* @brief Constructor copia de eventos
@@ -64,54 +65,46 @@ class evento{
 
 	/**
 	* @brief Consulta del año de un evento
-	* @param e evento a consultar
 	* @return año del evento
 	*/
-  int getanio(const evento& e);
+  int getanio();
 
 	/**
 	* @brief Consulta de los sucesos de un evento
-	* @param e evento a consultar
 	* @return conjunto de sucesos del evento constante
 	*/
-  const vector& getsucesos(const evento& e);
+  const vector<string>& getsucesos();
 
 	/**
 	* @brief Consulta de los sucesos de un evento
-	* @param e evento a consultar
 	* @return conjunto de sucesos del evento
 	*/
-  vector& getsucesos(const evento& e);
+  vector<string>& getsucesos();
 
 	/**
 	* @brief Consulta de un suceso de un evento
-	* @param e evento a consultar
 	* @param n posicion del suceso a consultar en el vector
 	* @pre n debe ser mayor o igual a 1
-	* @pre s debe empezar por #
 	* @return suceso consultado
 	*/
-  string& getsuceso(const evento& e, int n);
+  string& getsuceso(int n);
 
 	/**
 	* @brief Consulta de un suceso de un evento
-	* @param e evento a consultar
 	* @param n posicion del suceso a consultar en el vector
 	* @pre n debe ser mayor o igual a 1
-	* @pre s debe empezar por #
 	* @return suceso consultado
 	*/
-  const string& getsuceso(const evento& e, int n);
+  const string& getsuceso(int n);
 
 	/**
 	* @brief Inserta un suceso
 	* @param s suceso a insertar
 	* @param p posicion del vector en la que se quiere insertar el suceso, si no se indica nada, será en la primera posición
 	* @pre p tiene que ser mayor o igual a 1 en caso de que se quiera indicar la posición
-	* @pre s debe empezar por #
 	* @return // ???????????????????????????
 	*/
-  void insertasuceso(const string s, int p=-1);
+  void insertasuceso(const string& s, int p=-1);
 
 	/**
 	* @brief Elimina un suceso de un evento
@@ -123,7 +116,6 @@ class evento{
 	/**
 	* @brief Elimina un suceso de un evento
 	* @param s suceso a eliminar
-	* @pre s debe empezar por #
 	* @return si ha eliminado dicho suceso
 	*/
 	bool eliminasuceso(const string& s);
@@ -131,19 +123,19 @@ class evento{
 
   /**
   * @brief Operador para sumar eventos.
-  * @param e eveton a sumar
+  * @param e evento a sumar
   * @pre s debe tener el mismo año que el elemento al que se aplica la suma
   * @return un evento como suma del evento y e
   */
 
-  evento& operator+(const eveneto& e);
+  evento& operator+(const evento& e);
 	/**
 	* @brief Operador para leer desde un flujo de entrada un evento
 	* @param f flujo de entrada
 	* @param e evento a modificar o ser leído
 	* @return referencia a flujo para poder encadenar lecturas
 	*/
-	friend std::istream& operator>>(std::istream& f , evento& e);
+	friend istream& operator>>(istream& f , evento& e);
 
 	/**
 	* @brief Operador para escribir en un flujo de salida un evento
@@ -151,7 +143,7 @@ class evento{
 	* @param e evento a imprimir o ser escrito
 	* @return referencia a flujo para poder encadenar escrituras
 	*/
-	friend std::ostream& operator<<(std::ostream& f , const evento& e);
+	friend ostream& operator<<(ostream& f , const evento& e);
 
 };
 

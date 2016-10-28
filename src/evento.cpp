@@ -57,34 +57,22 @@ int evento::getanio(){
 	return anio;
 }
 
-const vector<string>& evento::getsucesos(){
-	return sucesos;
-}
-
-vector<string>& evento::getsucesos(){
-	return sucesos;
-}
-
-const string& evento::getsuceso(int n){
-	return sucesos.at(n); //at devuelve una referencia al elemento en la posición indicada del vector. Lanza excepción si fuera de rango.
-}
-
 string& evento::getsuceso(int n){
 	return sucesos.at(n); //at devuelve una referencia al elemento en la posición indicada del vector. Lanza excepción si fuera de rango.
 }
 
-void evento::insertasuceso(const string& s, int p){
-	sucesos.insert(p-1, s);
+void evento::insertasuceso(string s){
+	sucesos.push_back(s);
 }
 
 void evento::eliminasuceso(int n){
-	sucesos.erase(n-1);
+	sucesos.erase(sucesos.begin()+n);
 }
 
 bool evento::eliminasuceso(const string& s) {
 	for (int i = 0 ; i < sucesos.size() ; i++) {
 		if (sucesos[i] == s)
-			sucesos.erase(i) ;
+			sucesos.erase(sucesos.begin()+i) ;
 			return true ;
 	}
 
@@ -102,7 +90,7 @@ istream& operator>>(istream& s , evento& e) {
 	if (s) {
 		s >> e.anio ;
 
-		bool primero = false ;				
+		bool primero = false ;
 		string c ;
 
 		while(s.peek() != '\n') {
@@ -122,7 +110,7 @@ istream& operator>>(istream& s , evento& e) {
 		}
 
 		e.sucesos.push_back(c);
-			
+
 
 	return s ;
 	}
@@ -130,8 +118,8 @@ istream& operator>>(istream& s , evento& e) {
 
 ostream& operator<<(ostream& s , const evento& e) {
 	s << e.anio ;
-	for (int i = 0 ; i < e.sucesos.size() ; i++) 
-		s << '#' << e.sucesos[i]; 
-	
+	for (int i = 0 ; i < e.sucesos.size() ; i++)
+		s << '#' << e.sucesos[i];
+
 	return s ;
 }

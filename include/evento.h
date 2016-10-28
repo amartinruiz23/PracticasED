@@ -70,18 +70,6 @@ class evento{
   int getanio();
 
 	/**
-	* @brief Consulta de los sucesos de un evento
-	* @return conjunto de sucesos del evento constante
-	*/
-  const vector<string>& getsucesos();
-
-	/**
-	* @brief Consulta de los sucesos de un evento
-	* @return conjunto de sucesos del evento
-	*/
-  vector<string>& getsucesos();
-
-	/**
 	* @brief Consulta de un suceso de un evento
 	* @param n posicion del suceso a consultar en el vector
 	* @pre n debe ser mayor o igual a 1
@@ -95,7 +83,7 @@ class evento{
 	* @pre n debe ser mayor o igual a 1
 	* @return suceso consultado
 	*/
-  const string& getsuceso(int n);
+//  const string& getsuceso(int n);
 
 	/**
 	* @brief Inserta un suceso
@@ -104,7 +92,7 @@ class evento{
 	* @pre p tiene que ser mayor o igual a 1 en caso de que se quiera indicar la posición
 	* @return // ???????????????????????????
 	*/
-  void insertasuceso(const string& s, int p=-1);
+  void insertasuceso(string s);
 
 	/**
 	* @brief Elimina un suceso de un evento

@@ -36,7 +36,7 @@ class cronologia {
 		* @param anio_final último año de la subcronología, por defecto, hasta hoy
 		* @return cronología "recortada"
 		*/
-		cronologia subcronologia(int anio_inicio, int anio_final=2017);
+		cronologia& subcronologia(int anio_inicio, int anio_final=2017);
 
 		/**
 		* @brief mezcla dos cronologías

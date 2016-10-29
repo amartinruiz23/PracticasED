@@ -39,25 +39,33 @@ cronologia& cronologia::subcronologia(int anio_inicio, int anio_final=2017){
   return devolver;
 }
 
-cronologia& cronologia::operator+(const cronologia& c){ //lolxd
-  vector<int> noaniadir;
-  for (int i = 0, i < c.eventos.size(), i++){
-    for (int j = 0; j < eventos.size(), j++){
-      if ( c.eventos[i] == eventos[j]{
-        eventos[i] = c.eventos[i] + eventos[j];
-        noaniadir.push_back(i);
-      }
-    }
+cronologia& cronologia::operator+(const cronologia& c){
+	cronologia nueva;
+	for (int i = 0; i < c.eventos.size(), i++){
+		nueva.eventos.push_back(c.eventos[i]);
 	}
-  ordenar();
-  return *this;
+	for (int i = 0; i < eventos.size(), i++){
+		nueva.eventos.push_back(eventos[i]);
+	}
+
+	nueva.ordenar();
+
+	int i = 0;
+	while(i < nuevo.size()){
+		if (nuevo.eventos[i] == nuevo.eventos[i+1]){
+			nuevo.eventos[i] = nuevo.eventos[i]+nuevo.eventos[i+1];
+			i--;
+		}
+	i++;
+	}
+  return *nuevo;
 }
 
 void cronologia::eliminarevento (int anio){
     for (int i = 0, i < eventos.size(), i++){
       if (eventos[i].getanio() == anio)
-        eventos.erase(i);
-      
+        eventos.erase(eventos.begin()+i);
+
     }
 }
 
@@ -76,7 +84,7 @@ evento& cronologia::buscaevento (int anio){
 
 cronologia& cronologia::buscaevento (const string& s){
 	cronologia devolver ;
-	
+
 	for (int i = 0 ; i < eventos.size() ; i++) {
 		for (int j = 0 ; j < eventos[i].sucesos.size() ; j++) {
 			if (s == eventos[i].sucesos[j])

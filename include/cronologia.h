@@ -28,28 +28,12 @@ class cronologia {
 	public:
 
 		/**
-		* @brief Constructor por defecto
-		*/
-		cronologia();
-
-		/**
-		* @brief Constructor copia
-		* @param c cronologia a copiar
-		*/
-		cronologia(const cronologia& c);
-
-		/**
-		* @brief Destructor
-		*/
-		~cronologia();
-
-		/**
 		* @brief devuelve una cronología entre dos fechas
 		* @param anio_inicio año a partir del cual empieza la subcronología
 		* @param anio_final último año de la subcronología, por defecto, hasta hoy
 		* @return cronología "recortada"
 		*/
-		cronologia& subcronologia(int anio_inicio, int anio_final=2017);
+		cronologia subcronologia(int anio_inicio, int anio_final=2017);
 
 		/**
 		* @brief mezcla dos cronologías

@@ -22,17 +22,9 @@ void cronologia::ordenar(){
 	}
 }
 
-cronologia::cronologia(){} // Al tener solo un vector la clase, esta función es necesaria???
-
-cronologia::cronologia(const cronologia& c){
-  eventos = c.geteventos();
-}
-
-cronologia::~cronologia(){} //Igual que con constructor vacío
-
-cronologia& cronologia::subcronologia(int anio_inicio, int anio_final=2017){
+cronologia cronologia::subcronologia(int anio_inicio, int anio_final=2017){
   cronologia devolver;
-  for (int i = 0, i < eventos.size(), i++){
+  for (int i = 0; i < eventos.size(); i++){
     if (eventos[i].getanio() >= anio_inicio && eventos[i].getanio() <= anio_final)
       devolver.aniadirevento(eventos[i]);
   }
@@ -41,17 +33,17 @@ cronologia& cronologia::subcronologia(int anio_inicio, int anio_final=2017){
 
 cronologia& cronologia::operator+(const cronologia& c){
 	cronologia nueva;
-	for (int i = 0; i < c.eventos.size(), i++){
+	for (int i = 0; i < c.eventos.size(); i++){
 		nueva.eventos.push_back(c.eventos[i]);
 	}
-	for (int i = 0; i < eventos.size(), i++){
+	for (int i = 0; i < eventos.size(); i++){
 		nueva.eventos.push_back(eventos[i]);
 	}
 
 	nueva.ordenar();
 
 	int i = 0;
-	while(i+1 < nueva.size()){
+	while(i+1 < nueva.eventos.size()){
 		if (nueva.eventos[i] == nueva.eventos[i+1]){
 			nueva.eventos[i] = nueva.eventos[i]+nueva.eventos[i+1];
 			i--;
@@ -62,7 +54,7 @@ cronologia& cronologia::operator+(const cronologia& c){
 }
 
 void cronologia::eliminarevento (int anio){
-    for (int i = 0, i < eventos.size(), i++){
+    for (int i = 0; i < eventos.size(); i++){
       if (eventos[i].getanio() == anio)
         eventos.erase(eventos.begin()+i);
 
@@ -97,3 +89,4 @@ cronologia& cronologia::buscaevento (const string& s){
 vector<evento> cronologia::geteventos(){
   return eventos;
 }
+

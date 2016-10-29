@@ -3,7 +3,7 @@ INC = include
 OBJ = obj
 BIN = bin
 CXX = g++
-CPPFLAGS = -Wall -g  -I$(INC) -c
+CXXFLAGS = -Wall -g -I$(INC) -c
 
 
 all: $(BIN)/pruebacronologia

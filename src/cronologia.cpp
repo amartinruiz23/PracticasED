@@ -22,7 +22,7 @@ void cronologia::ordenar(){
 	}
 }
 
-cronologia cronologia::subcronologia(int anio_inicio, int anio_final=2017){
+cronologia cronologia::subcronologia(int anio_inicio, int anio_final){
   cronologia devolver;
   for (int i = 0; i < eventos.size(); i++){
     if (eventos[i].getanio() >= anio_inicio && eventos[i].getanio() <= anio_final)

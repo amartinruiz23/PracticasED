@@ -82,23 +82,25 @@ class cronologia {
 		*/
 		vector<string> GetEventos(int anio);
 
+		/**
+		* @brief Sobrecarga de operador>> para cronologías
+		* @param s, flujo
+		* @param c, cronología a leer
+		* @return flujo para poder concatenar lecturas
+		*/ 
+		friend istream& operator>>(istream& s, cronologia& c);
+
+		/**
+		* @brief Sobrecarga de operador<< para cronologías
+		* @param s,flujo
+		* @param c, cronología a escribir
+		* @return flujo para poder concatenar escrituras
+		*/
+		friend ostream& operator<<(ostream& s, const cronologia& c);
+
+
 };
 
-	/**
-	* @brief Sobrecarga de operador>> para cronologías
-	* @param s, flujo
-	* @param c, cronología a leer
-	* @return flujo para poder concatenar lecturas
-	*/ 
-	friend istream& operator>>(istream& s, cronologia& c);
-
-	/**
-	* @brief Sobrecarga de operador<< para cronologías
-	* @param s,flujo
-	* @param c, cronología a escribir
-	* @return flujo para poder concatenar escrituras
-	*/
-	friend ostream& operator<<(ostream& s, const cronologia& c);
 
 
 

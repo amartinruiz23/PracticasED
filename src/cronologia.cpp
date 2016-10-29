@@ -2,6 +2,7 @@
 #include "evento.h"
 #include <string>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 void cronologia::intercambia (evento& e1 , evento& e2) {
@@ -102,16 +103,20 @@ vector<evento> cronologia::geteventos(){
 }
 
 istream& operator>>(istream& s, cronologia& c) {
+	int i = 0;
 	if (s) {
-		for (int i = 0 ; i < c.eventos.size() ; i++)
+		while(s.peek() != '\0'){
 			s >> c.eventos[i];
-	}
+			i++;
+		}
 	return s ;
+	}
 }
 
 ostream& operator<<(ostream& s, const cronologia& c){
-	for (int i = 0 ; i < c.eventos.size() ; i++)
+	for (int i = 0 ; i < c.eventos.size() ; i++){
 		s << c.eventos[i];
-
+		s << "\n";
+	}
 	return s ;
 }

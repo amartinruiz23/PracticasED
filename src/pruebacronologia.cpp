@@ -24,8 +24,9 @@ int main(int argc, char * argv[]){
    cout<<"Dime un año a consultar:";
    cin >> anio;
 
+   cout << "antes";
    vector<string> eventos = mi_cronologia.GetEventos(anio);
-
+   cout << "despues";
    /* Escribimos */
    cout << anio << ":";
    for (int i=0;i<eventos.size(); ++i)

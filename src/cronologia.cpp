@@ -60,7 +60,7 @@ vector<string> cronologia::GetEventos(int anio){
 			for (int j = 0; j < eventos[i].CuantosSucesos(); j++){
 				devolver.push_back(eventos[i].getsuceso(j));
 			}
-		}	
+		}
 	}
 }
 
@@ -101,7 +101,7 @@ vector<evento> cronologia::geteventos(){
   return eventos;
 }
 
-friend istream& operator>>(istream& s, cronologia& c) {
+istream& operator>>(istream& s, cronologia& c) {
 	if (s) {
 		for (int i = 0 ; i < c.eventos.size() ; i++)
 			s >> c.eventos[i];
@@ -109,10 +109,9 @@ friend istream& operator>>(istream& s, cronologia& c) {
 	return s ;
 }
 
-friend ostream& operator<<(ostream& s, const cronologia& c){
+ostream& operator<<(ostream& s, const cronologia& c){
 	for (int i = 0 ; i < c.eventos.size() ; i++)
 		s << c.eventos[i];
 
 	return s ;
 }
-

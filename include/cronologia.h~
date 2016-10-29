@@ -2,6 +2,7 @@
 #define _CRONOLOGIA_H_
 
 #include "evento.h"
+#include <vector>
 
 class cronologia {
 
@@ -11,6 +12,11 @@ class cronologia {
 	* @brief ordena la cronología por fechas de los eventos
 	*/
 	void ordenar();
+	
+	/**
+	* @brief intercambia la posición de dos eventos del vector de eventos
+	*/
+	void intercambia(evento& e1, evento& e2);
 
 	public:
 
@@ -49,36 +55,34 @@ class cronologia {
 		/**
 		* @brief elimina un evento de la cronología
 		* @param anio , año del evento que queremos borrar
-		* @return si la operación ha tenido éxito
 		*/
-		bool eliminarevento (int anio);
+		void eliminarevento (int anio);
 
 		/**
 		* @brief añade un evento a la cronología
 		* @param e , evento a añadir
-		* @return si la operación ha tenido éxito
 		*/
-		bool aniadirevento (evento& e);
+		void aniadirevento (evento& e);
 
 		/**
 		* @brief busca un evento en la cronología
 		* @param anio , fecha del evento a buscar
 		* @return evento buscado
 		*/
-		evento buscaevento (int anio) ;
+		evento& buscaevento (int anio) ;
 
 		/**
 		* @brief busca un evento en la cronología
 		* @param s , suceso a buscar
 		* @return cronologia con los eventos que contienen el string
 		*/
-		cronologia buscaevento (const string& s);
+		cronologia& buscaevento (const std::string& s);
 
 		/**
 		* @brief Devuelve el vector de eventos
 		* @return vector de eventos
 		*/
-		vector geteventos ();
+		vector<evento> geteventos ();
 
 
 };

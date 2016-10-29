@@ -1,5 +1,6 @@
 #ifndef _EVENTO_H_
 #define _EVENTO_H_
+
 #include <string>
 #include <vector>
 #include <iostream>
@@ -7,7 +8,7 @@ using namespace std;
 
 class evento{
   int anio;
-  vector<string> sucesos; // ???????????
+  vector<string> sucesos; 
 
   public:
 
@@ -20,7 +21,6 @@ class evento{
 	* @brief Constructor de eventos
 	* @param a año del suceso
 	* @param s suceso a crear
-	* @pre s debe empezar por #
 	*/
 	evento(int a, const vector<string>& s);
 
@@ -78,19 +78,8 @@ class evento{
   string& getsuceso(int n);
 
 	/**
-	* @brief Consulta de un suceso de un evento
-	* @param n posicion del suceso a consultar en el vector
-	* @pre n debe ser mayor o igual a 1
-	* @return suceso consultado
-	*/
-//  const string& getsuceso(int n);
-
-	/**
 	* @brief Inserta un suceso
 	* @param s suceso a insertar
-	* @param p posicion del vector en la que se quiere insertar el suceso, si no se indica nada, será en la primera posición
-	* @pre p tiene que ser mayor o igual a 1 en caso de que se quiera indicar la posición
-	* @return // ???????????????????????????
 	*/
   void insertasuceso(string s);
 
@@ -98,9 +87,9 @@ class evento{
 	* @brief Elimina un suceso de un evento
 	* @param n posición del suceso en el vector a eliminar
 	* @pre n tiene que ser mayor o igual a 1
-	* @return // ?????????????????????????
 	*/
 	void eliminasuceso(int n);
+
 	/**
 	* @brief Elimina un suceso de un evento
 	* @param s suceso a eliminar
@@ -108,15 +97,14 @@ class evento{
 	*/
 	bool eliminasuceso(const string& s);
 
-
   /**
   * @brief Operador para sumar eventos.
   * @param e evento a sumar
-  * @pre s debe tener el mismo año que el elemento al que se aplica la suma
+	* @pre el año del evento tiene que coincidir
   * @return un evento como suma del evento y e
   */
-
   evento& operator+(const evento& e);
+	
 	/**
 	* @brief Operador para leer desde un flujo de entrada un evento
 	* @param f flujo de entrada

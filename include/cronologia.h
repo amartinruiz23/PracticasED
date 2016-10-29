@@ -2,7 +2,6 @@
 #define _CRONOLOGIA_H_
 
 #include "evento.h"
-#include <vector>
 
 class cronologia {
 

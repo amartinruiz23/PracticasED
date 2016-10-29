@@ -13,7 +13,7 @@ void cronologia::intercambia (evento& e1 , evento& e2) {
 void cronologia::ordenar(){
 	int i , j , min ;
 
-	for (i=0; i<eventos.size()-1 ; i++) {
+	for (i=0; i< eventos.size()-1 ; i++) {
 		min = i ;
 		for (j=i+1 ; j < eventos.size() ; j++)
 			if (eventos[j].getanio() < min)
@@ -78,8 +78,8 @@ cronologia& cronologia::buscaevento (const string& s){
 	cronologia devolver ;
 
 	for (int i = 0 ; i < eventos.size() ; i++) {
-		for (int j = 0 ; j < eventos[i].sucesos.size() ; j++) {
-			if (s == eventos[i].sucesos[j])
+		for (int j = 0 ; j < eventos[i].CuantosSucesos() ; j++) {
+			if (s == eventos[i].getsuceso(j))
 				devolver.eventos.push_back(eventos[i]);
 		}
 	}
@@ -89,4 +89,3 @@ cronologia& cronologia::buscaevento (const string& s){
 vector<evento> cronologia::geteventos(){
   return eventos;
 }
-

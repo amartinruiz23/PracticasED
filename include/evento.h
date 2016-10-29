@@ -8,7 +8,7 @@ using namespace std;
 
 class evento{
   int anio;
-  vector<string> sucesos; 
+  vector<string> sucesos;
 
   public:
 
@@ -98,13 +98,20 @@ class evento{
 	bool eliminasuceso(const string& s);
 
   /**
+  * @brief Devuelve cuantos sucesos hay en un evento
+  * @return Número de sucesos del evento
+  */
+
+  int CuantosSucesos();
+
+  /**
   * @brief Operador para sumar eventos.
   * @param e evento a sumar
 	* @pre el año del evento tiene que coincidir
   * @return un evento como suma del evento y e
   */
   evento& operator+(const evento& e);
-	
+
 	/**
 	* @brief Operador para leer desde un flujo de entrada un evento
 	* @param f flujo de entrada

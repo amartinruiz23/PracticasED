@@ -20,6 +20,10 @@ evento::~evento(){
 	anio = 0;
 }
 
+int evento::CuantosSucesos(){
+	return sucesos.size();
+}
+
 evento& evento::operator=(const evento& e){
 	if (this != &e) {
 		anio = e.anio;

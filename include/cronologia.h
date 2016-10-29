@@ -41,7 +41,7 @@ class cronologia {
 		* @return puntero a la cronología mezclada para poder concatenar mezclas
 		*/
 
-		cronologia& operator+(const cronologia& c);
+		cronologia operator+(const cronologia& c);
 
 		/**
 		* @brief elimina un evento de la cronología
@@ -60,14 +60,14 @@ class cronologia {
 		* @param anio , fecha del evento a buscar
 		* @return evento buscado
 		*/
-		evento& buscaevento (int anio) ;
+		evento buscaevento (int anio) ;
 
 		/**
 		* @brief busca un evento en la cronología
 		* @param s , suceso a buscar
 		* @return cronologia con los eventos que contienen el string
 		*/
-		cronologia& buscaevento (const std::string& s);
+		cronologia buscaevento (const std::string& s);
 
 		/**
 		* @brief Devuelve el vector de eventos
@@ -87,7 +87,7 @@ class cronologia {
 		* @param s, flujo
 		* @param c, cronología a leer
 		* @return flujo para poder concatenar lecturas
-		*/ 
+		*/
 		friend istream& operator>>(istream& s, cronologia& c);
 
 		/**

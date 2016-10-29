@@ -1,4 +1,5 @@
 #include "evento.h"
+#include <iostream>
 using namespace std;
 
 evento::evento(){
@@ -94,7 +95,7 @@ istream& operator>>(istream& s , evento& e) {
 		bool primero = false ;
 		string c ;
 
-		while(s.peek() != '\n') {
+		while(s.peek() != '\n' && !s.eof()) {
 			if (s.peek() == '#' && primero) {
 				s.ignore();
 				e.sucesos.push_back(c);
@@ -112,9 +113,8 @@ istream& operator>>(istream& s , evento& e) {
 
 		e.sucesos.push_back(c);
 
-
-	return s ;
 	}
+	return s ;
 }
 
 ostream& operator<<(ostream& s , const evento& e) {

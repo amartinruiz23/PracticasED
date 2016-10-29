@@ -32,7 +32,7 @@ cronologia cronologia::subcronologia(int anio_inicio, int anio_final){
   return devolver;
 }
 
-cronologia& cronologia::operator+(const cronologia& c){
+cronologia cronologia::operator+(const cronologia& c){
 	cronologia nueva;
 	for (int i = 0; i < c.eventos.size(); i++){
 		nueva.eventos.push_back(c.eventos[i]);
@@ -63,6 +63,7 @@ vector<string> cronologia::GetEventos(int anio){
 			}
 		}
 	}
+	return devolver;
 }
 
 void cronologia::eliminarevento (int anio){
@@ -77,7 +78,7 @@ void cronologia::aniadirevento (evento& e){
 	eventos.push_back(e);
 }
 
-evento& cronologia::buscaevento (int anio){
+evento cronologia::buscaevento (int anio){
   evento vacio;
   for (int i = 0; i < eventos.size(); i++){
     if(eventos[i].getanio() == anio)
@@ -86,7 +87,7 @@ evento& cronologia::buscaevento (int anio){
   return vacio;
 }
 
-cronologia& cronologia::buscaevento (const string& s){
+cronologia cronologia::buscaevento (const string& s){
 	cronologia devolver ;
 
 	for (int i = 0 ; i < eventos.size() ; i++) {
@@ -103,14 +104,14 @@ vector<evento> cronologia::geteventos(){
 }
 
 istream& operator>>(istream& s, cronologia& c) {
-	int i = 0;
 	if (s) {
-		while(s.peek() != '\0'){
-			s >> c.eventos[i];
-			i++;
+		while(s.peek() != '\0' && !s.eof()){
+			evento e;
+			s >> e;
+			c.eventos.push_back(e);
 		}
-	return s ;
 	}
+	return s ;
 }
 
 ostream& operator<<(ostream& s, const cronologia& c){

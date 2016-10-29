@@ -5,7 +5,6 @@
 using namespace std;
 
 int main(int argc, char * argv[]){
-
   if (argc!=2){
       cout<<"Dime el nombre del fichero con la cronologia"<<endl;
       return 0;
@@ -19,14 +18,11 @@ int main(int argc, char * argv[]){
 
    cronologia mi_cronologia;
    f>>mi_cronologia; //Cargamos en memoria, en el traductor.
-
    int anio;
    cout<<"Dime un año a consultar:";
    cin >> anio;
 
-   cout << "antes";
    vector<string> eventos = mi_cronologia.GetEventos(anio);
-   cout << "despues";
    /* Escribimos */
    cout << anio << ":";
    for (int i=0;i<eventos.size(); ++i)

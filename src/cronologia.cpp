@@ -53,6 +53,17 @@ cronologia& cronologia::operator+(const cronologia& c){
   return nueva;
 }
 
+vector<string> cronologia::GetEventos(int anio){
+	vector<string> devolver;
+	for (int i = 0; i < eventos.size(); i++){
+		if(eventos[i].getanio() == anio){
+			for (int j = 0; j < eventos[i].CuantosSucesos(); j++){
+				devolver.push_back(eventos[i].getsuceso(j));
+			}
+		}	
+	}
+}
+
 void cronologia::eliminarevento (int anio){
     for (int i = 0; i < eventos.size(); i++){
       if (eventos[i].getanio() == anio)

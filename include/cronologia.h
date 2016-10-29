@@ -19,7 +19,7 @@ class cronologia {
 	* @brief ordena la cronología por fechas de los eventos
 	*/
 	void ordenar();
-	
+
 	/**
 	* @brief intercambia la posición de dos eventos del vector de eventos
 	*/
@@ -75,6 +75,12 @@ class cronologia {
 		*/
 		vector<evento> geteventos ();
 
+		/**
+		* @brief Devuelve el vector con los sucesos del año indicado
+		* @param anio , año de los sucesos que se buscan
+		* @return Sucesos del año indicado que hay en la cronología
+		*/
+		vector<string> GetEventos(int anio);
 
 };
 

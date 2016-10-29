@@ -5,6 +5,14 @@
 
 class cronologia {
 
+	/**
+  * @page repConjunto Rep del TDA Cronologia
+  *
+  * @section invConjunto Invariante de la representación
+  *
+  * El invariante es que la cronología debe estar ordenada
+  */
+
 	std::vector<evento> eventos ;
 
 	/**

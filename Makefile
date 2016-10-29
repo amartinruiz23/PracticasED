@@ -14,8 +14,11 @@ documentacion:
 
 	
 # ************ Compilación de módulos ************
-$(BIN)/pruebacronologia: $(OBJ)/evento.o $(OBJ)/cronologia.o
-	$(CXX) -o $(BIN)pruebacronologia $(OBJ)/evento.o $(OBJ)/cronologia.o
+$(BIN)/pruebacronologia: $(OBJ)/pruebacronologia.o $(OBJ)/evento.o $(OBJ)/cronologia.o
+	$(CXX) -o $(BIN)pruebacronologia $(OBJ)/pruebacronologia.o $(OBJ)/evento.o $(OBJ)/cronologia.o
+
+$(OBJ)/pruebacronologia.o: $(SRC)/pruebacronologia.cpp $(INC)/cronologia.h
+	$(CXX) $(CXXFLAGS) $(SRC)/pruebacronologia.cpp -o $(OBJ)/pruebacronologia.o
 
 $(OBJ)/evento.o: $(SRC)/evento.cpp $(INC)/evento.h
 	$(CXX) $(CXXFLAGS) $(SRC)/evento.cpp -o $(OBJ)/evento.o

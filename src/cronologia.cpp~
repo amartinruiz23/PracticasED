@@ -100,19 +100,3 @@ cronologia& cronologia::buscaevento (const string& s){
 vector<evento> cronologia::geteventos(){
   return eventos;
 }
-
-friend istream& operator>>(istream& s, cronologia& c) {
-	if (s) {
-		for (int i = 0 ; i < c.eventos.size() ; i++)
-			s >> c.eventos[i];
-	}
-	return s ;
-}
-
-friend ostream& operator<<(ostream& s, const cronologia& c){
-	for (int i = 0 ; i < c.eventos.size() ; i++)
-		s << c.eventos[i];
-
-	return s ;
-}
-

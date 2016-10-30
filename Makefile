@@ -6,7 +6,7 @@ CXX = g++
 CXXFLAGS = -Wall -Wno-sign-compare -g -I$(INC) -c
 
 
-all: $(BIN)/pruebacronologia
+all: $(BIN)/pruebacronologia documentacion
 
 # ************ Generación de documentación ******************
 documentacion:

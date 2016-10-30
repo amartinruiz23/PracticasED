@@ -117,7 +117,7 @@ istream& operator>>(istream& s, cronologia& c) {
 ostream& operator<<(ostream& s, const cronologia& c){
 	for (int i = 0 ; i < c.eventos.size() ; i++){
 		s << c.eventos[i];
-		s << "\n";
+		s << '\n';
 	}
 	return s ;
 }

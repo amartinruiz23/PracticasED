@@ -1,7 +1,27 @@
+/**
+  * @file cronologia.h
+  * @brief Fichero cabecera del TDA cronología
+  *
+  */
+
+
 #ifndef _CRONOLOGIA_H_
 #define _CRONOLOGIA_H_
 
 #include "evento.h"
+
+	/**
+  *  @brief T.D.A. cronologia
+  *
+  * Una instancia @e c del tipo de datos abstracto @c cronología es un objeto
+  * compuesto por un vector de sucesos 
+	* 
+  * Un ejemplo de su uso:
+  * @include pruebacronologia.cpp
+  *
+  * @author Álvaro López Jiménez y Antonio Martín Ruíz
+  * @date Octubre 2016
+  */
 
 class cronologia {
 

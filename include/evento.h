@@ -1,3 +1,10 @@
+/**
+  * @file evento.h
+  * @brief Fichero cabecera del TDA evento (histórico)
+  *
+  */
+
+
 #ifndef _EVENTO_H_
 #define _EVENTO_H_
 
@@ -6,7 +13,25 @@
 #include <iostream>
 using namespace std;
 
+	/**
+  *  @brief T.D.A. evento
+  *
+  * Una instancia @e c del tipo de datos abstracto @c evento es un objeto
+  * compuesto por un valor entero que representa la fecha del evento y un 
+  * vector de string que representan los sucesos que tuvieron lugar ese
+  * año
+  * 
+  * @author Álvaro López Jiménez , Antonio Martín Ruíz
+  * @date Octubre 2016
+  */
 class evento{
+
+
+	/**
+  * @page repConjunto Rep del TDA evento
+  */
+
+
   int anio;
   vector<string> sucesos;
 

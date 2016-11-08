@@ -20,21 +20,25 @@ bool vacia() const { return cola.vacia()==0; }
 
 void poner (T e){
   Par parparaponer;
-  Cola cola_aux;
-  
+
   parparaponer.dato = e;
   if (e > cola.frente().max)
     parparaponer.max = e;
   else
     parparaponer.max = cola.frente().max;
 
-  cola_aux.poner(parparaponer);
-
-  for (int i = 0; i < )
+  cola.poner(parparaponer);
 }
 
 void quitar(){
+  Cola cola_aux;
 
+  for (int i = 0; i < cola.num_elementos - 1; i++){
+    cola_aux.poner(cola.frente());
+    cola.quitar();
+  }
+
+  cola = cola_aux;
 }
 
 T tope() const{

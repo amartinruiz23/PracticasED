@@ -3,9 +3,13 @@
 
 template <class T>
 
+struct Par {
+	T dato ;
+	T max ;
+}
 class Pila_max {
 	
-	T *datos ;
+	Par *datos ;
 	int reservados ;
 	int nelem ;
 
@@ -68,7 +72,7 @@ class Pila_max {
 		* @brief Consulta el elemento situado en el tope de la pila_max_vd
 		* @return T , elemento
 		*/
-		T tope() const ;
+		Par tope() const ;
 
 };	
 

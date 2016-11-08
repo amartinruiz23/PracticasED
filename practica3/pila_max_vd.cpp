@@ -7,12 +7,14 @@ Pila_max::Pila_max() {
 }
 
 Pila_max::Pila_max(const Pila_max& p) {
-	datos = new <T> [p.reservados] ;
+	datos = new Par [p.reservados] ;
 	reservados = p.reservados ;
 	nelem = p.nelem ;
 
-	for (int i = 0 ; i < nelem ; i++)
-		datos[i] = p.datos[i] ;
+	for (int i = 0 ; i < nelem ; i++) {
+		datos[i].dato = p.datos[i].dato ;
+		datos[i].max = p.datos[i].max ;
+	}
 
 }
 
@@ -28,9 +30,10 @@ Pila_max& Pila_max::operator=(const Pila_max& p) {
 		}
 
 		nelem = p.nelem ;
-		for (int i = 0 ; i < nelem ; i++)
-		datos[i] = p.datos[i] ;
-
+		for (int i = 0 ; i < nelem ; i++) {
+			datos[i].dato = p.datos[i].dato ;
+			datos[i].max = p.datos[i].max ;
+		}
 		return *this ;
 		
 	}
@@ -50,7 +53,7 @@ void Pila_max::quitar() {
 		resize(reservados/2);
 }
 
-T Pila_max::tope() const {
+Par Pila_max::tope() const {
 	assert(nelem>0);
 	return datos[nelem-1];
 }

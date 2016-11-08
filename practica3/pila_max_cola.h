@@ -5,12 +5,13 @@
 
 template <class T>
 
-struct Par{
-  T dato;
-  T max;
-}
-
 class Pila_max {
+
+  struct Par{
+    T dato;
+    T max;
+  };
+
   Cola<Par> cola;
 
 public:

@@ -1,24 +1,34 @@
-#include "pila_max_cola.h"
+template <class T>
 
-Pila_max (){
+Pila_max<T>::Pila_max (){
   cola = Cola();
 }
 
-Pila_max (const Pila_max& p){
+template <class T>
+
+Pila_max<T>::Pila_max (const Pila_max& p){
   cola = p.cola;
 }
 
-~Pila_max (){
+template <class T>
+
+Pila_max<T>::~Pila_max (){
   ~cola;
 }
 
-Pila_max& operator=(const Pila_max& p){
+template <class T>
+
+Pila_max& Pila_max<T>::operator=(const Pila_max& p){
   cola = p.cola;
 }
 
-bool vacia() const { return cola.vacia()==0; }
+template <class T>
 
-void poner (T e){
+bool Pila_max<T>::vacia() const { return cola.vacia()==0; }
+
+template <class T>
+
+void Pila_max<T>::poner (T e){
   Par parparaponer;
 
   parparaponer.dato = e;
@@ -30,7 +40,9 @@ void poner (T e){
   cola.poner(parparaponer);
 }
 
-void quitar(){
+template <class T>
+
+void Pila_max<T>::quitar(){
   Cola cola_aux;
 
   for (int i = 0; i < cola.num_elementos - 1; i++){
@@ -41,7 +53,9 @@ void quitar(){
   cola = cola_aux;
 }
 
-T tope() const{
+template <class T>
+
+T Pila_max<T>::tope() const{
   cola_aux = cola;
   for (int i = 0; i < cola_aux.num_elementos() - 1; i++)
     cola_aux.quitar();

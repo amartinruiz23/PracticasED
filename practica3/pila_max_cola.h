@@ -61,3 +61,7 @@ public:
 	* @return T , elemento
 	*/
 	T tope() const ;
+
+#include "pila_max_cola.cpp"
+
+#endif

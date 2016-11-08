@@ -18,8 +18,8 @@ void Pila_max<T>::reserve(int n) {
 
 template <class T>
 Pila_max<T>::Pila_max() {
+	datos = 0 ;
 	reservados = 1 ;
-	datos = new Par [reservados] ;
 	nelem = 0 ;
 }
 

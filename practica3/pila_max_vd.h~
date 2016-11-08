@@ -18,7 +18,7 @@ class Pila_max {
 	* @brief cambia el tamaño del vector 
 	* @param n nuevo tamaño del vector
 	*/
-	void reserve (int n);
+	void resize (int n);
 
 	public:
 

@@ -60,7 +60,7 @@ class Pila_max {
 		* @brief Pone un elemento en el tope de la pila_max_vd
 		* @param e, elemento (par) a ser añadido
 		*/ 
-		void poner (Par e) ;
+		void poner (T e) ;
 		
 
 		/**
@@ -71,9 +71,16 @@ class Pila_max {
 
 		/** 
 		* @brief Consulta el elemento situado en el tope de la pila_max_vd
-		* @return Par , elemento situado en el tope de la pila
+		* @return T , elemento (dato) situado en el tope de la pila
 		*/
-		Par tope() const ;
+		T tope() const ;
+
+		
+		/** 
+		* @brief Consulta el elemento máximo situado en el tope de la pila_max_vd
+		* @return T , elemento máximo de la pila
+		*/
+		T max() const ;
 
 };	
 

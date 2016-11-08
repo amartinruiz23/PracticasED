@@ -3,13 +3,13 @@
 
 template <class T>
 
-struct Par {
-	T dato ;
-	T max ;
-}
-
 class Pila_max {
 	
+	struct Par {
+		T dato ;
+		T max ;
+	};
+
 	Par *datos ;
 	int reservados ;
 	int nelem ;

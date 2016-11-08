@@ -43,7 +43,7 @@ public:
   * @brief Comprueba si una pila_max_cola esta vacía
 	* @return bool , 1 si está vacía , 0 si no lo está
 	*/
-	bool vacia() const { return nelem==0 ; }
+	bool vacia() const { return cola.num_elementos()==0 ; }
 
 	/**
 	* @brief Pone un elemento en el tope de la pila_max_cola
@@ -61,6 +61,8 @@ public:
 	* @return T , elemento
 	*/
 	T tope() const ;
+
+};
 
 #include "pila_max_cola.cpp"
 

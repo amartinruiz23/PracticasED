@@ -1,12 +1,12 @@
 template <class T>
 
 Pila_max<T>::Pila_max (){
-  cola = Cola();
+  cola = Cola<Par>();
 }
 
 template <class T>
 
-Pila_max<T>::Pila_max (const Pila_max& p){
+Pila_max<T>::Pila_max (const Pila_max<T>& p){
   cola = p.cola;
 }
 
@@ -18,13 +18,9 @@ Pila_max<T>::~Pila_max (){
 
 template <class T>
 
-Pila_max& Pila_max<T>::operator=(const Pila_max& p){
+Pila_max<T>& Pila_max<T>::operator=(const Pila_max& p){
   cola = p.cola;
 }
-
-template <class T>
-
-bool Pila_max<T>::vacia() const { return cola.vacia()==0; }
 
 template <class T>
 
@@ -43,7 +39,7 @@ void Pila_max<T>::poner (T e){
 template <class T>
 
 void Pila_max<T>::quitar(){
-  Cola cola_aux;
+  Cola<Par> cola_aux;
 
   for (int i = 0; i < cola.num_elementos - 1; i++){
     cola_aux.poner(cola.frente());
@@ -56,6 +52,7 @@ void Pila_max<T>::quitar(){
 template <class T>
 
 T Pila_max<T>::tope() const{
+  Cola<Par> cola_aux;
   cola_aux = cola;
   for (int i = 0; i < cola_aux.num_elementos() - 1; i++)
     cola_aux.quitar();

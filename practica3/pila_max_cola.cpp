@@ -18,8 +18,28 @@ Pila_max& operator=(const Pila_max& p){
 
 bool vacia() const { return cola.vacia()==0; }
 
-void poner (T e){}
+void poner (T e){
+  Par parparaponer;
+  Cola cola_aux;
+  
+  parparaponer.dato = e;
+  if (e > cola.frente().max)
+    parparaponer.max = e;
+  else
+    parparaponer.max = cola.frente().max;
 
-void quitar(){}
+  cola_aux.poner(parparaponer);
 
-T tope() const{}
+  for (int i = 0; i < )
+}
+
+void quitar(){
+
+}
+
+T tope() const{
+  cola_aux = cola;
+  for (int i = 0; i < cola_aux.num_elementos() - 1; i++)
+    cola_aux.quitar();
+  return cola_aux.frente();
+}

@@ -7,6 +7,7 @@ struct Par {
 	T dato ;
 	T max ;
 }
+
 class Pila_max {
 	
 	Par *datos ;
@@ -57,9 +58,9 @@ class Pila_max {
 
 		/**
 		* @brief Pone un elemento en el tope de la pila_max_vd
-		* @param e, elemento a ser añadido
+		* @param e, elemento (par) a ser añadido
 		*/ 
-		void poner (T e) ;
+		void poner (Par e) ;
 		
 
 		/**
@@ -70,11 +71,12 @@ class Pila_max {
 
 		/** 
 		* @brief Consulta el elemento situado en el tope de la pila_max_vd
-		* @return T , elemento
+		* @return Par , elemento situado en el tope de la pila
 		*/
 		Par tope() const ;
 
 };	
 
+#include "pila_max_vd.cpp"
 
 #endif 

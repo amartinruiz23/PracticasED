@@ -1,9 +1,9 @@
 #include <cassert>
 
-class template <T>
+template <class T>
 Pila_max<T>::Pila_max() : tope (0) {}
 
-class template <T>
+template <class T>
 Pila_max<T>::Pila_max(const Pila& p) {
 
 		if (p.tope == 0)
@@ -24,7 +24,7 @@ Pila_max<T>::Pila_max(const Pila& p) {
 		}
 }
 
-class template <T>
+template <class T>
 Pila_max<T>::~Pila_max() {
 	Celda * aux;
 	while(tope!=0) {
@@ -34,7 +34,7 @@ Pila_max<T>::~Pila_max() {
 	}
 }
 
-class template <T>
+template <class T>
 Pila_max& Pila_max<T>::operator=(const Pila_max& p) {
 
 	if (this != *p) {
@@ -49,7 +49,7 @@ Pila_max& Pila_max<T>::operator=(const Pila_max& p) {
 }
 
 
-class template <T>
+template <class T>
 void Pila_max<T>::poner(T e) {
 	Celda * aux = new Celda ;
 	aux -> pareja.dato = c ;
@@ -68,7 +68,7 @@ void Pila_max<T>::poner(T e) {
 } 
 
 
-class template <T>
+template <class T>
 void Pila_max<T>::quitar() {
 	assert(tope != 0);
 	Celda * aux = tope ;
@@ -77,7 +77,7 @@ void Pila_max<T>::quitar() {
 }
 
 
-class template <T>
+template <class T>
 Par Pila_max<T>::tope() { /////////////////////
 	assert(tope!=0);
 	return tope -> pareja ;

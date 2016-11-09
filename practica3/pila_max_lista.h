@@ -1,7 +1,7 @@
 #ifndef _PILA_MAX_LISTA_H_
 #define _PILA_MAX_LISTA_H_
 
-template class <T>
+template <class T>
 
 struct Par {
 	T dato ;
@@ -32,7 +32,7 @@ class Pila_max {
 		/**
 		* @brief Destructor de Pila_max_lista
 		*/
-		~Pila();
+		~Pila_max();
 
 		/**
 		* @brief Operador de asignación de Pila_max_lista

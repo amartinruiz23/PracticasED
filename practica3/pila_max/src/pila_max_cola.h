@@ -60,7 +60,7 @@ public:
 	* @brief Consulta el elemento situado en el tope de la pila_max_cola
 	* @return T , elemento
 	*/
-	T tope() const ;
+	Par<T> tope() const ;
 
 };
 

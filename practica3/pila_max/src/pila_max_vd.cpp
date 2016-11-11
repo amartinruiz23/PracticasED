@@ -24,7 +24,7 @@ Pila_max<T>::Pila_max() {
 }
 
 template <class T>
-Pila_max<T>::Pila_max(const Pila_max& p) {
+Pila_max<T>::Pila_max(const Pila_max&<T> p) {
 	datos = new Par [p.reservados] ;
 	reservados = p.reservados ;
 	nelem = p.nelem ;
@@ -42,7 +42,7 @@ Pila_max<T>::~Pila_max() {
 }
 
 template <class T>
-Pila_max<T>& Pila_max<T>::operator=(const Pila_max& p) {
+Pila_max<T>& Pila_max<T>::operator=(const Pila_max<T>& p) {
 	if (this != &p) {
 		if (p.reservados != reservados) {
 			reserve(p.reservados);
@@ -86,14 +86,8 @@ void Pila_max<T>::quitar() {
 }
 
 template <class T>
-T Pila_max<T>::tope() const {
+Par<T> Pila_max<T>::tope() const {
 	assert(nelem>0);
-	return datos[nelem-1].dato;
-}
-
-template <class T>
-T Pila_max<T>::max() const {
-	assert(nelem>0);
-	return datos[nelem-1].max;
+	return datos[nelem-1];
 }
 

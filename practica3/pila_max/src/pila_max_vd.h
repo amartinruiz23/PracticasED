@@ -3,14 +3,15 @@
 
 template <class T>
 
-class Pila_max {
-	
-	struct Par {
+struct Par {
 		T dato ;
 		T max ;
-	};
+};
 
-	Par *datos ;
+
+class Pila_max {
+	
+	Par<T> *datos ;
 	int reservados ;
 	int nelem ;
 
@@ -25,20 +26,20 @@ class Pila_max {
 		/**
 		* @brief Constructor vacío de pila_max_vd 
 		*/
-		Pila_max () ;
+		Pila_max<T> () ;
 		
 
 		/**
 		* @brief Constructor copia de pila_max_vd
 		* @param p pila_max_vd a copiar
 		*/
-		Pila_max (const Pila_max& p);
+		Pila_max<T> (const Pila_max<T>& p);
 		
 
 		/**
 		* @brief Destructor de pila_max_vd
 		*/		
-		~Pila_max () ;
+		~Pila_max<T> () ;
 		
 
 		/**
@@ -46,7 +47,7 @@ class Pila_max {
 		* @param p pila_max_vd a ser asignada
 		* @return pila_max_vd& referencia a la pila asignada para poder concatenar esta operación
 		*/
-		Pila_max& operator=(const Pila_max& p);
+		Pila_max<T>& operator=(const Pila_max&<T> p);
 		
 
 		/**
@@ -71,16 +72,9 @@ class Pila_max {
 
 		/** 
 		* @brief Consulta el elemento situado en el tope de la pila_max_vd
-		* @return T , elemento (dato) situado en el tope de la pila
+		* @return Par , dato situado en el tope de la pila y el máximo de la pila
 		*/
-		T tope() const ;
-
-		
-		/** 
-		* @brief Consulta el elemento máximo situado en el tope de la pila_max_vd
-		* @return T , elemento máximo de la pila
-		*/
-		T max() const ;
+		Par<T> tope() const ; 
 
 };	
 

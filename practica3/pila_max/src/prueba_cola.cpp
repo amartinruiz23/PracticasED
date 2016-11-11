@@ -8,6 +8,7 @@ int main () {
 
 	cout << "¿Vacia?" << mip.vacia() << endl ;
 
+	cout << "antesdemeter"<<endl;
 	mip.poner(1);
 	mip.poner(2);
 	mip.poner(3);

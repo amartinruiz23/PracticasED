@@ -78,7 +78,7 @@ void Pila_max<T>::quitar() {
 
 
 template <class T>
-Par Pila_max<T>::tope() { /////////////////////
+Par<T> Pila_max<T>::tope() { /////////////////////
 	assert(topedepila!=0);
 	return topedepila -> pareja ;
 }

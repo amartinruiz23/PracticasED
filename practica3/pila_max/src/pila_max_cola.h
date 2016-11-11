@@ -7,12 +7,7 @@ template <class T>
 
 class Pila_max {
 
-  struct Par{
-    T dato;
-    T max;
-  };
-
-  Cola<Par> cola;
+  Cola<Par<T> > cola;
 
 public:
 

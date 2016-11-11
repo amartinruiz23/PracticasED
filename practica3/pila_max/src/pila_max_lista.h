@@ -5,13 +5,8 @@ template <class T>
 
 class Pila_max {
 
-	struct Par {
-		T dato ;
-		T max ;
-	};
-
 	struct Celda{
-		Par pareja ;
+		Par<T> pareja ;
 		Celda * sig ;
 	};
 
@@ -61,7 +56,7 @@ class Pila_max {
 		* @brief Consulta el tope de la pila
 		* @return ///////////////////////////////
 		*/
-		Par tope() const ; ////////////////////////////////////
+		Par<T> tope() const ; ////////////////////////////////////
 
 };
 

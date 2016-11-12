@@ -44,9 +44,8 @@ template <class T>
 
 void Pila_max<T>::quitar(){
   Cola<Par<T> > cola_aux;
-	int iteraciones = cola.num_elementos()-1 ;
 
-  for (int i = 0; i < iteraciones; i++){
+  for (int i = 0; i < cola.num_elementos() - 1; i++){
     cola_aux.poner(cola.frente());
     cola.quitar();
   }

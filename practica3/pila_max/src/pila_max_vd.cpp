@@ -82,7 +82,7 @@ void Pila_max<T>::quitar() {
 	assert(nelem>0);
 	nelem-- ;
 	if (nelem<reservados/4)
-		reserve(reservados/2); //////////////////////////
+		reserve(reservados/2); 
 }
 
 template <class T>

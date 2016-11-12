@@ -15,7 +15,7 @@ ostream& operator<<(ostream& s, const Par<T>& p){
 	return s ;
 }
 
-#define CUAL_COMPILA 3
+#define CUAL_COMPILA 2
 #if CUAL_COMPILA==1
 #include "pila_max_vd.h"
 #elif CUAL_COMPILA==2

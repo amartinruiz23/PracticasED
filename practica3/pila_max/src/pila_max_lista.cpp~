@@ -85,5 +85,5 @@ Par<T> Pila_max<T>::tope() const { /////////////////////
 
 template <class T>
 bool Pila_max<T>::vacia() const {
-	return primera == 0 ;
+	return topedepila == 0 ;
 }

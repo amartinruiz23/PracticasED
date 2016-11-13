@@ -1,3 +1,10 @@
+/**
+  * @file Pila_max_vd.cpp
+  * @brief Implementación del TDA Pila_max versión vector dinámico
+  *
+  */
+
+
 #include <cassert>
 
 template <class T>

@@ -1,3 +1,10 @@
+/**
+  * @file pila_max_cola.cpp
+  * @brief Implementación del TDA Pila_max versión cola
+  *
+  */
+
+
 template <class T>
 
 Pila_max<T>::Pila_max (){

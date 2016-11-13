@@ -1,3 +1,10 @@
+/**
+  * @file pila_max_cola.cpp
+  * @brief Implementación del TDA Pila_max versión lista
+  *
+  */
+
+
 template <class T>
 
 Pila_max<T>::Pila_max (){
@@ -44,8 +51,9 @@ template <class T>
 
 void Pila_max<T>::quitar(){
   Cola<Par<T> > cola_aux;
+	int iteraciones = cola.num_elementos()-1 ;
 
-  for (int i = 0; i < cola.num_elementos() - 1; i++){
+  for (int i = 0; i < iteraciones; i++){
     cola_aux.poner(cola.frente());
     cola.quitar();
   }

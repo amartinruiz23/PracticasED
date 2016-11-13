@@ -7,11 +7,15 @@ CPPFLAGS = -Wall -g  -I$(INC) -c
 
 all: $(BIN)/usocolas $(BIN)/usopilas_max
 
-$(BIN)/usopilas_max: 
-	$(CXX) -o $(BIN)/usopilas_max $(SRC)/usopilas_max.cpp $(SRC)/pila_max_vd.cpp $(SRC)/pila_max_cola.cpp $(SRC)/pila_max_lista.cpp -I$(INC)
+$(BIN)/usopilas_max: $(OBJ)/usopilas_max.o
+	$(CXX) -o $(BIN)/usopilas_max $(OBJ)/usopilas_max.o
+
+$(OBJ)/usopilas_max.o: $(SRC)/usopilas_max.cpp
+	$(CXX) $(CPPFLAGS) $(SRC)/usopilas_max.cpp -o $(OBJ)/usopilas_max.o
 
 $(BIN)/usocolas: $(OBJ)/usocolas.o
-	$(CXX) -o $(BIN)/usocolas $(OBJ)/usocolas.o 
+	$(CXX) -o $(BIN)/usocolas $(OBJ)/usocolas.o
+
 $(OBJ)/usocolas.o: $(INC)/cola.h $(SRC)/usocolas.cpp
 	$(CXX) $(CPPFLAGS)  $(SRC)/usocolas.cpp  -o $(OBJ)/usocolas.o
     

@@ -66,6 +66,6 @@ public:
 
 };
 
-#include "pila_max_cola.cpp"
+#include "../src/pila_max_cola.cpp"
 
 #endif

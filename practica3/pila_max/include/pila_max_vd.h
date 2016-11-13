@@ -79,6 +79,6 @@ class Pila_max {
 
 };
 
-#include "pila_max_vd.cpp"
+#include "../src/pila_max_vd.cpp"
 
 #endif

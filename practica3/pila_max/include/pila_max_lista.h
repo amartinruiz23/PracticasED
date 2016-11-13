@@ -63,10 +63,10 @@ class Pila_max {
 		* @brief Consulta el tope de la pila
 		* @return Pareja de elementos en el tope de la pila, el dato y el máximo de la pila
 		*/
-		Par<T> tope() const ; 
+		Par<T> tope() const ;
 
 };
 
-#include "pila_max_lista.cpp"
+#include "../src/pila_max_lista.cpp"
 
 #endif

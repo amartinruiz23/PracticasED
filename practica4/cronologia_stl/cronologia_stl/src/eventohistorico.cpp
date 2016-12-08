@@ -1,4 +1,12 @@
-#include "eventohistorico.h"
+
+EventoHistorico(EventoHistorico &h){
+  evento.first = h.evento.first;
+  evento.second = h.evento.second;
+}
+EventoHistorico(pair<int, set<string> > &p){
+  evento.first = p.firts;
+  evento.second = p.second;
+}
 
 iterator begin(){
   iterator it;
@@ -23,10 +31,6 @@ const interator end() const{
   it = evento.second.end();
   return it;
 }
-
-iterator& operator ++();
-iterator& operator --();
-iterator& operator *();
 
 int getanio(){
   return evento.first;

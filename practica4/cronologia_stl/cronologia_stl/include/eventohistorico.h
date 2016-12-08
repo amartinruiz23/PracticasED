@@ -8,10 +8,12 @@
 using namespace std;
 
 class EventoHistorico{
-  pair<int, set<string>> evento;
+  pair<int, set<string> > evento;
 
 public:
-
+  EventoHistorico() = default;
+  EventoHistorico(EventoHistorico &h);
+  EventoHistorico(pair<int, set<string> > &p);
   typedef typename set<string>::iterator iterator;
   typedef typename set<string>::const_iterator const_iterator;
 
@@ -19,9 +21,6 @@ public:
   iterator end();
   const interator begin() const;
   const interator end() const;
-  iterator& operator ++();
-  iterator& operator --();
-  iterator& operator *();
 
   int getanio();
   void setanio(int a);
@@ -29,5 +28,7 @@ public:
   void insertasuceso(&string s);
 
 };
+
+#include "../src/eventohistorico.cpp"
 
 #endif

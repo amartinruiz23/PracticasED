@@ -4,32 +4,24 @@ EventoHistorico(EventoHistorico &h){
   evento.second = h.evento.second;
 }
 EventoHistorico(pair<int, set<string> > &p){
-  evento.first = p.firts;
+  evento.first = p.first;
   evento.second = p.second;
 }
 
-iterator begin(){
-  iterator it;
-  it = evento.second.begin();
-  return it;
+it begin(){
+  return (evento.second.begin());
 }
 
-iterator end(){
-  iteratir it;
-  it = evento.second.end();
-  return it;
+it end(){
+  return (evento.second.end());
 }
 
-const interator begin() const{
-  iterator it;
-  it = evento.second.begin();
-  return it;
+constit begin() const{
+  return(evento.second.cbegin());
 }
 
-const interator end() const{
-  iteratir it;
-  it = evento.second.end();
-  return it;
+constit end() const{
+  return(evento.second.cend());
 }
 
 int getanio(){

@@ -12,15 +12,16 @@ class EventoHistorico{
 
 public:
   EventoHistorico() = default;
+  ~EventoHistorico() = default;
   EventoHistorico(EventoHistorico &h);
   EventoHistorico(pair<int, set<string> > &p);
-  typedef typename set<string>::iterator iterator;
-  typedef typename set<string>::const_iterator const_iterator;
+  typedef typename set<string>::iterator it;
+  typedef typename set<string>::const_iterator constit;
 
-  iterator begin();
-  iterator end();
-  const interator begin() const;
-  const interator end() const;
+  it begin();
+  it end();
+  constit begin() const;
+  constit end() const;
 
   int getanio();
   void setanio(int a);

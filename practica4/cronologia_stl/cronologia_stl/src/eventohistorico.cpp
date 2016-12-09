@@ -39,3 +39,43 @@ set<string> getsucesos(){
 void insertasuceso(&string s){
   evento.second.insert(s);
 }
+
+ostream &operator <<(ostream& os, EventoHistorico& e){
+	set<string>::iterator it;
+	os<<e.evento.first;
+
+	for (it=e.evento.second.begin(); it!=e.evento.second.end(); ++it){
+			os <<'#'<< *it;
+	}
+
+	return os;
+}
+
+istream &operator >>(istream& is, EventoHIstorico& e){
+  if (is) {
+    is >> e.evento.first;
+
+    bool primero = false ;
+    string c ;
+
+    while(is.peek() != '\n' && !is.eof()) {
+      if (s.peek() == '#' && primero) {
+        s.ignore();
+        e.evento.second.insert(c);
+        c = '\0' ; // ?????
+      }
+      else {
+        if (s.peek() != '#'){
+          c.push_back(s.get());
+          primero = true ;
+        }
+        else
+          s.ignore();
+      }
+    }
+
+    e.evento.second.insert(c);
+
+  }
+  return is ;
+}

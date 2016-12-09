@@ -1,46 +1,48 @@
+typedef typename set<string>::iterator it;
+typedef typename set<string>::const_iterator constit;
 
-EventoHistorico(EventoHistorico &h){
+EventoHistorico::EventoHistorico(const EventoHistorico& h){
   evento.first = h.evento.first;
   evento.second = h.evento.second;
 }
-EventoHistorico(pair<int, set<string> > &p){
+EventoHistorico::EventoHistorico(const pair<int, set<string> > &p){
   evento.first = p.first;
   evento.second = p.second;
 }
 
-it begin(){
+it EventoHistorico::begin(){
   return (evento.second.begin());
 }
 
-it end(){
+it EventoHistorico::end(){
   return (evento.second.end());
 }
 
-constit begin() const{
-  return(evento.second.cbegin());
+constit EventoHistorico::begin() const{
+  return(evento.second.begin());
 }
 
-constit end() const{
-  return(evento.second.cend());
+constit EventoHistorico::end() const{
+  return(evento.second.end());
 }
 
-int getanio(){
+int EventoHistorico::getanio(){
   return evento.first;
 }
 
-void setanio(int a){
+void EventoHistorico::setanio(int a){
   evento.first = a;
 }
 
-set<string> getsucesos(){
-  return evento.first;
+set<string> EventoHistorico::getsucesos(){
+  return evento.second;
 }
 
-void insertasuceso(&string s){
+void EventoHistorico::insertasuceso(string& s){
   evento.second.insert(s);
 }
 
-ostream &operator <<(ostream& os, EventoHistorico& e){
+ostream& operator<<(ostream& os, EventoHistorico& e){
 	set<string>::iterator it;
 	os<<e.evento.first;
 
@@ -51,7 +53,7 @@ ostream &operator <<(ostream& os, EventoHistorico& e){
 	return os;
 }
 
-istream &operator >>(istream& is, EventoHIstorico& e){
+istream& operator>>(istream& is, EventoHistorico& e){
   if (is) {
     is >> e.evento.first;
 
@@ -59,18 +61,18 @@ istream &operator >>(istream& is, EventoHIstorico& e){
     string c ;
 
     while(is.peek() != '\n' && !is.eof()) {
-      if (s.peek() == '#' && primero) {
-        s.ignore();
+      if (is.peek() == '#' && primero) {
+        is.ignore();
         e.evento.second.insert(c);
         c = '\0' ; // ?????
       }
       else {
-        if (s.peek() != '#'){
-          c.push_back(s.get());
+        if (is.peek() != '#'){
+          c.push_back(is.get());
           primero = true ;
         }
         else
-          s.ignore();
+          is.ignore();
       }
     }
 

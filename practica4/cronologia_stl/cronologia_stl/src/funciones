@@ -1,0 +1,95 @@
+#include "cronologia.h"
+
+Cronologia& union (Cronologia& c1, Cronologia&c2) {
+
+	Cronologia unida (c1,c2);
+
+	return unida ;
+}	
+
+Cronologia filtrado_por_clave (const string& palabraclave) {
+
+	Cronologia c ;
+	Cronologia::iterator it = eventos.begin();
+
+	while (it != eventos.end()) {
+
+		// ¿Cómo comparo un string de tamaño una palabra (palabraclave) con un string que puede ser una frase?
+	
+	EventoHistorico::iterator it2 ;
+
+		if (it->second.second
+
+}
+	
+Cronologia& filtrado_por_intervalo (int comienzo, int final) {
+
+	Cronologia c ;
+	Cronologia::iterator it = eventos.begin() ;
+
+	while (it->first != comienzo)
+		it++ ;
+
+	while (it->first != final)
+		c.inserta(it->second);
+
+	return c ;
+
+}
+
+void estadisticas (int total_anios, int total_acont, int max_acont, double media_acont) {
+
+	Cronologia::iterator it1 = eventos.begin();
+	EventoHistorico::iterator it2 ;
+
+	total_anios = 0 ;
+
+	while (it1 != eventos.end()){
+		it1++ ;
+		total_anios++;
+	}
+
+	// ¿Como medir el número de acontecimientos?
+
+	it1 = eventos.begin() ;
+	
+	while (it1 != eventos.end()) {
+		it2 = it1->second.begin() ; // ¿Se puede hacer?		
+		while (it2 != it1->second.end()){
+			it2++ ;
+			total_acont++ ;
+		}
+		it1++;
+	}
+
+	// Medimos max_acont 
+
+	it1 = eventos.begin() ;
+	int contador_aux = 0 ;
+	int contador_aux2 = 0 ;
+
+	while (it1 != eventos.end()) {
+		it2 = it1->second.begin() ; // ¿Se puede hacer?		
+		while (it2 != it1->second.end()){
+			it2++ ;
+			total_acont++ ;
+			contador_aux2++ ;
+			if (contador_aux == 0)
+				max_acont = total_acont ;
+			}
+
+		contador_aux++ ;			
+		
+		if (contador_aux2 > max_acont) 
+			max_acont = contador_aux2 ;
+
+		contador_aux2 = 0 ;
+		it1++;
+	
+	}
+
+	// med_acont
+
+	med_acont = total_acont / total_anios ;
+
+}

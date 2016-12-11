@@ -5,7 +5,7 @@ INC = include
 OBJ = obj
 BIN = bin
 CXX = g++
-CPPFLAGS = -Wall -g -I$(INC) -c
+CPPFLAGS = -Wall -g -I$(INC)
 
 all: $(BIN)/union_cronologia $(BIN)/filtrado_por_clave $(BIN)/filtrado_por_intervalo $(BIN)/estadisticas
 
@@ -13,7 +13,7 @@ all: $(BIN)/union_cronologia $(BIN)/filtrado_por_clave $(BIN)/filtrado_por_inter
 documentacion:
 	doxygen doc/doxys/Doxyfile
 
-	
+
 # ************ Compilación de módulos ************
 $(BIN)/union_cronologia:
 	$(CXX) $(SRC)/union_cronologia.cpp $(SRC)/cronologia.cpp $(SRC)/eventohistorico.cpp -o $(BIN)/union_cronologia $(CPPFLAGS)

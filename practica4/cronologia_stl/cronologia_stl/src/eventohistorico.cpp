@@ -1,3 +1,5 @@
+#include "../include/eventohistorico.h"
+
 typedef typename set<string>::iterator it;
 typedef typename set<string>::const_iterator constit;
 
@@ -10,7 +12,7 @@ EventoHistorico::EventoHistorico(const pair<int, set<string> > &p){
   evento.second = p.second;
 }
 
-EventoHistorico::EventoHistorico(const EventoHistorico& e1,const EventoHistorico& e2){
+EventoHistorico::EventoHistorico( EventoHistorico& e1, EventoHistorico& e2){
   set<string>::iterator it;
 
   evento.first = e1.evento.first;

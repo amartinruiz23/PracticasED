@@ -50,7 +50,7 @@ public:
   * @param e1 primer evento histórico
   * @param e2 segundo evento histórico
   */
-  EventoHistorico(const EventoHistorico& e1,const  EventoHistorico& e2);
+  EventoHistorico( EventoHistorico& e1,  EventoHistorico& e2);
 
 	/**
 	* Definición de los iteradores sobre el TDA EventoHistorico
@@ -129,7 +129,5 @@ public:
 	*/
   friend istream& operator>>(istream& is, EventoHistorico& e);
 };
-
-#include "../src/eventohistorico.cpp"
 
 #endif

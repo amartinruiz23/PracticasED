@@ -42,7 +42,7 @@ public:
 	* @param c1, primera cronología
 	* @param c2, segunda cronología
 	*/
-  Cronologia(const Cronologia& c1, const Cronologia& c2);
+  Cronologia(Cronologia& c1, Cronologia& c2);
 
 	/**
 	* Definición de los iteradores sobre el TDA Cronología

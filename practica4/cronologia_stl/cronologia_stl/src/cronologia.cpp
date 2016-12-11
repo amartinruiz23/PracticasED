@@ -10,7 +10,7 @@
 typedef typename map<int, EventoHistorico>::iterator itc;
 typedef typename map<int, EventoHistorico>::const_iterator constitc;
 
-Cronologia::Cronologia(const Cronologia& c1, const Cronologia& c2) {
+Cronologia::Cronologia(Cronologia& c1, Cronologia& c2) {
 	map<int, EventoHistorico>::iterator it1 = c1.begin() ;
 	map<int, EventoHistorico>::iterator it2 = c2.begin() ;
 

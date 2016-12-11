@@ -49,7 +49,21 @@ constit Cronologia::end() {
 	return eventos.end() ;
 }
 
+// Prec: el año debe estar
+EventoHistorico& Cronologia::GetEventos(int anio) { // ?? Devuelve evento o sucesos?
 
-concatenasucesos(set<string>& s1, set<string>& s2) {
+	Cronologia::iterator it = eventos.begin() ;
+
+	while ( it->first != anio && it != eventos.end() ) {
+		it++ ;
+
+	return *it ;
+
+}	
+	
+
+void Cronologia::inserta(const EventoHistorico& e) {
+	eventos.insert(e.first,e);
+}
 
 	

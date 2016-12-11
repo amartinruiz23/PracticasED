@@ -7,7 +7,7 @@ using namespace std;
 
 class Cronologia{
 
-  map<int, EventoHistorico> eventos;
+  map<int, EventoHistorico> eventos; // eventos = conjunto de <fecha,evento(=fecha,sucesos)>
 
 public:
 

@@ -1,11 +1,5 @@
 #include "cronologia.h"
 
-/*
-	casos:
-		1 -> fecha evento de c1 < fecha evento de c2
-		2 -> fecha evento de c2 < fecha evento de c1
-		3 -> fecha evento de c1 = fecha evento de c2
-*/
 
 typedef typename map<int, EventoHistorico>::iterator itc;
 typedef typename map<int, EventoHistorico>::const_iterator constitc;
@@ -50,8 +44,8 @@ constitc Cronologia::cend() const{
 	return eventos.end() ;
 }
 
-// Prec: el año debe estar
-EventoHistorico Cronologia::getEvento(int anio) { // ?? Devuelve evento o sucesos?
+
+EventoHistorico Cronologia::getEvento(int anio) {
 
 	Cronologia::itc it = eventos.begin() ;
 
@@ -119,7 +113,6 @@ void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acon
 	Cronologia::itc it1 = eventos.begin();
 	EventoHistorico::it it2 ;
 
-	// total_anios
 
 	total_anios = 0 ;
 
@@ -128,7 +121,6 @@ void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acon
 		total_anios++;
 	}
 
-	// total_acont
 
 	it1 = eventos.begin() ;
 
@@ -141,7 +133,6 @@ void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acon
 		it1++;
 	}
 
-	// max_acont
 
 	it1 = eventos.begin() ;
 	int contador_aux = 0 ;
@@ -167,7 +158,6 @@ void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acon
 
 	}
 
-	// med_acont
 
 	media_acont = total_acont / total_anios ;
 

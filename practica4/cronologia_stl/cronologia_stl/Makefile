@@ -13,7 +13,6 @@ all: $(BIN)/union_cronologia $(BIN)/filtrado_por_clave $(BIN)/filtrado_por_inter
 documentacion:
 	doxygen doc/doxys/Doxyfile
 
-
 # ************ Compilación de módulos ************
 $(BIN)/union_cronologia:
 	$(CXX) $(SRC)/union_cronologia.cpp $(SRC)/cronologia.cpp $(SRC)/eventohistorico.cpp -o $(BIN)/union_cronologia $(CPPFLAGS)

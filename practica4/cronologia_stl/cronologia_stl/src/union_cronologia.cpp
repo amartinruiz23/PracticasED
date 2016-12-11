@@ -25,18 +25,18 @@ int main(int argc, char * argv[]){
 
    Cronologia c1, c2, cUnion;
    f1 >> c1;    // Cargamos los datos de los ficheros en las cronologías.
-   f2 >> c2; 
+   f2 >> c2;
 
    cUnion = cUnion.une_cronologias(c1, c2);
-   
+
    if (argc==3)   //No se dio fichero de salida, imprimimos en cout
       cout << cUnion ;
-   else{          
-     ofstream fout(argv[3]);  
+   else{
+     ofstream fout(argv[3]);
      if (!fout){
       cout<<"No puedo crear el fichero "<<argv[3]<<endl;
       return 0;
      }
-     fout << cUnion ; 
+     fout << cUnion ;
    }
 }

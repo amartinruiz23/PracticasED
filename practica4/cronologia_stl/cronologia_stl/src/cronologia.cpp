@@ -15,19 +15,21 @@ Cronologia::Cronologia(Cronologia& c1, Cronologia& c2) {
 	map<int, EventoHistorico>::iterator it2 = c2.begin() ;
 
 	while (it1 != c1.end() && it2 != c2.end()) {
-
-		while (it1->first < it2->first && it1 != c1.end()) {
+		cout << "a" << endl;
+		while (it1->first < it2->first && it1 != c1.end()) { cout << "b" << endl;
 			eventos.insert(*it1);
 			it1++ ;
 		}
 
-		while (it1->first > it2->first && it2 != c2.end()) {
+		while (it1->first > it2->first && it2 != c2.end()) { cout << "c" << endl;
 			eventos.insert(*it2);
 			it2++ ;
 		}
 
-		while (it1->first == it2-> first && it1 != c1.end() && it2 != c2.end()) {
+		while (it1->first == it2-> first && it1 != c1.end() && it2 != c2.end()) { cout << "d" << endl;
 			eventos.insert(make_pair(it1->first, EventoHistorico(it1->second , it2->second)));
+			it1++;
+			it2++;
 		}
 	}
 }

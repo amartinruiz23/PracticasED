@@ -1,12 +1,13 @@
 #include "cronologia.h"
 #include <string>
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 
 int main (int argc, char* argv[]) {
 
-	if (argc > 4) 
+	if (argc > 4)
 		cout << "demasiados argumentos. Recuerde ./filtrado_por_clave nombre_fichero_entrada palabra_clave[opcional] nombre_fichero_salida[opcional]" << endl ;
 
 	else {
@@ -17,16 +18,16 @@ int main (int argc, char* argv[]) {
 				cout << "No puedo abrir el fichero "<<argv[1]<<endl;
 				return 0 ;
 			}
-			
+
 			Cronologia c, resultado;
 			f1 >> c ;
-			
+
 			string clave ;
-			
-			if (argc>=3) { 
+
+			if (argc>=3) {
 				clave = argv[2] ;
-			
-				resultado = c.filtrado_por_clave(clave);						
+
+				resultado = c.filtrado_por_clave(clave);
 
 				if (argc == 4) {
 					ofstream f2(argv[3]) ;
@@ -41,7 +42,7 @@ int main (int argc, char* argv[]) {
 			}
 			else {
 				cout << "Introduzca la clave: " ;
-				cin.get(clave, '\n') ;
+				cin >>clave;
 				resultado = c.filtrado_por_clave(clave);
 				cout << resultado ;
 			}
@@ -54,4 +55,3 @@ int main (int argc, char* argv[]) {
 	}
 
 }
-				

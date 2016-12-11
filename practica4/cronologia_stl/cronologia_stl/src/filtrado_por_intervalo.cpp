@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <cstdlib>
 #include "cronologia.h"
 using namespace std ;
 
@@ -19,11 +21,11 @@ int main (int argc, char* argv[]){
 			else {
 				Cronologia c ;
 				fin >> c ;
-				
-				int inferior = argv[2] ;
-				int superior = argv[3] ;
 
-				Cronologia filtrada (c.filtrado_por_invervalo(inferior,superior));
+				int inferior = atoi(argv[2]) ;
+				int superior = atoi(argv[3]) ;
+
+				Cronologia filtrada (c.filtrado_por_intervalo(inferior,superior));
 
 				if (argc == 5) {
 					ofstream fout(argv[5]);
@@ -32,13 +34,13 @@ int main (int argc, char* argv[]){
 						cout << "Error con el fichero de salida" << endl;
 						cout << filtrada ;
 					}
-					else 
+					else
 						fout << filtrada ;
 				}
-				else 
+				else
 					cout << filtrada ;
 			}
 		}
 	}
 
-} 
+}

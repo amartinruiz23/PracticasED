@@ -82,7 +82,6 @@ Cronologia& Cronologia::filtrado_por_clave (const string& palabraclave) {
 	Cronologia c ;
 	Cronologia::iterator it = eventos.begin();
 	EventoHistorico::iterator it2 ;
-	int tamaño = palabraclave.length();
 
 	while (it != eventos.end()) {
 		it2 = it->second.second.begin() ; // ¿Se puede?

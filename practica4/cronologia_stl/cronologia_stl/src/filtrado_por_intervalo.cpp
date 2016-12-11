@@ -25,7 +25,9 @@ int main (int argc, char* argv[]){
 				int inferior = atoi(argv[2]) ;
 				int superior = atoi(argv[3]) ;
 
+				cout << "a" << endl;
 				Cronologia filtrada (c.filtrado_por_intervalo(inferior,superior));
+				cout << "b" << endl;
 
 				if (argc == 5) {
 					ofstream fout(argv[5]);

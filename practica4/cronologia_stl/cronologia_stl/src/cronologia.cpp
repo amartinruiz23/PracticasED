@@ -98,16 +98,17 @@ Cronologia Cronologia::filtrado_por_clave (const string& palabraclave) {
 
 Cronologia Cronologia::filtrado_por_intervalo (int comienzo, int fin) {
 
-	Cronologia c ;
-	Cronologia::itc it = eventos.begin() ;
+	Cronologia c;
 
-	while (it->first != comienzo)
-		it++ ;
+	Cronologia::itc it1 = eventos.lower_bound(comienzo);
+	Cronologia::itc it2 = eventos.lower_bound(fin);
 
-	while (it->first != fin)
-		c.inserta(it->second);
+	while(it1 != it2){
+			c.inserta(it1->second);
+			it1++;
+	}
 
-	return c ;
+return c;
 
 }
 

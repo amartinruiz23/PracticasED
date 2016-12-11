@@ -10,6 +10,20 @@ EventoHistorico::EventoHistorico(const pair<int, set<string> > &p){
   evento.second = p.second;
 }
 
+EventoHistorico::EventoHistorico(const EventoHistorico& e1,const EventoHistorico& e2){
+  set<string>::iterator it;
+
+  evento.first = e1.evento.first;
+
+  for(it = e1.begin(); it!= e1.end(); ++it){
+    insertasuceso(*it);
+  }
+
+  for(it = e2.begin(); it!= e2.end(); ++it){
+    insertasuceso(*it);
+  }
+}
+
 it EventoHistorico::begin(){
   return (evento.second.begin());
 }
@@ -44,7 +58,7 @@ void EventoHistorico::insertasuceso(string& s){
 
 string& EventoHistorico::buscasuceso (string& s) {
 	set<string>::iterator it;
-	
+
 	for (it=evento.second.begin(); it!=evento.second.end(); ++it){
 		if (s == *it)
 			return *it;
@@ -53,7 +67,7 @@ string& EventoHistorico::buscasuceso (string& s) {
 	s = "No está" ;
 
 	return s ;
-}	
+}
 
 ostream& operator<<(ostream& os, EventoHistorico& e){
 	set<string>::iterator it;
@@ -68,20 +82,20 @@ ostream& operator<<(ostream& os, EventoHistorico& e){
 
 istream& operator>>(istream& is, EventoHistorico& e){
   if (is) {
-    is >> e.evento.first; 
+    is >> e.evento.first;
 
     bool primero = false ;
     string c ;
 
-    while(is.peek() != '\n' && !is.eof()) { 
+    while(is.peek() != '\n' && !is.eof()) {
       if (is.peek() == '#' && primero) {
-        is.ignore(); 
+        is.ignore();
         e.evento.second.insert(c);
         c = '\0' ;
       }
       else {
-        if (is.peek() != '#'){ 
-          c.push_back(is.get()); 
+        if (is.peek() != '#'){
+          c.push_back(is.get());
           primero = true ;
         }
         else
@@ -95,5 +109,3 @@ istream& operator>>(istream& is, EventoHistorico& e){
   return is ;
 
 }
-
-

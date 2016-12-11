@@ -66,7 +66,7 @@ void Cronologia::inserta(const EventoHistorico& e) {
 	eventos.insert(make_pair(e.first,e));
 }
 
-Cronologia& Cronologia::une_cronologias (Cronologia& c1, Cronologia&c2) {
+Cronologia& Cronologia::une_cronologias (Cronologia& c1, Cronologia& c2) {
 
 	Cronologia unida (c1,c2);
 
@@ -164,10 +164,13 @@ void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acon
 
 
 ostream& operator<<(ostream& os, Cronologia& c) {
-	Cronologia::iterator it = c.begin();
-
-	for (it; it != c.end() ; ++it) 
-		os << it->second ;
+	Cronologia::const_iterator it;
+   for (it=c.begin(); it!=c.end();++it){
+       os<<(*it).first<<"#";          //año esta en el key del map
+       EventoHistorico::const_iterator it_ev;
+       for (it_ev=(*it).second.begin(); it_ev!=(*it).second.end();++it_ev)
+       	os<<(*it_ev)<<"#";
+   }
 
 	return os ;
 }

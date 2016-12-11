@@ -109,10 +109,30 @@ public:
 	* @param c2, segunda cronología
 	* @return cronologia resultante
 	*/
-	
 	Cronologia& une_cronologias (Cronologia& c1, Cronologia&c2);
+
+	/**
+	* @brief Crea una subcronología a partir de los eventos que contengan la palabra clave
+	* @param palabraclave, palabra que selecciona los eventos
+	* @return Cronologia resultante
+	*/
  	Cronologia& filtrado_por_clave (const string& palabraclave);
+
+	/**
+	* @brief Crea una subcronología a partir de dos fechas
+	* @param comienzo, fecha inicial de la subcronología
+	* @param fin, fecha final de la subcronología
+	* @return cronología resultante
+	*/
 	Cronologia& filtrado_por_intervalo (int comienzo, int fin);
+
+	/**
+	* @brief Construye unas estadísticas sobre la cronología, en concreto, el número de años que aparecen, el número de sucesos que aparecen, el máximo de sucesos en un año y la media de sucesos por años
+	* @param total_anios, número total de años que aparecen en la cronología
+	* @param total_acont, número total de sucesos que aparecen en la cronología
+	* @param max_acont, número máximo de sucesos que aparece en un año
+	* @param media_acont, media del número de sucesos por año
+	*/ 
 	void estadisticas(int& total_anios, int& total_acont, int& max_acont, double& media_acont); 
 
 };
@@ -121,7 +141,6 @@ public:
       >[TO DO]<
       > Implementar funciones en los distintos cpps (no olvidar incluir el .h)
       > Makefike
-      > Doxygen
-      > Alvaro pornte bueno
+      > Doxygen (hecho salvo que se implemente alguna función adicional)
 */
 #endif

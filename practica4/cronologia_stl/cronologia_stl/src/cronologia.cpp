@@ -65,7 +65,7 @@ void Cronologia::inserta(EventoHistorico& e) {
 	eventos.insert(make_pair(e.getanio(),e));
 }
 
-Cronologia& Cronologia::une_cronologias (Cronologia& c1, Cronologia& c2) {
+Cronologia Cronologia::une_cronologias (Cronologia& c1, Cronologia& c2) {
 
 	Cronologia unida (c1,c2);
 
@@ -77,13 +77,13 @@ Cronologia Cronologia::filtrado_por_clave (const string& palabraclave) {
 
 	Cronologia c ;
 	Cronologia::itc it = eventos.begin();
-	EventoHistorico::itc it2 ;
+	EventoHistorico::it it2 ;
 
 	while (it != eventos.end()) {
-		it2 = it->second.second.begin() ; // ¿Se puede?
-		while(it2 != it->second.second.end()){
-			if (*it2.find(palabraclave))
-				c.inserta(*it);
+		it2 = it->second.getsucesos().begin();
+		while(it2 != it->second.getsucesos().end()){
+			if (it2->find(palabraclave))
+				c.inserta(it->second);
 			it2++;
 		}
 		it++;
@@ -97,7 +97,7 @@ Cronologia Cronologia::filtrado_por_clave (const string& palabraclave) {
 Cronologia Cronologia::filtrado_por_intervalo (int comienzo, int fin) {
 
 	Cronologia c ;
-	Cronologia::iterator it = eventos.begin() ;
+	Cronologia::itc it = eventos.begin() ;
 
 	while (it->first != comienzo)
 		it++ ;
@@ -111,8 +111,8 @@ Cronologia Cronologia::filtrado_por_intervalo (int comienzo, int fin) {
 
 void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acont, double& media_acont) { // ¿Cabecera??
 
-	Cronologia::iterator it1 = eventos.begin();
-	EventoHistorico::iterator it2 ;
+	Cronologia::itc it1 = eventos.begin();
+	EventoHistorico::it it2 ;
 
 	// total_anios
 
@@ -164,15 +164,18 @@ void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acon
 
 	// med_acont
 
-	med_acont = total_acont / total_anios ;
+	media_acont = total_acont / total_anios ;
 
 }
 
 
 ostream& operator<<(ostream& os, Cronologia& c) {
-   for (auto it=c.cbegin(); it!=c.cend();++it){
+	Cronologia::constitc it;
+	EventoHistorico::constit it_ev;
+	
+   for (it=c.cbegin(); it!=c.cend();++it){
        os<<(*it).first<<"#";          //año esta en el key del map
-       for (auto it_ev=(*it).second.cbegin(); it_ev!=(*it).second.cend();++it_ev)
+       for (it_ev=(*it).second.begin(); it_ev!=(*it).second.end();++it_ev)
        	os<<(*it_ev)<<"#";
    }
 

@@ -109,7 +109,7 @@ public:
 	* @param c2, segunda cronología
 	* @return cronologia resultante
 	*/
-	Cronologia& une_cronologias (Cronologia& c1, Cronologia&c2);
+	Cronologia une_cronologias (Cronologia& c1, Cronologia&c2);
 
 	/**
 	* @brief Crea una subcronología a partir de los eventos que contengan la palabra clave

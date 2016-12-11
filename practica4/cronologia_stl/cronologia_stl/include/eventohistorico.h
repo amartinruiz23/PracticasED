@@ -104,14 +104,14 @@ public:
 	* @brief Añade o establece un suceso al evento
 	* @param s string con el suceso
 	*/
-  void insertasuceso(string& s);
+  void insertasuceso(string s);
 
 	/**
 	* @brief Busca si un suceso esta en el evento
 	* @param s suceso a comprobar si esta
 	* @return suceso pasado como parámetro o un string con "No esta"
 	*/
-	string& buscasuceso (string& s);
+	string buscasuceso (string& s);
 
 	/**
 	* @brief Sobrecarga de operador de salida del TDA EventoHistorico

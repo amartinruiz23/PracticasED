@@ -52,11 +52,11 @@ set<string> EventoHistorico::getsucesos(){
   return evento.second;
 }
 
-void EventoHistorico::insertasuceso(string& s){
+void EventoHistorico::insertasuceso(string s){
   evento.second.insert(s);
 }
 
-string& EventoHistorico::buscasuceso (string& s) {
+string EventoHistorico::buscasuceso (string& s) {
 	set<string>::iterator it;
 
 	for (it=evento.second.begin(); it!=evento.second.end(); ++it){

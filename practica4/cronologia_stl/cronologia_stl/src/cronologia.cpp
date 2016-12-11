@@ -76,22 +76,30 @@ Cronologia& Cronologia::une_cronologias (Cronologia& c1, Cronologia& c2) {
 	return unida ;
 }
 
-/*Cronologia& Cronologia::filtrado_por_clave (const string& palabraclave) {
+
+Cronologia& Cronologia::filtrado_por_clave (const string& palabraclave) {
 
 	Cronologia c ;
 	Cronologia::iterator it = eventos.begin();
+	EventoHistorico::iterator it2 ;
+	int tamaño = palabraclave.length();
 
 	while (it != eventos.end()) {
+		it2 = it->second.second.begin() ; // ¿Se puede?
+		while(it2 != it->second.second.end()){
+			if (*it2.find(palabraclave))
+				c.inserta(*it);
+			it2++;
+		}
+		it++;
+	}
 
-		// ¿Cómo comparo un string de tamaño una palabra (palabraclave) con un string que puede ser una frase?
+	return c ;
+		
+}
 
-	EventoHistorico::iterator it2 ;
 
-		if (it->second.second
-
-}*/
-
-Cronologia& Cronologia::filtrado_por_intervalo (int comienzo, int final) {
+Cronologia& Cronologia::filtrado_por_intervalo (int comienzo, int fin) {
 
 	Cronologia c ;
 	Cronologia::iterator it = eventos.begin() ;
@@ -99,7 +107,7 @@ Cronologia& Cronologia::filtrado_por_intervalo (int comienzo, int final) {
 	while (it->first != comienzo)
 		it++ ;
 
-	while (it->first != final)
+	while (it->first != fin)
 		c.inserta(it->second);
 
 	return c ;

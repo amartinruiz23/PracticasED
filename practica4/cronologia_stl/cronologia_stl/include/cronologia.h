@@ -47,39 +47,39 @@ public:
 	/**
 	* Definición de los iteradores sobre el TDA Cronología
 	*/
-  typedef typename map<int, EventoHistorico>::iterator it;
-  typedef typename map<int, EventoHistorico>::const_iterator constit;
+  typedef typename map<int, EventoHistorico>::iterator itc;
+  typedef typename map<int, EventoHistorico>::const_iterator constitc;
 
 	/**
 	* @brief Indica el comienzo o primer elemento de la cronología
 	* @return iterador "apuntando" al comienzo de la cronología
 	*/
-  it begin();
+  itc begin();
 
 	/**
 	* @brief Indica el final o último elemento de la cronología
 	* @return iterador "apuntando" al final de la cronología
 	*/
-	it end();
+	itc end();
 
 	/**
 	* @brief Indica el comienzo o primer elemento de la cronología
 	* @return iterador constante "apuntando" al comienzo de la cronología
 	*/
-  constit cbegin() const;
+  constitc cbegin() const;
 
 	/**
 	* @brief Indica el final o último elemento de la cronología
 	* @return iterador constante "apuntando" al final de la cronología
 	*/
-  constit cend() const;
+  constitc cend() const;
 
 	/**
 	* @brief Devuelve el evento dado una "key" o una fecha
 	* @param anio, fecha del evento, en este caso, una key del map
 	* @return evento ocurrido en esa fecha
 	*/
-  EventoHistorico& getEvento(int anio);
+  EventoHistorico getEvento(int anio);
 
 	/**
 	* @brief Inserta un evento en la cronología

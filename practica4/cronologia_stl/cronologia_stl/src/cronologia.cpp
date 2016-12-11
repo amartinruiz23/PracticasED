@@ -1,6 +1,4 @@
-#include <utility>
 #include "cronologia.h"
-using namespace std;
 
 /*
 	casos:
@@ -44,20 +42,20 @@ itc Cronologia::end() {
 	return eventos.end() ;
 }
 
-constitc Cronologia::cbegin() {
+constitc Cronologia::cbegin() const{
 	return eventos.begin() ;
 }
 
-constitc Cronologia::cend() {
+constitc Cronologia::cend() const{
 	return eventos.end() ;
 }
 
 // Prec: el año debe estar
-EventoHistorico& Cronologia::getEvento(int anio) { // ?? Devuelve evento o sucesos?
+EventoHistorico Cronologia::getEvento(int anio) { // ?? Devuelve evento o sucesos?
 
 	Cronologia::iterator it = eventos.begin() ;
 
-	while ( it->first != anio && it != eventos.end() ) {
+	while ( it->first != anio && it != eventos.end() )
 		it++ ;
 
 	return it->second ;
@@ -66,7 +64,7 @@ EventoHistorico& Cronologia::getEvento(int anio) { // ?? Devuelve evento o suces
 
 
 void Cronologia::inserta(const EventoHistorico& e) {
-	eventos.insert(make_pair(e.first,e));
+	eventos.insert(make_pair(e.getanio(),e));
 }
 
 Cronologia& Cronologia::une_cronologias (Cronologia& c1, Cronologia& c2) {
@@ -94,7 +92,7 @@ Cronologia& Cronologia::filtrado_por_clave (const string& palabraclave) {
 	}
 
 	return c ;
-		
+
 }
 
 
@@ -174,11 +172,9 @@ void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acon
 
 
 ostream& operator<<(ostream& os, Cronologia& c) {
-	Cronologia::const_iterator it;
-   for (it=c.begin(); it!=c.end();++it){
+   for (auto it=c.cbegin(); it!=c.cend();++it){
        os<<(*it).first<<"#";          //año esta en el key del map
-       EventoHistorico::const_iterator it_ev;
-       for (it_ev=(*it).second.begin(); it_ev!=(*it).second.end();++it_ev)
+       for (auto it_ev=(*it).second.cbegin(); it_ev!=(*it).second.cend();++it_ev)
        	os<<(*it_ev)<<"#";
    }
 
@@ -188,16 +184,12 @@ ostream& operator<<(ostream& os, Cronologia& c) {
 istream& operator>>(istream& is, Cronologia& c) {
 
 	if (is) {
-
-		int key ;
 		EventoHistorico e ;
-
 		while(is.peek() != '\0' && !is.eof()){
-			is >> key ;
-			evento e;
+			EventoHistorico e;
 			is >> e;
-			c.inserta(make_pair(key,e));
+			c.inserta(e);
 		}
 	}
-	return s ;
+	return is ;
 }

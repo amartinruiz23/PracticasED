@@ -75,15 +75,17 @@ Cronologia Cronologia::une_cronologias (Cronologia& c1, Cronologia& c2) {
 
 Cronologia Cronologia::filtrado_por_clave (const string& palabraclave) {
 
-	Cronologia c ;
-	Cronologia::itc it = eventos.begin();
+	Cronologia c;
+	Cronologia::itc it = begin();
 	EventoHistorico::it it2 ;
 
-	while (it != eventos.end()) {
-		it2 = it->second.getsucesos().begin();
-		while(it2 != it->second.getsucesos().end()){
-			if (it2->find(palabraclave))
+	while (it != end()) {
+		it2 = it->second.begin();
+		while(it2 != it->second.end()){
+			if ((it2->find(palabraclave)) != (it2->npos)){
 				c.inserta(it->second);
+				cout << *it2;
+			 }
 			it2++;
 		}
 		it++;
@@ -172,7 +174,7 @@ void Cronologia::estadisticas (int& total_anios, int& total_acont, int& max_acon
 ostream& operator<<(ostream& os, Cronologia& c) {
 	Cronologia::constitc it;
 	EventoHistorico::constit it_ev;
-	
+
    for (it=c.cbegin(); it!=c.cend();++it){
        os<<(*it).first<<"#";          //año esta en el key del map
        for (it_ev=(*it).second.begin(); it_ev!=(*it).second.end();++it_ev)

@@ -85,7 +85,7 @@ public:
 	* @brief Inserta un evento en la cronología
 	* @param e, evento a insertar
 	*/
-  void inserta(const EventoHistorico& e);
+  void inserta(EventoHistorico& e);
 
 	/**
 	* @brief Sobrecarga del operador de salida para el TDA Cronologia
@@ -116,7 +116,7 @@ public:
 	* @param palabraclave, palabra que selecciona los eventos
 	* @return Cronologia resultante
 	*/
- 	//Cronologia& filtrado_por_clave (const string& palabraclave);
+ 	Cronologia filtrado_por_clave (const string& palabraclave);
 
 	/**
 	* @brief Crea una subcronología a partir de dos fechas
@@ -124,7 +124,7 @@ public:
 	* @param fin, fecha final de la subcronología
 	* @return cronología resultante
 	*/
-	Cronologia& filtrado_por_intervalo (int comienzo, int fin);
+	Cronologia filtrado_por_intervalo (int comienzo, int fin);
 
 	/**
 	* @brief Construye unas estadísticas sobre la cronología, en concreto, el número de años que aparecen, el número de sucesos que aparecen, el máximo de sucesos en un año y la media de sucesos por años

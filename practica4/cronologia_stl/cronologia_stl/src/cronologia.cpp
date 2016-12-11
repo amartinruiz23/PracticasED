@@ -51,7 +51,7 @@ constitc Cronologia::cend() const{
 // Prec: el año debe estar
 EventoHistorico Cronologia::getEvento(int anio) { // ?? Devuelve evento o sucesos?
 
-	Cronologia::iterator it = eventos.begin() ;
+	Cronologia::itc it = eventos.begin() ;
 
 	while ( it->first != anio && it != eventos.end() )
 		it++ ;
@@ -61,7 +61,7 @@ EventoHistorico Cronologia::getEvento(int anio) { // ?? Devuelve evento o suceso
 }
 
 
-void Cronologia::inserta(const EventoHistorico& e) {
+void Cronologia::inserta(EventoHistorico& e) {
 	eventos.insert(make_pair(e.getanio(),e));
 }
 
@@ -73,11 +73,11 @@ Cronologia& Cronologia::une_cronologias (Cronologia& c1, Cronologia& c2) {
 }
 
 
-Cronologia& Cronologia::filtrado_por_clave (const string& palabraclave) {
+Cronologia Cronologia::filtrado_por_clave (const string& palabraclave) {
 
 	Cronologia c ;
-	Cronologia::iterator it = eventos.begin();
-	EventoHistorico::iterator it2 ;
+	Cronologia::itc it = eventos.begin();
+	EventoHistorico::itc it2 ;
 
 	while (it != eventos.end()) {
 		it2 = it->second.second.begin() ; // ¿Se puede?
@@ -94,7 +94,7 @@ Cronologia& Cronologia::filtrado_por_clave (const string& palabraclave) {
 }
 
 
-Cronologia& Cronologia::filtrado_por_intervalo (int comienzo, int fin) {
+Cronologia Cronologia::filtrado_por_intervalo (int comienzo, int fin) {
 
 	Cronologia c ;
 	Cronologia::iterator it = eventos.begin() ;

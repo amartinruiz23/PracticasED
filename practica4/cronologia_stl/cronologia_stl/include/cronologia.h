@@ -23,7 +23,7 @@ using namespace std;
 
 class Cronologia{
 
-  map<int, EventoHistorico> eventos; 
+  map<int, EventoHistorico> eventos;
 
 public:
 
@@ -42,20 +42,20 @@ public:
 	* @param c1, primera cronología
 	* @param c2, segunda cronología
 	*/
-  Cronologia(const Cronologia& c1, const Cronologia& c2); 
+  Cronologia(const Cronologia& c1, const Cronologia& c2);
 
 	/**
 	* Definición de los iteradores sobre el TDA Cronología
 	*/
   typedef typename map<int, EventoHistorico>::iterator it;
-  typedef typename map<int, EventoHIstorico>::const_iterator constit;
+  typedef typename map<int, EventoHistorico>::const_iterator constit;
 
 	/**
 	* @brief Indica el comienzo o primer elemento de la cronología
 	* @return iterador "apuntando" al comienzo de la cronología
 	*/
   it begin();
-  
+
 	/**
 	* @brief Indica el final o último elemento de la cronología
 	* @return iterador "apuntando" al final de la cronología
@@ -66,26 +66,26 @@ public:
 	* @brief Indica el comienzo o primer elemento de la cronología
 	* @return iterador constante "apuntando" al comienzo de la cronología
 	*/
-  constit begin() const;
+  constit cbegin() const;
 
 	/**
 	* @brief Indica el final o último elemento de la cronología
 	* @return iterador constante "apuntando" al final de la cronología
-	*/  
-  constit end() const;
+	*/
+  constit cend() const;
 
 	/**
 	* @brief Devuelve el evento dado una "key" o una fecha
 	* @param anio, fecha del evento, en este caso, una key del map
 	* @return evento ocurrido en esa fecha
 	*/
-  EventoHistorico& getEvento(int anio); 
+  EventoHistorico& getEvento(int anio);
 
 	/**
 	* @brief Inserta un evento en la cronología
 	* @param e, evento a insertar
 	*/
-  void inserta(const EventoHistorico& e); 
+  void inserta(const EventoHistorico& e);
 
 	/**
 	* @brief Sobrecarga del operador de salida para el TDA Cronologia
@@ -116,7 +116,7 @@ public:
 	* @param palabraclave, palabra que selecciona los eventos
 	* @return Cronologia resultante
 	*/
- 	Cronologia& filtrado_por_clave (const string& palabraclave);
+ 	//Cronologia& filtrado_por_clave (const string& palabraclave);
 
 	/**
 	* @brief Crea una subcronología a partir de dos fechas
@@ -132,8 +132,8 @@ public:
 	* @param total_acont, número total de sucesos que aparecen en la cronología
 	* @param max_acont, número máximo de sucesos que aparece en un año
 	* @param media_acont, media del número de sucesos por año
-	*/ 
-	void estadisticas(int& total_anios, int& total_acont, int& max_acont, double& media_acont); 
+	*/
+	void estadisticas(int& total_anios, int& total_acont, int& max_acont, double& media_acont);
 
 };
 

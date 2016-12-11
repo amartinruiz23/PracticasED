@@ -1,4 +1,5 @@
 #include <utility>
+#include "cronologia.h"
 using namespace std;
 
 /*
@@ -8,9 +9,12 @@ using namespace std;
 		3 -> fecha evento de c1 = fecha evento de c2
 */
 
+typedef typename map<int, EventoHistorico>::iterator itc;
+typedef typename map<int, EventoHistorico>::const_iterator constitc;
+
 Cronologia::Cronologia(const Cronologia& c1, const Cronologia& c2) {
-	Cronologia::iterator it1 = c1.begin() ;
-	Cronologia::iterator it2 = c2.begin() ;
+	map<int, EventoHistorico>::iterator it1 = c1.begin() ;
+	map<int, EventoHistorico>::iterator it2 = c2.begin() ;
 
 	while (it1 != c1.end() && it2 != c2.end()) {
 
@@ -32,19 +36,19 @@ Cronologia::Cronologia(const Cronologia& c1, const Cronologia& c2) {
 	}
 }
 
-it Cronologia::begin() {
+itc Cronologia::begin() {
 	return eventos.begin() ;
 }
 
-it Cronologia::end() {
+itc Cronologia::end() {
 	return eventos.end() ;
 }
 
-constit Cronologia::begin() {
+constitc Cronologia::cbegin() {
 	return eventos.begin() ;
 }
 
-constit Cronologia::end() {
+constitc Cronologia::cend() {
 	return eventos.end() ;
 }
 

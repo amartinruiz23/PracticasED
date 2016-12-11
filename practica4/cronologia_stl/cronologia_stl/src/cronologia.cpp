@@ -27,9 +27,7 @@ Cronologia::Cronologia(Cronologia& c1, Cronologia& c2) {
 		}
 
 		while (it1->first == it2-> first && it1 != c1.end() && it2 != c2.end()) {
-			eventos.insert(EventoHistorico(*it1 , *it2));
-		// No acabada -> Problema: hay que insertar un evento, que está formado por una pareja (llave,evento) es decir (fecha,evento). Pero el evento es una pareja (fecha, sucesos) y sucesos es un set<string> formado por los sucesos del evento de c1 y de c2 (es decir hay que concatenarlos)
-
+			eventos.insert(make_pair(it1->first, EventoHistorico(it1->second , it2->second)));
 		}
 	}
 }

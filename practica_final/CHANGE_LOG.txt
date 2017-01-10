@@ -1,0 +1,133 @@
+CHANGE LOG
+
+Current version: 2.0
+Publication date: 07/01/17
+
+Chages from version 1.0:
+
+04/01/2017
+
+ * arboltablero_test.cpp
+ Ha sido modificado para testar los cambios realizados en las otras clases (incluyendo modificaciones del tamaño de tablero por defecto, llamadas a asignar_subarbol y uso de iterador postorden).
+
+
+04/01/2017
+
+ * ArbolGeneral<Tbase>::copiar
+
+ Problema: 
+  Violación de segmento si dest == 0 en llamadas a copiar
+
+ Cambios en el código: 
+  Añadidas comprobaciones necesarias para evitar este caso. 
+
+  Resuelto.
+
+
+02/01/2017
+
+ * ArbolGeneral<Tbase>::postorden_iterador
+
+ Problema: 
+  Fallo de compilación al invocar cualquier método sobre el iterador. 
+
+ Cambios en el código: 
+  Falta palabra clave "public" para hacer métodos visibles. 
+  Resuelto.
+
+
+01/01/2017
+
+ * ArbolGeneral<Tbase>::asignar_subarbol -- error: comparison between distinct pointer types 'ArbolGeneral<int>*' and 'ArbolGeneral<int>*::nodo const *'
+
+  Explicación del problema: 
+    error al comparar un puntero a ArbolGeneral<int> con un puntero a ArbolGeneral<int>::Nodo en:
+      if(this != &nod){ 
+
+  Cambios en el código:
+    En la comparación para asegurarnos de que lo que cuelga del nodo nod es distinto de lo que tenemos en this, debemos comparar dos objetos nodo entre si: la raiz de this y nod 
+
+    if(laraiz != nod){
+
+  También se ha mejorado la documentación de este método con dos nuevas líneas @pre para indicar que debe evitarse asignar un subarbol del propio objeto árbol que recibe el mensaje.
+
+  Resuelto.
+
+
+
+30/12/2016
+
+ * Si se define un tablero con dimensiones distintas a las de por defecto (ej. Tablero tablero(6,7);) y después se crea un árbol pasando dicho tablero como argumento, lanza un error que dice que estamos intentando crear un árbol con tamaño erróneo
+
+  Explicación del problema: 
+    
+    Cuando invocamos:
+
+    // Árbol 'partida' con 'tablero' como nodo raiz.
+    ArbolGeneral<Tablero> partida(tablero);
+
+    Esta función se mete dentro del constructor del árbol:
+
+    template <class Tbase> 
+    ArbolGeneral<Tbase>::ArbolGeneral(const Tbase& e){
+       laraiz = new nodo(e); //Un solo nodo con una etiqueta.
+    }
+
+    Y esta, a su vez, al hacer 'new nodo(e)' invoca al constructor del nodo:
+
+    nodo(const Tbase & elemento){padre = drcha = izqda = 0; etiqueta = elemento;}
+
+    que pone 'etiqueta = elemento'. Al hacer esta asignación, etiqueta no está definido, pues tiene que llamar antes de hacer la asignación al constructor por defecto del tablero:
+
+    Tablero::Tablero() : filas(5), columnas(7)
+    {
+       turno = 1;
+       reserve();
+    }
+    Que inicializa un tablero con unas dimensiones distintas a las especificadas. Entonces, en la asignación 'etiqueta = elemento' está intentando asignar dos tableros con tamaños distintos.
+
+  Cambios en el código: 
+    
+    Para resolver este problema debemos evitar la creación de ese objeto tablero. Para ello se incluyen tres cambios:
+
+    1) Quitar el tamaño predeterminado en el constructor por defecto:
+
+    Tablero::Tablero() : filas(0), columnas(0)
+    {
+       turno = 1;
+    }
+
+    2) Modificar la definición del constructor de un nodo por defecto:
+
+    nodo(const Tbase & elemento) : etiqueta(elemento) {padre = drcha = izqda = 0;}
+    
+    Esto hay que hacerlo así puesto que la etiqueta tiene elementos constantes, para que no se inicialicen los elementos constantes, hay que pasarle el elemento completo. Y que sea el constructor (pasándole otro tipo de dato 'etiqueta', en nuestro caso 'Tablero') el que se encargue de inicializar las constantes.
+
+    3) Modificar la función setTablero:
+
+    void Tablero::SetTablero(vector<vector<int> > tablero) {
+        int filas1, filas2, columnas1, columnas2;
+        filas1 = GetFilas();
+        filas2 = tablero.size();
+        columnas1 = GetColumnas();
+        columnas2 = tablero[1].size();
+        
+        if(filas1 == 0 || columnas1 == 0) {
+           this->tablero = tablero;
+        }
+        
+        else{
+          // Si tiene la misma dimensión.
+          if(filas1 == filas2 && columnas1 == columnas2){
+              this->tablero = tablero;
+          }
+          else{
+              cout << "Se han intentado igualar tableros de distintas dimensiones." << endl;
+          }
+        }
+    } 
+
+    Resuelto. El tamaño se puede variar.
+
+
+

@@ -59,14 +59,19 @@ void imprimeTablero(Tablero & t, Mando & m){
  */
 int jugar_partida(int filas, int columnas, int turno, int metrica=1) {
 
-    Tablero tablero(filas, columnas, turno);      // Tablero filasxcolumnas donde el turno inicial es turno
+    Tablero tablero(filas, columnas);      // Tablero filasxcolumnas
+		if (turno != 1) 
+			tablero.cambiarTurno(); 
     Mando mando(tablero);       									// Mando para controlar E/S de tablero
     char c = 1;
     int quienGana = tablero.quienGana();
     //mientras no haya ganador y no se pulse tecla de terminación
     while(c != Mando::KB_ESCAPE && quienGana == 0) {
         system("clear");
-        mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c 
+				if (tablero.GetTurno() == 2) 					// El jugador automático ???????????????????????????????
+					tablero.ColocaFicha (valordevueltoporfunciondeconecta4);				// NO ACABADO EHHHHHHHH
+				else 
+        	mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c 
         imprimeTablero(tablero, mando);     // muestra tablero y mando en pantalla
         quienGana = tablero.quienGana();    // hay ganador?
         if(quienGana==0) c = getch();       // Capturamos la tecla pulsada.    
@@ -84,10 +89,8 @@ int main(int argc, char *argv[]){
 			return(-1);
 		}
 
-		else
-
-    int ganador = jugar_partida();
-    cout << "Ha ganado el jugador " << ganador << endl;
+		int ganador = jugar_partida(argv[1],argv[2],argv[3]);
+  	cout << "Ha ganado el jugador " << ganador << endl;
 }  
   
   

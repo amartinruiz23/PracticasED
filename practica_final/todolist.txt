@@ -8,11 +8,12 @@ TO_DO_LIST:
 	mas concretamente:
 
 	- hay que modificar el constructor tablero para que el turno (inicial) del tablero no sea el jugador 1 o crear otro constructor que sea tablero (int filas, int columnas, int turno)
-	- en conecta4.cpp mando.actualizatablero() devuelve un bool si ha podido meter la ficha, pero no se detecta si no ha podido
-	- el jugador automatico no llama a mando.actualizatablero(), sino que llama directamente a tablero.colocaFicha(pos), donde tenemos que darle la posición.
+	- en conecta4.cpp mando.actualizatablero() devuelve un bool si ha podido meter la ficha, pero no se detecta si no ha podido (SI LO DETECTA EN LA FUNCIÓN COLOCAFICHA() )
+	- el jugador automatico no debería llamar a mando.actualizatablero(), sino que llama directamente a tablero.colocaFicha(pos), donde tenemos que darle la posición.
 	- En base a lo anterior tenemos que modificar conecta4.cpp la función juegapartida() para que si es el turno del jugador automático llame a una función de conecta4.h (justo después del system())en la que a partir del tablero que se lo pasaremos como parámetro, analice la mejor jugada y nos devuelve una posición con la mejor jugada.
 	
 
+	- he puesto que el jugador automático sea el 2 pero esto impide que la partida sea jugadorvsjugador o maquina vs maquina , se cambia ?????????????????
 
 
 

@@ -1,0 +1,59 @@
+TO_DO_LIST:
+
+	CLASE CONECTA4 (con sus funciones y sus cosas)
+	
+	DEFINIR LA MÉTRICA PARA EVALUAR TABLEROS
+
+
+	mas concretamente:
+
+	- hay que modificar el constructor tablero para que el turno (inicial) del tablero no sea el jugador 1 o crear otro constructor que sea tablero (int filas, int columnas, int turno)
+	- en conecta4.cpp mando.actualizatablero() devuelve un bool si ha podido meter la ficha, pero no se detecta si no ha podido
+	- el jugador automatico no llama a mando.actualizatablero(), sino que llama directamente a tablero.colocaFicha(pos), donde tenemos que darle la posición.
+	- En base a lo anterior tenemos que modificar conecta4.cpp la función juegapartida() para que si es el turno del jugador automático llame a una función de conecta4.h (justo después del system())en la que a partir del tablero que se lo pasaremos como parámetro, analice la mejor jugada y nos devuelve una posición con la mejor jugada.
+	
+
+
+
+
+
+
+	gran problema 	-> en conecta4.h tendremos que crear una gran función que a partir de un tablero nos de la mejor jugada y nos devuelva una posición
+
+										--> tendremos que crear un árbol de tableros (de tamaño restringido por lo grande que sea el tablero que tengamos y la decisión nuestra (hasta donde baja))
+			
+											--> para lo cual usaremos las funciones de la clase ArbolGeneral (añadir ramas y hojas, recorrer los árboles e (IMPORTANTE) podar el árbol)
+
+												--> también tendremos que decidir si en cada turno se elimina el arbol y se hace de nuevo o una vez quitado las ramas no elegidas seguimos en el mismo árbol
+
+										--> en cada rama hay un tablero donde se jugará una partida automáticamente ? NO, es una función recursiva y se abarcan todos los casos, eso no es jugar.
+
+										--> en cada iteración, es decir, en cada tablero que no sea hoja se llamará a la función que determine la mejor jugada
+
+											--> los casos hojas serán determinados específicamente (por ejemplo una función a parte) en los casos hoja quedarán pocas opciones sobre donde meter la ficha y la decisión será tomada en función de si evito perder, gano o random
+
+									-> la mejor jugada será determinada por una métrica es decir una función, por ejemplo, evalua(tablero t) que nos devuelva un valor que determina que buena o mala es
+	
+											--> en el pdf hay descritas dos por si no se nos ocurre
+
+									
+
+
+	-> POSIBLES FUNCIONES PARA EL GRAN PROBLEMA
+
+		- función gorda que llama al resto de funciones , que son:
+
+			- crea un árbol de tableros
+
+			- añadele los hijos (recursivamente?) y los inicializas a los supuestos tableros
+
+			- cuando lleguemos a una hoja, evaluamos 
+
+				- recorremos el árbol de abajo a arriba de tal forma que la suma de cada evaluación de cada hoja es devuelta al padre, las sumas de los padres son devueltas a los abuelos y así sucesivamente hasta que quede solo la raíz y los hijos de la raíz. Entonces seleccionamos el hijo de la raíz con mayor suma.
+
+				- los hijos de la raíz serán etiquetados desde 1 hasta N_columnas ( o desde 0 hasta N_columnas-1 ) y esa etiqueta llamada z tal que 1 <= z <= N_columnas será el valor devuelto total
+
+		- evalua()
+
+		- evaluahoja()
+

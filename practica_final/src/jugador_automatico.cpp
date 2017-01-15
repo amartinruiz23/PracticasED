@@ -1,6 +1,8 @@
 #include "jugador_automatico.h"
 #include <vector>
 
+// NO OLVIDAR PONER conecta4::funcion
+
 void GeneraHijos(nodo<Tablero>* n) {
 
 	int contador = 0 ;
@@ -31,6 +33,30 @@ void GeneraHijos(nodo<Tablero>* n) {
 	}
 }
 
+conecta4(Tablero t) {
+
+	arbol.AsignaRaiz(t); // le asignamos la raíz al arbol que es el tablero que nos pasan
+	
+	nodo<Tablero> nodo_actual = arbol.raiz(); // creamos padre para trabajar con el
+
+	GeneraHijos(arbol.raiz()); // Genero hijos si es que se pueden generar
+		
+	int n_hijos = arbol.contar_hijos(padre) ;
+
+	while (altura(nodo_actual.izqda) < PROFUNDIDAD) {		// Mientras el nivel del primer hijo sea menor que el límite
+		
+		nodo_actual = nodo_actual.izqda ; 		// Bajamos un nivel, es decir, al primer hijo
+
+		for (int i = 1 ; i <= n_hijos ; i++) {
+
+			GeneraHijos(nodo_actual);
+
+		}
+
+	}
+		
+
+}
 
 int eligeColumna (int metrica){
   int columnaelegida;

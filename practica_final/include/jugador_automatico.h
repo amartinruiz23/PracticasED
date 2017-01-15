@@ -52,7 +52,7 @@ public:
 	*/
 
 
-	int metrica (int n);
+	int metrica (int n, nodo<Tablero>* n);
 	/**
 	Idea:
 		- si n == 1 -> evalua1

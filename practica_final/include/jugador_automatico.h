@@ -18,8 +18,8 @@ class conecta4{
 public:
 
 	/**
-	* @brief Constructor de conecta4 
-	*/ 
+	* @brief Constructor de conecta4
+	*/
   conecta4(Tablero t);
 	/**
 	Idea:
@@ -30,8 +30,8 @@ public:
 			- si nodo_actual != padre		// para cada hijo de la raíz
 			- si profundidad_actual < PROFUNDIDAD
 				- GeneraHijos (nodo_actual)
-	*/	  
-		
+	*/
+
 
 
 	~conecta4();
@@ -51,8 +51,8 @@ public:
 		- Cuando padre == raiz tendremos <N_columnas> evaluaciones, escogemos el de mayor valor
 	*/
 
-	
-	void metrica (int n);
+
+	int metrica (int n);
 	/**
 	Idea:
 		- si n == 1 -> evalua1

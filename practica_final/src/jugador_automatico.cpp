@@ -25,6 +25,7 @@ int eligeColumna (int metrica){
     }
   }
 
+  return culumnaelegida;
 }
 
 

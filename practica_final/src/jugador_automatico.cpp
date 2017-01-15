@@ -40,6 +40,18 @@ conecta4(Tablero t) {
 
 }
 
+int evalua1 (nodo<Tablero>* t) {
+
+		if (t.etiqueta.quienGana() == 2) {
+			return 1 ;
+		else {
+			if (t.etiqueta.quienGana() == 1) 
+				return -1 ;
+			else 
+				return 0 ;
+		}
+}
+
 int eligeColumna (int metrica){
 
   int columnaelegida;

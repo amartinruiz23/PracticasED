@@ -1,0 +1,51 @@
+#ifndef __CONECTA_4_
+#define __CONECTA_4_
+
+#include "ArbolGeneral.h"
+#include "tablero.h"
+
+class conecta4{
+
+  ArbolGeneral<Tablero> arbol;
+  const int PROFUNDIDAD;
+	int metrica ;
+
+  void GeneraHijos(nodo<Tablero>* n);
+	/**
+	Idea:
+		- Generar <N_columnas> hijos
+	*/
+
+  int evalua1 (nodo<Tablero>* t) ;
+  int evalua2 (nodo<Tablero>* t) ;
+  int evalua3 (nodo<Tablero>* t) ;
+
+public:
+
+	/**
+	* @brief Constructor de conecta4
+	*/
+  conecta4(Tablero t, int met=0);
+	/**
+	Idea:
+		- AsignaRaiz(t);
+		- GeneraHijos (t)
+		- Etiquetamos los primeros <
+		- recorre arbol
+			- si nodo_actual != padre		// para cada hijo de la raíz
+			- si profundidad_actual < PROFUNDIDAD
+				- GeneraHijos (nodo_actual)
+	*/
+
+
+
+	~conecta4() = default ;
+
+  conecta4(ArbolGeneral<Tablero> a);
+
+	int eligeColumna () ;
+	
+
+	int metrica (nodo<Tablero> t);
+	
+};

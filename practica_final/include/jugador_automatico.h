@@ -4,6 +4,33 @@
 #include "ArbolGeneral.h"
 #include "tablero.h"
 
+/**
+   @brief T.D.A. conecta4
+   
+   \b Definición:
+   Una instancia \e c del tipo de dato abstracto conecta4 se se puede construir como
+   
+   - Un árbol que contiene un elemento destacado, el nodo raíz, indispensable para
+	 crear el árbol, y dos valores, \e PROFUNDIDAD cuyo valor será decidido por los 
+	 autores, y \e metrica valor suministrado por el usuario que indicará en cierta
+   medida el grado de dificultad.
+
+	 En definitiva un objeto del tipo de dato abstracto conecta4 es el conjunto de 
+   todos los movimientos posibles del jugador automático, que son almacenados en
+	 una estructura de tipo ArbolGeneral
+   
+   Para poder usar el tipo de dato conecta4 se debe incluir el fichero
+   
+   <tt>\#include conecta4.h</tt>
+   
+   El espacio requerido para el almacenamiento es O(n), donde n es el número de
+   nodos del árbol.
+   
+   @authors Álvaro López Jiménez y Antonio Martín Ruíz.
+   @date Enero de 2017
+*/
+
+
 class conecta4{
 
   ArbolGeneral<Tablero> arbol;

@@ -1,9 +1,8 @@
 #include "jugador_automatico.h"
 #include <vector>
 
-void conecta4::GeneraHijos(nodo<Tablero>* n, int met=0) {
+void conecta4::GeneraHijos(nodo<Tablero>* n) {
 
-	metrica = met ;
 	int contador = 0 ;
 	
 
@@ -28,8 +27,9 @@ void conecta4::GeneraHijos(nodo<Tablero>* n, int met=0) {
 	}
 }
 
-conecta4::conecta4(Tablero t) {
+conecta4::conecta4(Tablero t, int met=0) {
 
+	metrica = met ;
 	arbol.AsignaRaiz(t);								// Asigna la raiz
 	preorder_iterator(arbol.raiz()) it;	
 
@@ -54,7 +54,7 @@ conecta4::conecta4(Tablero t) {
 
 int conecta4::evalua1 (nodo<Tablero>* t) {
 
-		if (t.etiqueta.quienGana() == 2) {
+		if (t.etiqueta.quienGana() == 2) 
 			return 1 ;
 		else {
 			if (t.etiqueta.quienGana() == 1) 
@@ -104,7 +104,72 @@ int conecta4::metrica (nodo<Tablero>* t){
 
 	if (metrica == 2)
 
-		evalua1(t);
+		evalua2(t);
 
 
 }
+
+
+/**
+
+int conecta4 (Tablero t) {
+
+	arbol.AsignaRaiz(t);
+	
+	int columna =	(recursiva (arbol.raiz())).first ;
+ 
+	return columna ;
+}
+
+
+pair<int,int> recursiva (nodo <Tablero> n) {
+
+	if (altura(n) < PROFUNDIDAD) {				// CASO GENERAL
+		
+		int contador = 0 ;
+		int i ;
+		vector<pair<int, int> > puntuaciones ;	
+
+		for ( i = 0 ; i < n.etiqueta.GetColumnas() ; i++) {			// Para cada columna del tablero
+
+			if (n.etiqueta.hayHueco(i) != -1) {		// Si esa columna no está llena
+
+				Tablero t = n.etiqueta ;					// Copia el tablero
+				t.colocarFicha(i);								// Le insertas la ficha en la columna
+
+				if (contador == 0) {							// Le insertas el tablero al nodo como hijo a la izqda
+					n.izqda = t ;
+					contador++ ;
+					puntuaciones.push_back(makepair(i,recursiva(n.izqda).second));		// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
+				}
+
+				else {														// Le insertas el tablero al nodo como hijo a la derecha
+					ArbolGeneral<Tablero> a(t);
+					arbol.insertar_hermanoderecha(n , a );
+					puntuaciones.push_back(makepair(i,recursiva(a.raiz().second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
+				}
+
+				if ( (altura(n) % 2) == 0 ) 
+
+					return minimo(puntuaciones);
+
+				else 
+
+					return maximo(puntuaciones);
+			
+			}			
+		}
+	}
+
+	else {				// CASO NODO HOJA
+		int puntuacion = metrica (n) ;
+		return makepair(-1,puntuacion);
+	}
+		
+}				
+
+*/
+
+
+funciones aux -> calcula max de un vector <pair<int, int> >
+							-> calcula min de un vector <pair<int, int> >

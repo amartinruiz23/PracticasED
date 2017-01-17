@@ -57,21 +57,16 @@ void imprimeTablero(Tablero & t, Mando & m){
  * @brief Implementa el desarrollo de una partida de Conecta 4 sobre un tablero 5x7, pidiendo por teclado los movimientos de ambos jugadores según turno.
  * @return : Identificador (int) del jugador que gana la partida (1 o 2).
  */
-int jugar_partida(int filas, int columnas, int turno, int metrica=1) {
+int jugar_partida() {
 
-    Tablero tablero(filas, columnas);      // Tablero filasxcolumnas
-		if (turno != 1) 
-			tablero.cambiarTurno(); 
-    Mando mando(tablero);       									// Mando para controlar E/S de tablero
+    Tablero tablero(5, 7);      //Tablero 5x7
+    Mando mando(tablero);       //Mando para controlar E/S de tablero
     char c = 1;
     int quienGana = tablero.quienGana();
     //mientras no haya ganador y no se pulse tecla de terminación
     while(c != Mando::KB_ESCAPE && quienGana == 0) {
         system("clear");
-				if (tablero.GetTurno() == 2) 					// El jugador automático ???????????????????????????????
-					tablero.ColocaFicha (valordevueltoporfunciondeconecta4);				// NO ACABADO EHHHHHHHH
-				else 
-        	mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c 
+        mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c 
         imprimeTablero(tablero, mando);     // muestra tablero y mando en pantalla
         quienGana = tablero.quienGana();    // hay ganador?
         if(quienGana==0) c = getch();       // Capturamos la tecla pulsada.    
@@ -81,16 +76,8 @@ int jugar_partida(int filas, int columnas, int turno, int metrica=1) {
 }
 
 int main(int argc, char *argv[]){
-
-		if (argc < 4) { 		// Si definimos varias métricas entonces < 5
-	
-			cout << "Uso: ./conecta4 <filas_tablero> <columnas_tablero> <turno> \n" ; // Si definimos varias métricas entonces ./conecta4 <filas_tablero> <columnas_tablero> <metrica> <turno> 		
-
-			return(-1);
-		}
-
-		int ganador = jugar_partida(argv[1],argv[2],argv[3]);
-  	cout << "Ha ganado el jugador " << ganador << endl;
+    int ganador = jugar_partida();
+    cout << "Ha ganado el jugador " << ganador << endl;
 }  
   
   

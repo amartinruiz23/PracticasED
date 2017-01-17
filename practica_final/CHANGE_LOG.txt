@@ -1,9 +1,25 @@
 CHANGE LOG
 
-Current version: 2.0
-Publication date: 07/01/17
+Current version: 2.1
+Publication date: 16/01/17
 
-Chages from version 1.0:
+Changes from version 2.1:
+
+
+ArbolGeneral<Tbase>::destruir
+
+ha sido modificado para eliminar incompatibilidades con compilación en Ubuntu y asegurar
+que los punteros son inicializados a 0 después de la liberación de memoria.
+
+ArbolGeneral<Tbase>::copiar
+
+Se ha actualizado teniendo en cuenta el cambio en destruir, por lo que no es necesaria
+la comprobación anterior. Se ha añadido además un bloque try{} catch para liberar
+memoria en caso necesario.
+
+
+
+Changes from version 1.0:
 
 04/01/2017
 

@@ -40,7 +40,7 @@ using namespace std;
 template <class Tbase>
 class ArbolGeneral{
  /**
-  * @page repConjunto Rep del TDA Arbol General
+  * @page repConjunto Rep del TDA APO
   *
   * @section invConjunto Invariante de la representación
   *
@@ -143,7 +143,7 @@ class ArbolGeneral{
       *
       * Libera los recursos que ocupan \e n y sus descendientes.
       */
-    void destruir(nodo * n);
+    void destruir(nodo *& n);
     
     /**
       * @brief Copia un subárbol
@@ -1081,7 +1081,7 @@ class ArbolGeneral{
 /*____________________________________________________________ */
 
 template <class Tbase>
-void ArbolGeneral <Tbase>::destruir (nodo * n){
+void ArbolGeneral <Tbase>::destruir (nodo *& n){
     if(n != 0){                                     //Si no es nulo.
         Nodo t, aux;
 
@@ -1092,6 +1092,7 @@ void ArbolGeneral <Tbase>::destruir (nodo * n){
             destruir(aux);
         }
         delete n;
+        n = 0;
     }
 }
 
@@ -1099,25 +1100,28 @@ void ArbolGeneral <Tbase>::destruir (nodo * n){
 
 template <class Tbase>
 void ArbolGeneral<Tbase>::copiar(nodo * & dest, nodo * orig){
-    if(dest == 0)                                   //Si destino no tiene nada.
-        dest = new nodo;                            //Creamos un nuevo nodo.
-    if(orig != 0){                                  //Nos aseguramos de que tenga algo.
-        if(dest->izqda != 0)                        //Si tiene cosas las borramos.
-            destruir(dest->izqda);
-        dest = new nodo(orig->etiqueta);            //Copiamos etiqueta.
-        
-        copiar(dest->izqda, orig->izqda);           //Copiamos hijos.
-        if(dest->izqda != 0)
-            dest->izqda->padre = dest;              //Copiamos su padre,
-
-        if(orig->drcha != 0){                       //Nos aseguramos que tiene hermanos.
-            dest->drcha = new nodo(orig->drcha->etiqueta);
-            
-            copiar(dest->drcha, orig->drcha);       //Copiamos hermanos.
-            if(dest->drcha != 0)
-                dest->drcha->padre = dest;          //Copiamos el padre.
-        }
+    try {
+        if (dest != 0) // si destino tiene algo lo destruyo.
+            destruir(dest);
     }
+    catch (exception e) {}
+    
+    dest = new nodo(orig->etiqueta);
+
+    if (orig->izqda != 0) {
+       copiar(dest->izqda, orig->izqda);
+       if (dest->izqda != 0)
+          dest->izqda->padre = dest;
+    }
+
+    if (orig->drcha != 0) {
+       dest->drcha = new nodo(orig->drcha->etiqueta);
+       copiar(dest->drcha, orig->drcha);
+       if (dest->drcha != 0) {
+          dest->drcha->padre = dest->padre; // padre porque copia los hermanos del nodo origen. El padre de estos esta un nivel por encima
+       }
+    }
+
 }
 
 /*____________________________________________________________ */
@@ -1230,9 +1234,8 @@ ArbolGeneral<Tbase>::ArbolGeneral(const Tbase& e) {
     
 template <class Tbase>
 ArbolGeneral<Tbase>::ArbolGeneral (const ArbolGeneral<Tbase>& v){
-    if(v.laraiz == 0)                               //Si el nodo apunta a null.
-        laraiz = 0;
-    else                                            //Sino,
+    laraiz = 0;
+    if(v.laraiz != 0)                               //Sino,
         copiar(laraiz, v.laraiz);                   // copiamos todo a partir de él.
 }
     
@@ -1248,6 +1251,7 @@ ArbolGeneral<Tbase>::operator = (const ArbolGeneral<Tbase> &v){
         destruir(laraiz);                           //Borramos y copiamos.
         copiar(laraiz, v.laraiz);
     }
+    return *this;
 }
     
 template <class Tbase>
@@ -1295,6 +1299,13 @@ asignar_subarbol(const ArbolGeneral<Tbase>& orig, const Nodo nod){
     if(laraiz!=nod){                             //Nos aseguramos que no vamos a copiar el mismo árbol.
         destruir(laraiz);                           //Borramos desde la raiz, lo que teníamos.
         copiar(laraiz, nod);                        //Copiamos el subárbol.
+
+        try {
+            if (laraiz->drcha != 0) // si destino tiene algo lo destruyo
+                destruir(laraiz->drcha);
+        }
+
+        catch (exception e) { }
         laraiz->drcha = 0;
         laraiz->padre = 0;
     }

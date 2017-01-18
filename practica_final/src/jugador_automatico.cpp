@@ -1,6 +1,5 @@
 #include "jugador_automatico.h"
-#include <vector>
-#include <utility>
+
 
 /*void conecta4::GeneraHijos(nodo<Tablero>* n) {
 
@@ -175,7 +174,7 @@ pair<int,int> recursiva (nodo <Tablero> n) {
 }
 
 
-pair<int, int> maximo(vector<double<int,int> > v){
+pair<int, int> maximo(vector<pair<int,int> > v){
 	int maximo = 0;
 	int apasar = 0;
 
@@ -189,7 +188,7 @@ pair<int, int> maximo(vector<double<int,int> > v){
 	return v[apasar];
 }
 
-pair<int, int> minimo(vector<double<int,int> > v){
+pair<int, int> minimo(vector<pair<int,int> > v){
 	int minimo = 0;
 	int apasar = 0;
 

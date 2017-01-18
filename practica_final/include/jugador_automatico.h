@@ -3,6 +3,8 @@
 
 #include "ArbolGeneral.h"
 #include "tablero.h"
+#include <vector>
+#include <utility>
 
 /**
    @brief T.D.A. conecta4
@@ -75,8 +77,8 @@ public:
 
 	int metrica (nodo<Tablero>* t);
 
-  pair<int, int> maximo(vector<double<int,int> > v);
-  pair<int, int> minimo(vector<double<int,int> > v);
+  pair<int, int> maximo(vector<pair<int,int> > v);
+  pair<int, int> minimo(vector<pair<int,int> > v);
 
 };
 

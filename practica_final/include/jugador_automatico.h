@@ -75,6 +75,9 @@ public:
 
 	int metrica (nodo<Tablero>* t);
 
+  pair<int, int> maximo(vector<double<int,int> > v);
+  pair<int, int> minimo(vector<double<int,int> > v);
+
 };
 
 
@@ -91,3 +94,4 @@ CASO GENERAL: GENERA HIJOS DEL NODO Y LOS VALORA. RECIBE LAS VALORACIONES DE LOS
 CASO BASE: VALORA EL NODO Y DEVUELVE -1 (NO TIENE HIJOS) Y SU VALORACIÓN. ESTE CASO SE DA CUANDO SE ESTÉ A LA PROFUNDIDAD MÁXIMA DEL ÁRBOL.
 
 */
+#endif

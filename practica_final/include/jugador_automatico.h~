@@ -3,49 +3,111 @@
 
 #include "ArbolGeneral.h"
 #include "tablero.h"
+#include <vector>
+#include <utility>
+
+/**
+   @brief T.D.A. conecta4
+
+   \b Definición:
+   Una instancia \e c del tipo de dato abstracto conecta4 se se puede construir como
+
+   - Un árbol que contiene un elemento destacado, el nodo raíz, indispensable para
+	 crear el árbol, y dos valores, \e PROFUNDIDAD cuyo valor será decidido por los
+	 autores, y \e metrica valor suministrado por el usuario que indicará en cierta
+   medida el grado de dificultad.
+
+	 En definitiva un objeto del tipo de dato abstracto conecta4 es el conjunto de
+   todos los movimientos posibles del jugador automático, que son almacenados en
+	 una estructura de tipo ArbolGeneral
+
+   Para poder usar el tipo de dato conecta4 se debe incluir el fichero
+
+   <tt>\#include conecta4.h</tt>
+
+   El espacio requerido para el almacenamiento es O(n), donde n es el número de
+   nodos del árbol.
+
+   @authors Álvaro López Jiménez y Antonio Martín Ruíz.
+   @date Enero de 2017
+*/
+
 
 class conecta4{
 
   ArbolGeneral<Tablero> arbol;
-  const int PROFUNDIDAD;
+  const int PROFUNDIDAD = 3;
 	int metrica ;
 
-  void GeneraHijos(nodo<Tablero>* n);
 	/**
-	Idea:
-		- Generar <N_columnas> hijos
+	* @brief Dado un nodo genera todos los posibles movimientos (todos los tableros resultantes)
+	* del jugador automático
+	* @param n nodo padre de los futuros tableros a crear
 	*/
+  void GeneraHijos(nodo<Tablero>* n);
 
+	/**
+	* @brief Función que evalua la idoneidad o no de un tablero de cara a los intereses
+	* del jugador automático de cara a ganar la partida.
+	* @param t Tablero a evaluar
+	* @return entero con la puntuación obtenida
+	*/
   int evalua1 (nodo<Tablero>* t) ;
   int evalua2 (nodo<Tablero>* t) ;
-  int evalua3 (nodo<Tablero>* t) ;
+  
+	/**
+	* @brief Función auxiliar que calcula el máximo valor del segundo campo de los
+	* pares de elementos enteros de un vector
+	* @param v vector 
+	* @return devuelve la pareja de elementos cuyo segundo campo es el mayor del 
+	* vector
+	*/
+  pair<int, int> maximo(vector<pair<int,int> > v);
+
+	/**
+	* @brief Función auxiliar que calcula el mínimo valor del segundo campo de los
+	* pares de elementos enteros de un vector
+	* @param v vector
+	* @return devuelve la pareja de elementos cuyo segundo campo es el menor del
+	* vector
+	*/
+  pair<int, int> minimo(vector<pair<int,int> > v);
 
 public:
 
 	/**
-	* @brief Constructor de conecta4
+	* @brief Función que construye un objeto de la clase conecta4, y llama sobre
+	* el nodo raíz a la función recursiva.
+	* @param t Tablero actual de la partida que será el nodo raíz del árbol
+	* @param met, métrica que decidirá qué función evaluará los nodos del árbol
+	* @return qué hijo será el elegido para que el jugador automático inserte la
+	* ficha	
 	*/
-  conecta4(Tablero t, int met=0);
+  int conecta4(Tablero t, int met=0);
+
 	/**
-	Idea:
-		- AsignaRaiz(t);
-		- GeneraHijos (t)
-		- Etiquetamos los primeros <
-		- recorre arbol
-			- si nodo_actual != padre		// para cada hijo de la raíz
-			- si profundidad_actual < PROFUNDIDAD
-				- GeneraHijos (nodo_actual)
+	* @brief Destructor de conecta4, libera los recursos ocupados por el árbol
 	*/
-
-
-
 	~conecta4() = default ;
 
-  conecta4(ArbolGeneral<Tablero> a);
+	/**
+	* @brief Función que dado un nodo del árbol crea evalúa (llamando a métrica)
+	* dicho nodo a partir de sus hijos (creándolos y evaluándolos)
+	* @param n nodo del árbol
+	* @return pareja de enteros donde el primer elemento es el índice del hijo y
+	* el segundo valor es la puntuación del nodo 
+	*/
+	pair<int,int> recursiva (nodo<Tablero> n) ;
 
-	int eligeColumna () ;
-	
+	/**
+	* @brief Función que evalua un nodo hoja del árbol en función de los intereses
+	* del jugador automático de cara a ganar la partida, llamando a las funciones 
+	* evalua según el dato miembro metrica.
+	* @param t puntero al nodo a ser evaluado.
+	*/
+	void metrica (nodo<Tablero>* t);
 
-	int metrica (nodo<Tablero> t);
-	
 };
+
+
+#endif

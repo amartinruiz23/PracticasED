@@ -52,24 +52,24 @@ conecta4::conecta4(Tablero t, int met=0) {
 
 }*/
 
-int conecta4::evalua1 (nodo<Tablero>* t) {
+int conecta4::evalua1 (nodo* t) { // CAMBIAR
 
-		if (t.etiqueta.quienGana() == 2)
+		if (t.etiqueta.quienGana() == 2) //CAMBIAR
 			return 1 ;
 		else {
-			if (t.etiqueta.quienGana() == 1)
+			if (t.etiqueta.quienGana() == 1) // CAMBIAR
 				return -1 ;
 			else
 				return 0 ;
 		}
 }
 
-int conecta4::evalua2 (nodo<Tablero>* t) {
+int conecta4::evalua2 (nodo* t) { // CAMBIAR
 
-		if (t.etiqueta.quienGana() == 2)
+		if (t.etiqueta.quienGana() == 2) // CAMBIAR
 			return 1 ;
 		else {
-			if (t.etiqueta.quienGana() == 1)
+			if (t.etiqueta.quienGana() == 1) // CAMBIAR
 				return -1 ;
 			else
 				return 0 ;
@@ -104,7 +104,7 @@ int conecta4::evalua2 (nodo<Tablero>* t) {
 }*/
 
 
-int conecta4::metrica (nodo<Tablero>* t){
+void conecta4::metrica (nodo* t){	// CAMBIAR CABECERA
 
 	if (metrica == 1)
 
@@ -117,17 +117,18 @@ int conecta4::metrica (nodo<Tablero>* t){
 
 }
 
-int conecta4 (Tablero t) {
+int conecta4 (Tablero t, int met=0) {
 
+	metrica = met ;
 	arbol.AsignaRaiz(t);
 
-	int columna =	(recursiva (arbol.raiz())).first ;
+	int columna =	(recursiva (arbol.raiz()).first) ; // CAMBIAR
 
 	return columna ;
 }
 
 
-pair<int,int> recursiva (nodo <Tablero> n) {
+pair<int,int> recursiva (nodo* n) { // CAMBIAR
 
 	if (altura(n) < PROFUNDIDAD) {				// CASO GENERAL
 
@@ -143,14 +144,14 @@ pair<int,int> recursiva (nodo <Tablero> n) {
 				t.colocarFicha(i);								// Le insertas la ficha en la columna
 
 				if (contador == 0) {							// Le insertas el tablero al nodo como hijo a la izqda
-					n.izqda = t ;
+					n.izqda = t ; // CAMBIAR
 					contador++ ;
 					puntuaciones.push_back(makepair(i,recursiva(n.izqda).second));		// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
 				}
 
 				else {														// Le insertas el tablero al nodo como hijo a la derecha
 					ArbolGeneral<Tablero> a(t);
-					arbol.insertar_hermanoderecha(n , a );
+					arbol.insertar_hermanoderecha(n , a ); // CAMBIAR
 					puntuaciones.push_back(makepair(i,recursiva(a.raiz().second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
 				}
 
@@ -202,6 +203,4 @@ pair<int, int> minimo(vector<pair<int,int> > v){
 	return v[apasar];
 }
 
-/*funciones aux -> calcula max de un vector <pair<int, int> >
-							-> calcula min de un vector <pair<int, int> >
-*/
+

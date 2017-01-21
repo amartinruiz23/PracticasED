@@ -104,31 +104,31 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) { // CAMBIAR
 }*/
 
 
-void conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){	// CAMBIAR CABECERA
+int conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){	// CAMBIAR CABECERA
 
 	if (metricaelegida == 1)
 
-		evalua1(t);
+		return evalua1(t);
 
 	if (metricaelegida == 2)
 
-		evalua2(t);
+		return evalua2(t);
 
 
 }
 
-int conecta4 (Tablero t, int met=0) {
+int conecta4::jugada (Tablero t, int met) {
 
 	metricaelegida = met ;
 	arbol.AsignaRaiz(t);
 
-	int columna =	(recursiva (arbol.raiz()).first) ; // CAMBIAR
+	int columna =	((recursiva (arbol.raiz())).first) ; // CAMBIAR
 
 	return columna ;
 }
 
 
-pair<int,int> recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
+pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 
 	if (altura(n) < PROFUNDIDAD) {				// CASO GENERAL
 
@@ -144,15 +144,15 @@ pair<int,int> recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 				t.colocarFicha(i);								// Le insertas la ficha en la columna
 
 				if (contador == 0) {							// Le insertas el tablero al nodo como hijo a la izqda
-					n->izqda = t ; // CAMBIAR
+					n->izqda->etiqueta = t ; // CAMBIAR
 					contador++ ;
-					puntuaciones.push_back(makepair(i,recursiva(n->izqda).second));		// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
+					puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));		// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
 				}
 
 				else {														// Le insertas el tablero al nodo como hijo a la derecha
 					ArbolGeneral<Tablero> a(t);
 					arbol.insertar_hermanoderecha(n , a ); // CAMBIAR
-					puntuaciones.push_back(makepair(i,recursiva(a.raiz()->second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
+					puntuaciones.push_back(make_pair(i,(recursiva(a.raiz()).second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
 				}
 
 				if ( (altura(n) % 2) == 0 )
@@ -169,13 +169,13 @@ pair<int,int> recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 
 	else {				// CASO NODO HOJA
 		int puntuacion = metrica (n) ;
-		return makepair(-1,puntuacion);
+		return make_pair(-1,puntuacion);
 	}
 
 }
 
 
-pair<int, int> maximo(vector<pair<int,int> > v){
+pair<int, int> conecta4::maximo(vector<pair<int,int> > v){
 	int maximo = 0;
 	int apasar = 0;
 
@@ -189,7 +189,7 @@ pair<int, int> maximo(vector<pair<int,int> > v){
 	return v[apasar];
 }
 
-pair<int, int> minimo(vector<pair<int,int> > v){
+pair<int, int> conecta4::minimo(vector<pair<int,int> > v){
 	int minimo = 0;
 	int apasar = 0;
 

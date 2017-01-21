@@ -84,7 +84,7 @@ public:
 	* @return qué hijo será el elegido para que el jugador automático inserte la
 	* ficha
 	*/
-  conecta4(Tablero t, int met = 0);
+  int jugada(Tablero t, int met = 0);
 
 	/**
 	* @brief Destructor de conecta4, libera los recursos ocupados por el árbol
@@ -98,14 +98,14 @@ public:
 	* @return pareja de enteros donde el primer elemento es el índice del hijo y
 	* el segundo valor es la puntuación del nodo
 	*/
-	pair<int,int> recursiva () ;
+	pair<int,int> recursiva (ArbolGeneral<Tablero>::nodo* t) ;
 
 	/**
 	* @brief Función que evalua un nodo hoja del árbol en función de los intereses
 	* del jugador automático de cara a ganar la partida, llamando a las funciones
 	* evalua según el dato miembro metrica.
 	*/
-	void metrica (ArbolGeneral<Tablero>::nodo* t);
+	int metrica (ArbolGeneral<Tablero>::nodo* t);
 
 };
 

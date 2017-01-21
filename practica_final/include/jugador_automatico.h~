@@ -84,7 +84,7 @@ public:
 	* @return qué hijo será el elegido para que el jugador automático inserte la
 	* ficha
 	*/
-  int jugada(Tablero t, int met = 0);
+  int jugada(Tablero t, int met = 1);
 
 	/**
 	* @brief Destructor de conecta4, libera los recursos ocupados por el árbol
@@ -105,7 +105,7 @@ public:
 	* del jugador automático de cara a ganar la partida, llamando a las funciones
 	* evalua según el dato miembro metrica.
 	*/
-	void metrica (ArbolGeneral<Tablero>::nodo* t);
+	int metrica (ArbolGeneral<Tablero>::nodo* t);
 
 };
 

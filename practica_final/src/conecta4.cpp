@@ -11,6 +11,7 @@
 #include "ArbolGeneral.h"
 #include "tablero.h"
 #include "mando.h"
+#include "jugador_automatico.h"
 
 using namespace std;
 
@@ -62,11 +63,16 @@ int jugar_partida() {
     Tablero tablero(5, 7);      //Tablero 5x7
     Mando mando(tablero);       //Mando para controlar E/S de tablero
     char c = 1;
-    int quienGana = tablero.quienGana();
+    int quienGana = tablero.quienGana(); // Vale 0
     //mientras no haya ganador y no se pulse tecla de terminación
     while(c != Mando::KB_ESCAPE && quienGana == 0) {
         system("clear");
-        mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c 
+				if (tablero.GetTurno() == 2){
+					conecta4 jugador_automatico ;
+					tablero.colocarFicha(jugador_automatico.jugada(tablero, 1));
+				}
+				else
+        	mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c 
         imprimeTablero(tablero, mando);     // muestra tablero y mando en pantalla
         quienGana = tablero.quienGana();    // hay ganador?
         if(quienGana==0) c = getch();       // Capturamos la tecla pulsada.    
@@ -76,6 +82,8 @@ int jugar_partida() {
 }
 
 int main(int argc, char *argv[]){
+
+		// hay que comprobar parámetros y cambiar la función jugar_partida para que acepte los parámetros que le pasemos (filas, columnas, turno, métrica)
     int ganador = jugar_partida();
     cout << "Ha ganado el jugador " << ganador << endl;
 }  

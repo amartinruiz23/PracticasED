@@ -23,7 +23,7 @@ $(BIN)/arboltablero_test: $(OBJ)/arboltablero_test.o $(LIB)/libtablero.a
 $(BIN)/conecta4: $(OBJ)/conecta4.o $(OBJ)/jugador_automatico.o $(LIB)/libtablero.a $(LIB)/libmando.a
 	$(CXX) -o $(BIN)/conecta4 $(OBJ)/conecta4.o -I$(INC) -L$(LIB) -ltablero -lmando
 
-$(OBJ)/conecta4.o: $(SRC)/conecta4.cpp
+$(OBJ)/conecta4.o: $(SRC)/conecta4.cpp $(INC)/jugador_automatico.h
 	$(CXX) $(CPPFLAGS)  -o $(OBJ)/conecta4.o $(SRC)/conecta4.cpp -I$(INC)
 
 $(OBJ)/jugador_automatico.o: $(SRC)/jugador_automatico.cpp $(INC)/jugador_automatico.h

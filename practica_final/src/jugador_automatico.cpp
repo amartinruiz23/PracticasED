@@ -1,5 +1,6 @@
 #include "jugador_automatico.h"
-
+#include <iostream>
+using namespace std;
 
 /*void conecta4::GeneraHijos(nodo<Tablero>* n) {
 
@@ -117,7 +118,7 @@ int conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){	// CAMBIAR CABECERA
 
 }
 
-int conecta4::jugada (Tablero t, int met) {
+int conecta4::jugada(Tablero t, int met) {
 
 	metricaelegida = met ;
 	arbol.AsignaRaiz(t);
@@ -136,17 +137,19 @@ pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 		int i ;
 		vector<pair<int, int> > puntuaciones ;
 
-		for ( i = 0 ; i < n->etiqueta.GetColumnas() ; i++) {			// Para cada columna del tablero
+		cout << "1" << endl;
 
+		for ( i = 0 ; i < n->etiqueta.GetColumnas() ; i++) {			// Para cada columna del tablero
+			cout << "Creo el tablero de columna " << i << endl;
 			if (n->etiqueta.hayHueco(i) != -1) {		// Si esa columna no está llena
 
-				Tablero t = n->etiqueta ;					// Copia el tablero
-				t.colocarFicha(i);								// Le insertas la ficha en la columna
+				Tablero t = n->etiqueta ;				cout << "trololo" <<endl;	// Copia el tablero
+				t.colocarFicha(i);							cout << "wololo" <<endl;	// Le insertas la ficha en la columna
 
-				if (contador == 0) {							// Le insertas el tablero al nodo como hijo a la izqda
-					n->izqda->etiqueta = t ; // CAMBIAR
+				if (contador == 0) {			// Le insertas el tablero al nodo como hijo a la izqda
+					n->izqda->etiqueta = t ; cout << "AQUÍ SE PRODUCE LA VIOLACIÓN DE SEGMENTO" <<endl; //HAY QUE INSERTAR EL HIJO
 					contador++ ;
-					puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));		// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
+					puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));		cout << "lirilo" <<endl;// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
 				}
 
 				else {														// Le insertas el tablero al nodo como hijo a la derecha

@@ -12,6 +12,7 @@
 #include "tablero.h"
 #include "mando.h"
 #include "jugador_automatico.h"
+#include "jugador_automatico.cpp"
 
 using namespace std;
 
@@ -60,7 +61,7 @@ void imprimeTablero(Tablero & t, Mando & m){
  */
 int jugar_partida(int filas, int columnas, int metrica, int turno) {
 
-    Tablero tablero(filas, columnas); 
+    Tablero tablero(filas, columnas);
 		if (tablero.GetTurno() != turno)
 			tablero.cambiarTurno();
     Mando mando(tablero);       //Mando para controlar E/S de tablero
@@ -70,14 +71,15 @@ int jugar_partida(int filas, int columnas, int metrica, int turno) {
     while(c != Mando::KB_ESCAPE && quienGana == 0) {
         system("clear");
 				if (tablero.GetTurno() == 2){
-					conecta4 maquina ;
-					tablero.colocarFicha(maquina.jugada(tablero, 1));
+					conecta4 maquina ; cout << "Crea el conecta4" << endl;
+          int acolocar = maquina.jugada(tablero, 1); cout << "Coloca ficha" << endl;
+					tablero.colocarFicha(acolocar);
 				}
 				else
-        	mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c 
+        	mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c
         imprimeTablero(tablero, mando);     // muestra tablero y mando en pantalla
         quienGana = tablero.quienGana();    // hay ganador?
-        if(quienGana==0) c = getch();       // Capturamos la tecla pulsada.    
+        if(quienGana==0) c = getch();       // Capturamos la tecla pulsada.
     }
 
     return tablero.quienGana();
@@ -92,11 +94,9 @@ int main(int argc, char *argv[]){
 
 		int turno = 1 ;
 
-		if (argc == 5) 
+		if (argc == 5)
 			turno = atoi(argv[4]);
-		
+
     int ganador = jugar_partida(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]), turno);
     cout << "Ha ganado el jugador " << ganador << endl;
-}  
-  
-  
+}

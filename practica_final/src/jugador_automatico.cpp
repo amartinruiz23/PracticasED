@@ -130,7 +130,7 @@ int conecta4::jugada (Tablero t, int met) {
 
 pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 
-	if (ArbolGeneral<Tablero>::altura(n) < PROFUNDIDAD) {				// CASO GENERAL
+	if (arbol.altura(n) < PROFUNDIDAD) {				// CASO GENERAL
 
 		int contador = 0 ;
 		int i ;
@@ -155,7 +155,7 @@ pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 					puntuaciones.push_back(make_pair(i,(recursiva(a.raiz()).second)));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
 				}
 
-				if ( (ArbolGeneral<Tablero>::altura(n) % 2) == 0 )
+				if ( (arbol.altura(n) % 2) == 0 )
 
 					return minimo(puntuaciones);
 

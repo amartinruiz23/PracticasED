@@ -37,14 +37,14 @@ class conecta4{
 
   ArbolGeneral<Tablero> arbol;
   const int PROFUNDIDAD = 3;
-	int metrica ;
+	int metricaelegida ;
 
 	/**
 	* @brief Dado un nodo genera todos los posibles movimientos (todos los tableros resultantes)
 	* del jugador automático
 	* @param n nodo padre de los futuros tableros a crear
 	*/
-  void GeneraHijos(nodo* n);
+  void GeneraHijos(ArbolGeneral<Tablero>::nodo* n);
 
 	/**
 	* @brief Función que evalua la idoneidad o no de un tablero de cara a los intereses
@@ -52,14 +52,14 @@ class conecta4{
 	* @param t Tablero a evaluar
 	* @return entero con la puntuación obtenida
 	*/
-  int evalua1 (nodo* t) ;
-  int evalua2 (nodo* t) ;
-  
+  int evalua1 (ArbolGeneral<Tablero>::nodo* t) ;
+  int evalua2 (ArbolGeneral<Tablero>::nodo* t) ;
+
 	/**
 	* @brief Función auxiliar que calcula el máximo valor del segundo campo de los
 	* pares de elementos enteros de un vector
-	* @param v vector 
-	* @return devuelve la pareja de elementos cuyo segundo campo es el mayor del 
+	* @param v vector
+	* @return devuelve la pareja de elementos cuyo segundo campo es el mayor del
 	* vector
 	*/
   pair<int, int> maximo(vector<pair<int,int> > v);
@@ -75,15 +75,16 @@ class conecta4{
 
 public:
 
+
 	/**
 	* @brief Función que construye un objeto de la clase conecta4, y llama sobre
 	* el nodo raíz a la función recursiva.
 	* @param t Tablero actual de la partida que será el nodo raíz del árbol
 	* @param met, métrica que decidirá qué función evaluará los nodos del árbol
 	* @return qué hijo será el elegido para que el jugador automático inserte la
-	* ficha	
+	* ficha
 	*/
-  int conecta4(Tablero t, int met=0);
+  conecta4(Tablero t, int met = 0);
 
 	/**
 	* @brief Destructor de conecta4, libera los recursos ocupados por el árbol
@@ -95,17 +96,16 @@ public:
 	* dicho nodo a partir de sus hijos (creándolos y evaluándolos)
 	* @param n nodo del árbol
 	* @return pareja de enteros donde el primer elemento es el índice del hijo y
-	* el segundo valor es la puntuación del nodo 
+	* el segundo valor es la puntuación del nodo
 	*/
-	pair<int,int> recursiva (nodo* n) ;
+	pair<int,int> recursiva () ;
 
 	/**
 	* @brief Función que evalua un nodo hoja del árbol en función de los intereses
-	* del jugador automático de cara a ganar la partida, llamando a las funciones 
+	* del jugador automático de cara a ganar la partida, llamando a las funciones
 	* evalua según el dato miembro metrica.
-	* @param t puntero al nodo a ser evaluado.
 	*/
-	void metrica (nodo* t);
+	void metrica (ArbolGeneral<Tablero>::nodo* t);
 
 };
 

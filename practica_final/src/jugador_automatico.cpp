@@ -52,24 +52,24 @@ conecta4::conecta4(Tablero t, int met=0) {
 
 }*/
 
-int conecta4::evalua1 (nodo* t) { // CAMBIAR
+int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) { // CAMBIAR
 
-		if (t.etiqueta.quienGana() == 2) //CAMBIAR
+		if (t->etiqueta.quienGana() == 2) //CAMBIAR
 			return 1 ;
 		else {
-			if (t.etiqueta.quienGana() == 1) // CAMBIAR
+			if (t->etiqueta.quienGana() == 1) // CAMBIAR
 				return -1 ;
 			else
 				return 0 ;
 		}
 }
 
-int conecta4::evalua2 (nodo* t) { // CAMBIAR
+int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) { // CAMBIAR
 
-		if (t.etiqueta.quienGana() == 2) // CAMBIAR
+		if (t->etiqueta.quienGana() == 2) // CAMBIAR
 			return 1 ;
 		else {
-			if (t.etiqueta.quienGana() == 1) // CAMBIAR
+			if (t->etiqueta.quienGana() == 1) // CAMBIAR
 				return -1 ;
 			else
 				return 0 ;
@@ -104,13 +104,13 @@ int conecta4::evalua2 (nodo* t) { // CAMBIAR
 }*/
 
 
-void conecta4::metrica (nodo* t){	// CAMBIAR CABECERA
+void conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){	// CAMBIAR CABECERA
 
-	if (metrica == 1)
+	if (metricaelegida == 1)
 
 		evalua1(t);
 
-	if (metrica == 2)
+	if (metricaelegida == 2)
 
 		evalua2(t);
 
@@ -119,7 +119,7 @@ void conecta4::metrica (nodo* t){	// CAMBIAR CABECERA
 
 int conecta4 (Tablero t, int met=0) {
 
-	metrica = met ;
+	metricaelegida = met ;
 	arbol.AsignaRaiz(t);
 
 	int columna =	(recursiva (arbol.raiz()).first) ; // CAMBIAR
@@ -128,7 +128,7 @@ int conecta4 (Tablero t, int met=0) {
 }
 
 
-pair<int,int> recursiva (nodo* n) { // CAMBIAR
+pair<int,int> recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 
 	if (altura(n) < PROFUNDIDAD) {				// CASO GENERAL
 
@@ -136,23 +136,23 @@ pair<int,int> recursiva (nodo* n) { // CAMBIAR
 		int i ;
 		vector<pair<int, int> > puntuaciones ;
 
-		for ( i = 0 ; i < n.etiqueta.GetColumnas() ; i++) {			// Para cada columna del tablero
+		for ( i = 0 ; i < n->etiqueta.GetColumnas() ; i++) {			// Para cada columna del tablero
 
-			if (n.etiqueta.hayHueco(i) != -1) {		// Si esa columna no está llena
+			if (n->etiqueta.hayHueco(i) != -1) {		// Si esa columna no está llena
 
-				Tablero t = n.etiqueta ;					// Copia el tablero
+				Tablero t = n->etiqueta ;					// Copia el tablero
 				t.colocarFicha(i);								// Le insertas la ficha en la columna
 
 				if (contador == 0) {							// Le insertas el tablero al nodo como hijo a la izqda
-					n.izqda = t ; // CAMBIAR
+					n->izqda = t ; // CAMBIAR
 					contador++ ;
-					puntuaciones.push_back(makepair(i,recursiva(n.izqda).second));		// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
+					puntuaciones.push_back(makepair(i,recursiva(n->izqda).second));		// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
 				}
 
 				else {														// Le insertas el tablero al nodo como hijo a la derecha
 					ArbolGeneral<Tablero> a(t);
 					arbol.insertar_hermanoderecha(n , a ); // CAMBIAR
-					puntuaciones.push_back(makepair(i,recursiva(a.raiz().second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
+					puntuaciones.push_back(makepair(i,recursiva(a.raiz()->second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
 				}
 
 				if ( (altura(n) % 2) == 0 )
@@ -202,5 +202,3 @@ pair<int, int> minimo(vector<pair<int,int> > v){
 
 	return v[apasar];
 }
-
-

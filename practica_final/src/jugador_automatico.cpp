@@ -179,7 +179,7 @@ pair<int, int> conecta4::maximo(vector<pair<int,int> > v){
 	int maximo = 0;
 	int apasar = 0;
 
-	for (int i = 0; i < v.size(); i++){
+	for (unsigned int i = 0; i < v.size(); i++){
 		if(v[i].second >= maximo){
 			maximo = v[i].second;
 			apasar = i;
@@ -193,7 +193,7 @@ pair<int, int> conecta4::minimo(vector<pair<int,int> > v){
 	int minimo = 0;
 	int apasar = 0;
 
-	for (int i = 0; i < v.size(); i++){
+	for (unsigned int i = 0; i < v.size(); i++){
 		if(v[i].second <= minimo){
 			minimo = v[i].second;
 			apasar = i;

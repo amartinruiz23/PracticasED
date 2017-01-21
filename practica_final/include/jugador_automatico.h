@@ -1,5 +1,5 @@
-#ifndef __CONECTA_4_
-#define __CONECTA_4_
+#ifndef __CONECTA_4__
+#define __CONECTA_4__
 
 #include "ArbolGeneral.h"
 #include "tablero.h"
@@ -35,45 +35,46 @@
 
 class conecta4{
 
-  ArbolGeneral<Tablero> arbol;
-  const int PROFUNDIDAD = 3;
-	int metricaelegida ;
+	private:
+		ArbolGeneral<Tablero> arbol;
+		static const int PROFUNDIDAD = 3;
+		int metricaelegida ;
 
-	/**
-	* @brief Dado un nodo genera todos los posibles movimientos (todos los tableros resultantes)
-	* del jugador automático
-	* @param n nodo padre de los futuros tableros a crear
-	*/
-  void GeneraHijos(ArbolGeneral<Tablero>::nodo* n);
+		/**
+		* @brief Dado un nodo genera todos los posibles movimientos (todos los tableros resultantes)
+		* del jugador automático
+		* @param n nodo padre de los futuros tableros a crear
+		*/
+		void GeneraHijos(ArbolGeneral<Tablero>::nodo* n);
 
-	/**
-	* @brief Función que evalua la idoneidad o no de un tablero de cara a los intereses
-	* del jugador automático de cara a ganar la partida.
-	* @param t Tablero a evaluar
-	* @return entero con la puntuación obtenida
-	*/
-  int evalua1 (ArbolGeneral<Tablero>::nodo* t) ;
-  int evalua2 (ArbolGeneral<Tablero>::nodo* t) ;
+		/**
+		* @brief Función que evalua la idoneidad o no de un tablero de cara a los intereses
+		* del jugador automático de cara a ganar la partida.
+		* @param t Tablero a evaluar
+		* @return entero con la puntuación obtenida
+		*/
+		int evalua1 (ArbolGeneral<Tablero>::nodo* t) ;
+		int evalua2 (ArbolGeneral<Tablero>::nodo* t) ;
 
-	/**
-	* @brief Función auxiliar que calcula el máximo valor del segundo campo de los
-	* pares de elementos enteros de un vector
-	* @param v vector
-	* @return devuelve la pareja de elementos cuyo segundo campo es el mayor del
-	* vector
-	*/
-  pair<int, int> maximo(vector<pair<int,int> > v);
+		/**
+		* @brief Función auxiliar que calcula el máximo valor del segundo campo de los
+		* pares de elementos enteros de un vector
+		* @param v vector
+		* @return devuelve la pareja de elementos cuyo segundo campo es el mayor del
+		* vector
+		*/
+		pair<int, int> maximo(vector<pair<int,int> > v);
 
-	/**
-	* @brief Función auxiliar que calcula el mínimo valor del segundo campo de los
-	* pares de elementos enteros de un vector
-	* @param v vector
-	* @return devuelve la pareja de elementos cuyo segundo campo es el menor del
-	* vector
-	*/
-  pair<int, int> minimo(vector<pair<int,int> > v);
+		/**
+		* @brief Función auxiliar que calcula el mínimo valor del segundo campo de los
+		* pares de elementos enteros de un vector
+		* @param v vector
+		* @return devuelve la pareja de elementos cuyo segundo campo es el menor del
+		* vector
+		*/
+		pair<int, int> minimo(vector<pair<int,int> > v);
 
-public:
+	public:
 
 
 	/**

@@ -58,9 +58,11 @@ void imprimeTablero(Tablero & t, Mando & m){
  * @brief Implementa el desarrollo de una partida de Conecta 4 sobre un tablero 5x7, pidiendo por teclado los movimientos de ambos jugadores según turno.
  * @return : Identificador (int) del jugador que gana la partida (1 o 2).
  */
-int jugar_partida() {
+int jugar_partida(int filas, int columnas, int metrica, int turno) {
 
-    Tablero tablero(5, 7);      //Tablero 5x7
+    Tablero tablero(filas, columnas); 
+		if (tablero.GetTurno() != turno)
+			tablero.cambiarTurno();
     Mando mando(tablero);       //Mando para controlar E/S de tablero
     char c = 1;
     int quienGana = tablero.quienGana(); // Vale 0
@@ -68,8 +70,8 @@ int jugar_partida() {
     while(c != Mando::KB_ESCAPE && quienGana == 0) {
         system("clear");
 				if (tablero.GetTurno() == 2){
-					conecta4 jugador_automatico ;
-					tablero.colocarFicha(jugador_automatico.jugada(tablero, 1));
+					conecta4 maquina ;
+					tablero.colocarFicha(maquina.jugada(tablero, 1));
 				}
 				else
         	mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c 
@@ -83,8 +85,17 @@ int jugar_partida() {
 
 int main(int argc, char *argv[]){
 
-		// hay que comprobar parámetros y cambiar la función jugar_partida para que acepte los parámetros que le pasemos (filas, columnas, turno, métrica)
-    int ganador = jugar_partida();
+		if (argc < 4) {
+			cout << "Recuerde: ./conecta4 filas columnas metrica turno(opcional)\n" ;
+			return -1 ;
+		}
+
+		int turno = 1 ;
+
+		if (argc == 5) 
+			turno = atoi(argv[4]);
+		
+    int ganador = jugar_partida(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]), turno);
     cout << "Ha ganado el jugador " << ganador << endl;
 }  
   

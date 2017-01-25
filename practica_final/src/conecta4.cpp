@@ -74,6 +74,7 @@ int jugar_partida(int filas, int columnas, int metrica, int turno) {
 					conecta4 maquina ; cout << "Crea el conecta4" << endl;
           int acolocar = maquina.jugada(tablero, 1); cout << "Coloca ficha" << endl;
 					tablero.colocarFicha(acolocar);
+					tablero.cambiarTurno();
 				}
 				else
         	mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c

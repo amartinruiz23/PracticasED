@@ -136,20 +136,19 @@ pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 		int contador = 0 ;
 		int i ;
 		vector<pair<int, int> > puntuaciones ;
-
-		cout << "1" << endl;
+		int nivel = 0 ;
 
 		for ( i = 0 ; i < n->etiqueta.GetColumnas() ; i++) {			// Para cada columna del tablero
-			cout << "Creo el tablero de columna " << i << endl;
 			if (n->etiqueta.hayHueco(i) != -1) {		// Si esa columna no está llena
 
-				Tablero t = n->etiqueta ;				cout << "trololo" <<endl;	// Copia el tablero
-				t.colocarFicha(i);							cout << "wololo" <<endl;	// Le insertas la ficha en la columna
+				Tablero t = n->etiqueta ;					// Copia el tablero
+				t.colocarFicha(i);							// Le insertas la ficha en la columna
 
 				if (contador == 0) {			// Le insertas el tablero al nodo como hijo a la izqda
-					n->izqda->etiqueta = t ; cout << "AQUÍ SE PRODUCE LA VIOLACIÓN DE SEGMENTO" <<endl; //HAY QUE INSERTAR EL HIJO
+					ArbolGeneral<Tablero> a(t);						
+					arbol.insertar_hijomasizquierda(n, a);						
 					contador++ ;
-					puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));		cout << "lirilo" <<endl;// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
+					puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
 				}
 
 				else {														// Le insertas el tablero al nodo como hijo a la derecha
@@ -158,20 +157,23 @@ pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 					puntuaciones.push_back(make_pair(i,(recursiva(a.raiz()).second)));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
 				}
 
-				if ( (arbol.altura(n) % 2) == 0 )
-
+				if ( (arbol.altura(n) % 2) == 0 ) {
+					cout << "minimo = " << minimo(puntuaciones).first;
 					return minimo(puntuaciones);
+					}
 
-				else
-
+				else {
+					cout << "maximo = " << maximo(puntuaciones).first;
 					return maximo(puntuaciones);
-
+				}
 			}
 		}
 	}
 
 	else {				// CASO NODO HOJA
 		int puntuacion = metrica (n) ;
+		cout << "altura = " << arbol.altura(n) ;
+		cout << "Puntuacion = " << puntuacion  << endl ;
 		return make_pair(-1,puntuacion);
 	}
 

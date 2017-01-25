@@ -85,8 +85,10 @@ class conecta4{
 	* @return qué hijo será el elegido para que el jugador automático inserte la
 	* ficha
 	*/
-  int jugada (Tablero t, int met);
+  int jugada (Tablero t, int met = 1);
 	
+	int nivel (ArbolGeneral<Tablero> nodo* n);
+
 	conecta4() = default ;
 
 	/**

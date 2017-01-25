@@ -71,10 +71,11 @@ int jugar_partida(int filas, int columnas, int metrica, int turno) {
     while(c != Mando::KB_ESCAPE && quienGana == 0) {
         system("clear");
 				if (tablero.GetTurno() == 2){
-					conecta4 maquina ; cout << "Crea el conecta4" << endl;
+					conecta4 maquina ; 
           int acolocar = maquina.jugada(tablero, 1); cout << "Coloca ficha" << endl;
 					tablero.colocarFicha(acolocar);
 					tablero.cambiarTurno();
+					~maquina;
 				}
 				else
         	mando.actualizarJuego(c, tablero);  // actualiza tablero según comando c

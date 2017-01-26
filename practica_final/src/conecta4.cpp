@@ -72,7 +72,7 @@ int jugar_partida(int filas, int columnas, int metrica, int turno) {
         system("clear");
 				if (tablero.GetTurno() == 2){
 					conecta4 maquina ; 
-          int acolocar = maquina.jugada(tablero, 1); cout << "Coloca ficha" << endl;
+          int acolocar = maquina.jugada(tablero, metrica); 
 					tablero.colocarFicha(acolocar);
 					tablero.cambiarTurno();
 				}

@@ -1,6 +1,6 @@
 /**
 * 	Practica hecha por:
-* 
+*
 * Álvaro López Jiménez y Antonio Martín Ruíz
 
 */
@@ -57,8 +57,8 @@ class conecta4{
 		*/
 		int evalua1 (ArbolGeneral<Tablero>::nodo* t) ;
 		int evalua2 (ArbolGeneral<Tablero>::nodo* t) ;
-		int evalua3 (ArbolGeneral<Tablero>::nodo* t) ;
-		int evalua4 (ArbolGeneral<Tablero>::nodo* t) ;
+	//	int evalua3 (ArbolGeneral<Tablero>::nodo* t) ; NO TERMINADO
+	//	int evalua4 (ArbolGeneral<Tablero>::nodo* t) ; NO TERMINADO
 
 		/**
 		* @brief Función auxiliar que calcula el máximo valor del segundo campo de los

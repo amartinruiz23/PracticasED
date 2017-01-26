@@ -1,15 +1,17 @@
-/**
+/*
 * 	Practica hecha por:
-* 
+*
 * Álvaro López Jiménez y Antonio Martín Ruíz
-
+*
 */
 
 
 #include "jugador_automatico.h"
 #include <iostream>
 using namespace std;
-
+/*
+Esta métrica evalúa los tableros baśandose únicamente en quién gana o pierde en ese tablero
+*/
 int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 
 		if (t->etiqueta.quienGana() == 2)
@@ -22,7 +24,9 @@ int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 				return 0 ;
 		}
 }
-
+/*
+Esta métrica evalúa los tableros según quién gana o pierde en el tablero, dando preferencia a victorias o derrotas más cercanas
+*/
 int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {		// NO FINALIZADA
 
 		if (t->etiqueta.quienGana() == 2)
@@ -36,7 +40,7 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {		// NO FINALIZADA
 		}
 }
 
-int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t) { // NO FINALIZADA
+/*int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t) { // NO FINALIZADA
 
 	ArbolGeneral<Tablero>::nodo* aux = t;
 	int puntuacion = 0;
@@ -83,7 +87,7 @@ int conecta4::evalua4 (ArbolGeneral<Tablero>::nodo* t){
 	if(t->etiqueta.GetTurno() == 1)
 		puntos += (t->etiqueta.hayN(3, 2));
 
-}
+}*/
 
 int conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){
 
@@ -95,13 +99,14 @@ int conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){
 
 		return evalua2(t);
 
-	if (metricaelegida == 3)
+	/*if (metricaelegida == 3)
 
 		return evalua3(t);
 
 	if (metricaelegida == 4)
 
 		return evalua4(t);
+	*/
 
 }
 
@@ -201,3 +206,11 @@ pair <int,int> conecta4::casohoja (ArbolGeneral<Tablero>::nodo* n) {
 	return make_pair(-1,puntuacion);
 
 }
+
+/*NOTA:
+
+Debido al diseño especíico de gran cantidad de métodos de ArbolGeneral, no adecuado para el uso que necesitamos
+y los fallos que se derivan de ello, y por la falta de tiempo para obtener otra alternativa, hemos decidido hacerl
+esta clase friend de ArbolGeneral.
+
+*/

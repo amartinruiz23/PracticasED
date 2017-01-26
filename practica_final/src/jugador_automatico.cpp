@@ -27,6 +27,10 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 	if (t->etiqueta.quienGana() == 1)
 	  puntuacion += -20+(nivel(t)) ;
 
+	if(t->etiqueta.GetTurno() == 1)
+		puntuacion += (-1)*(t->etiqueta.hayN(3, t->etiqueta.GetTurno()));
+	if(t->etiqueta.GetTurno() == 2)
+		puntuacion += (t->etiqueta.hayN(3, t->etiqueta.GetTurno()));
 /*	while(aux->drcha != NULL){
   	hermanosderecha++;
   	aux = aux->drcha;

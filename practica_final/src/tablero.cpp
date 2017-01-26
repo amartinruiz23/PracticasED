@@ -33,9 +33,9 @@ int Tablero::hayHueco(int pos){
     bool encontrado = false;
 
     // Comprobamos si la posición no está dentro del tablero.
-    if(pos < 0 || pos >= columnas) 
+    if(pos < 0 || pos >= columnas)
         return -1;
-    
+
     while(i < filas && !encontrado){
         if(this->tablero[i][pos] != 0)
             encontrado = true;
@@ -76,11 +76,11 @@ void Tablero::SetTablero(vector<vector<int> > tablero) {
     filas2 = tablero.size();
     columnas1 = GetColumnas();
     columnas2 = tablero[1].size();
-    
+
     if(filas1 == 0 || columnas1 == 0) {
        this->tablero = tablero;
     }
-    
+
     else{
       // Si tiene la misma dimensión.
       if(filas1 == filas2 && columnas1 == columnas2){
@@ -94,8 +94,8 @@ void Tablero::SetTablero(vector<vector<int> > tablero) {
 
 Tablero& Tablero::operator=(const Tablero& derecha) {
     // Comprobamos que no se está copiando el mismo objeto.
-    if (this == &derecha) 
-        return *this; 
+    if (this == &derecha)
+        return *this;
     // Asignamos el tablero de la derecha en la igualdad.
     SetTablero(derecha.GetTablero());
     return *this;
@@ -238,4 +238,134 @@ int Tablero::quienGana(){
         }
     }
     return 0;
+}
+
+int Tablero::hayN(int N, int jugador){
+    int cuantoshay = 0;
+    int ganador = jugador;
+    int count = 0;
+    int i, j;
+    int aux, aux2;
+
+    for (i = 0; i < filas; i++) {
+        for (j = 0; j < columnas; j++) {
+
+            // comprobar columnas
+            count = 0;
+
+            for (int k = 0; k < N
+                    && i + k < filas; k++) {
+
+                if (tablero[i + k][j] != 0) {
+                    if (count == 0) {
+                        aux = i + k;
+                        aux2 = j + k;
+                        count++;
+                    } else {
+                        if (ganador == tablero[i + k][j]) {
+                            aux = i + k;
+                            aux2 = j;
+                            count++;
+                        } else {
+                            count = 0;
+                            break;
+                        }
+                    }
+                    if (count == N) {
+                        cuantoshay++;
+                    }
+                } else {
+                    break;
+                }
+            }
+
+            // comprobar filas
+            count = 0;
+
+            for (int k = 0; k < N
+                    && j + k < columnas; k++) {
+
+                if (tablero[i][j + k] != 0) {
+                    if (count == 0) {
+                        aux = i + k;
+                        aux2 = j + k;
+                        count++;
+                    } else {
+                        if (ganador == tablero[i][j + k]) {
+                            aux = i;
+                            aux2 = j + k;
+                            count++;
+                        } else {
+                            count = 0;
+                            break;
+                        }
+                    }
+                    if (count == N) {
+                        cuantoshay++;
+                    }
+                } else {
+                    break;
+                }
+            }
+
+            // comprobar diagonal 1
+            count = 0;
+
+            for (int k = 0; k < N
+                    && i + k < filas
+                    && j + k < columnas; k++) {
+
+                if (tablero[i + k][j + k] != 0) {
+                    if (count == 0) {
+                        aux = i + k;
+                        aux2 = j + k;
+                        count++;
+                    } else {
+                        if (ganador == tablero[i + k][j + k]) {
+                            aux = i + k;
+                            aux2 = j + k;
+                            count++;
+                        } else {
+                            count = 0;
+                            break;
+                        }
+                    }
+                    if (count == N) {
+                        cuantoshay++;
+                    }
+                } else {
+                    break;
+                }
+            }
+
+            // comprobar diagonal 2
+
+            count = 0;
+            for (int k = 0; k < N && i - k >= 0
+                    && j + k < columnas; k++) {
+                if (tablero[i - k][j + k] != 0) {
+                    if (count == 0) {
+                        aux = i - k;
+                        aux2 = j + k;
+                        count++;
+                    } else {
+                        if (ganador == tablero[i - k][j + k]) {
+                            aux = i - k;
+                            aux2 = j + k;
+                            count++;
+                        } else {
+                            count = 0;
+                            break;
+                        }
+                    }
+                    if (count == N) {
+                        cuantoshay++;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    return cuantoshay;
 }

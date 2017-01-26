@@ -23,7 +23,7 @@
 
    Para poder usar el tipo de dato conecta4 se debe incluir el fichero
 
-   <tt>\#include conecta4.h</tt>
+   <tt>\#include jugador_automatico.h</tt>
 
    El espacio requerido para el almacenamiento es O(n), donde n es el número de
    nodos del árbol.
@@ -36,16 +36,10 @@
 class conecta4{
 
 	private:
+
 		ArbolGeneral<Tablero> arbol;
 		static const int PROFUNDIDAD = 4;
 		int metricaelegida ;
-
-		/**
-		* @brief Dado un nodo genera todos los posibles movimientos (todos los tableros resultantes)
-		* del jugador automático
-		* @param n nodo padre de los futuros tableros a crear
-		*/
-		void GeneraHijos(ArbolGeneral<Tablero>::nodo* n);
 
 		/**
 		* @brief Función que evalua la idoneidad o no de un tablero de cara a los intereses
@@ -74,8 +68,24 @@ class conecta4{
 		*/
 		pair<int, int> minimo(vector<pair<int,int> > v);
 
-	public:
+		/**
+		* @brief Función auxiliar que llama a funciones que evalúan el nodo
+		* @param n nodo a ser evaluado
+		* @return pareja formada por la columna del tablero que corresponde a la jugada
+		* y la puntuación de dicho tablero
+		*/
+		pair<int,int> casohoja (ArbolGeneral<Tablero>::nodo* n);
 
+		/**
+		* @brief Función que determina el nivel de profundidad de un nodo de nuestro 
+		* árbol.
+		* @param n nodo del que queremos saber su altura
+		* @pre el nodo debe estar en un árbol
+		* @return nivel del nodo (0 si es la raíz)
+		*/
+		int nivel (ArbolGeneral<Tablero>::nodo* n);
+
+	public:
 
 	/**
 	* @brief Función que construye un objeto de la clase conecta4, y llama sobre
@@ -87,10 +97,10 @@ class conecta4{
 	*/
   int jugada (Tablero t, int met = 1);
 
-	int nivel (ArbolGeneral<Tablero>::nodo* n);
-
-	pair<int,int> casohoja (ArbolGeneral<Tablero>::nodo* n);
-
+	/**
+	* @brief Constructor por defecto de conecta4, llama a los constructores por 
+	* defecto de sus datos miembro, que ya existen
+	*/
 	conecta4() = default ;
 
 	/**

@@ -8,7 +8,7 @@ int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 			return 1 ;
 		else {
 			if (t->etiqueta.quienGana() == 1){
-					return -5+(nivel(t)) ;
+				return -1;
 		}
 			else
 				return 0 ;
@@ -16,6 +16,19 @@ int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 }
 
 int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
+
+		if (t->etiqueta.quienGana() == 2)
+			return 10 -(nivel(t));
+		else {
+			if (t->etiqueta.quienGana() == 1){
+					return -10 +(nivel(t));
+		}
+			else
+				return 0 ;
+		}
+}
+
+int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t) {
 
 	ArbolGeneral<Tablero>::nodo* aux = t;
 	int puntuacion = 0;
@@ -27,7 +40,7 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 	if (t->etiqueta.quienGana() == 1)
 	  puntuacion += -20+(nivel(t)) ;
 
-	
+
 	while(aux->drcha != 0){
 		cout << "estoy dentro" << endl;
   	hermanosderecha++;
@@ -50,7 +63,7 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 	return puntuacion;
 }
 
-int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t){
+int conecta4::evalua4 (ArbolGeneral<Tablero>::nodo* t){
 
 	int puntos = 0 ;
 
@@ -60,7 +73,7 @@ int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t){
 		if (t->etiqueta.quienGana() == 1)
 			puntos -= 5+(nivel(t)) ;
 	}
-			
+
 	if(t->etiqueta.GetTurno() == 2)
 		puntos += (-1)*(t->etiqueta.hayN(3, 1));
 	if(t->etiqueta.GetTurno() == 1)
@@ -77,6 +90,14 @@ int conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){
 	if (metricaelegida == 2)
 
 		return evalua2(t);
+
+	if (metricaelegida == 3)
+
+		return evalua3(t);
+
+	if (metricaelegida == 4)
+
+		return evalua4(t);
 
 }
 

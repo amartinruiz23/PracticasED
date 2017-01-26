@@ -50,6 +50,7 @@ class conecta4{
 		int evalua1 (ArbolGeneral<Tablero>::nodo* t) ;
 		int evalua2 (ArbolGeneral<Tablero>::nodo* t) ;
 		int evalua3 (ArbolGeneral<Tablero>::nodo* t) ;
+		int evalua4 (ArbolGeneral<Tablero>::nodo* t) ;
 
 		/**
 		* @brief Función auxiliar que calcula el máximo valor del segundo campo de los
@@ -78,7 +79,7 @@ class conecta4{
 		pair<int,int> casohoja (ArbolGeneral<Tablero>::nodo* n);
 
 		/**
-		* @brief Función que determina el nivel de profundidad de un nodo de nuestro 
+		* @brief Función que determina el nivel de profundidad de un nodo de nuestro
 		* árbol.
 		* @param n nodo del que queremos saber su altura
 		* @pre el nodo debe estar en un árbol
@@ -99,7 +100,7 @@ class conecta4{
   int jugada (Tablero t, int met = 1);
 
 	/**
-	* @brief Constructor por defecto de conecta4, llama a los constructores por 
+	* @brief Constructor por defecto de conecta4, llama a los constructores por
 	* defecto de sus datos miembro, que ya existen
 	*/
 	conecta4() = default ;

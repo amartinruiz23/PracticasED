@@ -27,7 +27,7 @@ int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 /*
 Esta métrica evalúa los tableros según quién gana o pierde en el tablero, dando preferencia a victorias o derrotas más cercanas
 */
-int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {		
+int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {		// NO FINALIZADA
 
 		if (t->etiqueta.quienGana() == 2)
 			return 10 -(nivel(t));

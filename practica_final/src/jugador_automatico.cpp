@@ -135,60 +135,56 @@ pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) { // CAMBIAR
 	// cout << "Voy a imprimir el tablero raiz " << endl ;
 	// cout << n->etiqueta ;
 				
-	if ( nivel(n) < PROFUNDIDAD && (metrica(n) == 0) ) {				// CASO GENERAL
+	if ( (nivel(n) < PROFUNDIDAD) && (metrica(n) == 0) ) {				// CASO GENERAL
 
 		int contador = 0 ;
-		int i ;
+		int i = 0;
 		vector<pair<int, int> > puntuaciones ;
 
-		for ( i = 0 ; (i < n->etiqueta.GetColumnas()) && (n->etiqueta.hayHueco(i) != -1) ; i++) {			// Para cada columna del tablero
+		for ( i = 0 ; i < n->etiqueta.GetColumnas() ; i++) {			// Para cada columna del tablero
 	
-			// cout << "primero" << endl ;
+			if (n->etiqueta.hayHueco(i) != -1) {
+				cout << "1" << endl ;
 
-			Tablero t = n->etiqueta ;					// Copia el tablero
-			t.colocarFicha(i);							// Le insertas la ficha en la columna
-			t.cambiarTurno();
+				Tablero t = n->etiqueta ;					// Copia el tablero
+				t.colocarFicha(i);							// Le insertas la ficha en la columna
+				t.cambiarTurno();
 
-			contador = 0 ;
+				contador = 0 ;
 
-			if (contador == 0) {			// Le insertas el tablero al nodo como hijo a la izqda
-				// cout << "2" << endl ;					
-				ArbolGeneral<Tablero> a(t);						
-				arbol.insertar_hijomasizquierda(n, a);						
-				contador++ ;
-				puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
-			}
+				if (contador == 0) {			// Le insertas el tablero al nodo como hijo a la izqda
+					cout << "2" << endl ;					
+					ArbolGeneral<Tablero> a(t);						
+					arbol.insertar_hijomasizquierda(n, a);						
+					contador++ ;
+					puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
+				}
 
-			else {														// Le insertas el tablero al nodo como hijo a la derecha
-				// cout << "3" << endl ;					
-				ArbolGeneral<Tablero> a(t);
-				arbol.insertar_hermanoderecha(n , a ); // CAMBIAR				
-				puntuaciones.push_back(make_pair(i,(recursiva(a.raiz()).second)));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
+				else {														// Le insertas el tablero al nodo como hijo a la derecha
+					cout << "3" << endl ;					
+					ArbolGeneral<Tablero> a(t);
+					arbol.insertar_hermanoderecha(n , a ); // CAMBIAR				
+					puntuaciones.push_back(make_pair(i,(recursiva(a.raiz()).second)));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO, PUNTUACION>
+				}
 			}
 		}
 
 		if ( (nivel(n) % 2) == 1 ) {
-			// cout << "4" << endl ;		
-			cout << "minimo = " << minimo(puntuaciones).first << endl; 
+			cout << "4" << endl ;		
+			// cout << "minimo = " << minimo(puntuaciones).first << endl; 
 			return minimo(puntuaciones);
 		}
 
 		else {
-			// cout << "5" << endl ;
-			cout << "maximo = " << maximo(puntuaciones).first << endl ;
+			cout << "5" << endl ;
+			// cout << "maximo = " << maximo(puntuaciones).first << endl ;
 			return maximo(puntuaciones);
 		}
 
-	}
+	}		
 
-
-	else {				// CASO NODO HOJA
-		// cout << "3" << endl ;
-		int puntuacion = metrica (n) ;
-		cout << "Puntuacion = " << puntuacion  << endl ;
-		return make_pair(-1,puntuacion);
-	}
-
+	else				// CASO NODO HOJA
+		return casohoja(n);
 
 }
 
@@ -231,5 +227,15 @@ int conecta4::nivel (ArbolGeneral<Tablero>::nodo* n) {
 	}
 
 	return i ;
+
+}
+
+
+pair <int,int> conecta4::casohoja (ArbolGeneral<Tablero>::nodo* n) {
+
+	cout << "6" << endl ;
+	int puntuacion = metrica (n) ;
+	// cout << "Puntuacion = " << puntuacion  << endl ;
+	return make_pair(-1,puntuacion);
 
 }

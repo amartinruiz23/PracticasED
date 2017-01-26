@@ -88,6 +88,8 @@ class conecta4{
   int jugada (Tablero t, int met = 1);
 	
 	int nivel (ArbolGeneral<Tablero>::nodo* n);
+	
+	pair<int,int> casohoja (ArbolGeneral<Tablero>::nodo* n);
 
 	conecta4() = default ;
 

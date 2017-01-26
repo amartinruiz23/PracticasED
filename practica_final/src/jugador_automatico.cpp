@@ -19,23 +19,24 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 
 	ArbolGeneral<Tablero>::nodo* aux = t;
 	int puntuacion = 0;
-//	int hermanosderecha =0;
-//	int diferencia = 0;
+	int hermanosderecha =0;
+	int diferencia = 0;
 
-	if (t->etiqueta.quienGana() == 2)
-	  puntuacion += 20-(nivel(t)) ;
-	if (t->etiqueta.quienGana() == 1)
-	  puntuacion += -20+(nivel(t)) ;
+//	if (t->etiqueta.quienGana() == 2)
+//	  puntuacion += 20-(nivel(t)) ;
+//	if (t->etiqueta.quienGana() == 1)
+//	  puntuacion += -20+(nivel(t)) ;
 
-	if(t->etiqueta.GetTurno() == 1)
-		puntuacion += (-1)*(t->etiqueta.hayN(3, t->etiqueta.GetTurno()));
-	if(t->etiqueta.GetTurno() == 2)
-		puntuacion += (t->etiqueta.hayN(3, t->etiqueta.GetTurno()));
-/*	while(aux->drcha != NULL){
+//	if(t->etiqueta.GetTurno() == 2)
+//		puntuacion += (-1)*(t->etiqueta.hayN(3, t->etiqueta.GetTurno() -1));
+//	if(t->etiqueta.GetTurno() == 1)
+//		puntuacion += (t->etiqueta.hayN(3, t->etiqueta.GetTurno() +1));
+	while(aux->drcha != 0){
+		cout << "asdfasdfasdfadsfasdf" << endl;
   	hermanosderecha++;
   	aux = aux->drcha;
-	}*/
-/*	cout <<"hermanosderecha:"<< hermanosderecha << endl;
+	}
+	cout <<"hermanosderecha:"<< hermanosderecha << endl;
 
   diferencia = (hermanosderecha - (t->etiqueta.GetColumnas() / 2));
 	if (diferencia < 0){
@@ -48,7 +49,7 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 	  puntuacion -= diferencia;
 
 		cout << "PUNTUACIÓN: "<<puntuacion <<"DIFERENCIA:" <<diferencia<< endl;
-*/
+
 	return puntuacion;
 }
 

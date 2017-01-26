@@ -19,40 +19,32 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 
 	ArbolGeneral<Tablero>::nodo* aux = t;
 	int puntuacion = 0;
-	int hermanosderecha =0;
-	int hermanosizquierda =0;
-	int diferencia;
+//	int hermanosderecha =0;
+//	int diferencia = 0;
 
 	if (t->etiqueta.quienGana() == 2)
 	  puntuacion += 20-(nivel(t)) ;
-	else {
-	  if (t->etiqueta.quienGana() == 1)
-	    puntuacion += -20+(nivel(t)) ;
-	}
+	if (t->etiqueta.quienGana() == 1)
+	  puntuacion += -20+(nivel(t)) ;
 
-	while(aux->izqda != NULL){
-  	hermanosizquierda++;
-  	aux = aux->izqda;
-	}
-
-	aux = t;
-
-	while(aux->drcha != NULL){
+/*	while(aux->drcha != NULL){
   	hermanosderecha++;
   	aux = aux->drcha;
-	}
+	}*/
+/*	cout <<"hermanosderecha:"<< hermanosderecha << endl;
 
-	if(hermanosderecha > hermanosizquierda)
-  	diferencia = hermanosderecha - hermanosizquierda;
-	else
-  	diferencia = hermanosizquierda - hermanosderecha;
+  diferencia = (hermanosderecha - (t->etiqueta.GetColumnas() / 2));
+	if (diferencia < 0){
+		diferencia = (-1)*diferencia;
+	}
 
 	if (t->etiqueta.GetTurno() == 1)
   	puntuacion += diferencia;
-	else
+	if (t->etiqueta.GetTurno() == 2)
 	  puntuacion -= diferencia;
 
-
+		cout << "PUNTUACIÓN: "<<puntuacion <<"DIFERENCIA:" <<diferencia<< endl;
+*/
 	return puntuacion;
 }
 

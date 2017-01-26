@@ -2,12 +2,12 @@
 #include <iostream>
 using namespace std;
 
-int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) { 
+int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 
-		if (t->etiqueta.quienGana() == 2) 
+		if (t->etiqueta.quienGana() == 2)
 			return 1 ;
 		else {
-			if (t->etiqueta.quienGana() == 1){ 
+			if (t->etiqueta.quienGana() == 1){
 					return -5+(nivel(t)) ;
 		}
 			else
@@ -15,31 +15,31 @@ int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 		}
 }
 
-int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) { 
+int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 
-	nodo* aux = t;
+	ArbolGeneral<Tablero>::nodo* aux = t;
 	int puntuacion = 0;
 	int hermanosderecha =0;
 	int hermanosizquierda =0;
 	int diferencia;
 
-	if (t->etiqueta.quienGana() == 2) 
+	if (t->etiqueta.quienGana() == 2)
 	  puntuacion += 20-(nivel(t)) ;
 	else {
 	  if (t->etiqueta.quienGana() == 1)
-	    puntuacion += -20+(nivel(t)) ;  
+	    puntuacion += -20+(nivel(t)) ;
 	}
 
-	while(aux.izqda != NULL){
+	while(aux->izqda != NULL){
   	hermanosizquierda++;
-  	aux = aux.izqda;
+  	aux = aux->izqda;
 	}
 
 	aux = t;
 
-	while(aux.drcha != NULL){
+	while(aux->drcha != NULL){
   	hermanosderecha++;
-  	aux = aux.drcha;
+  	aux = aux->drcha;
 	}
 
 	if(hermanosderecha > hermanosizquierda)
@@ -56,7 +56,7 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 	return puntuacion;
 }
 
-int conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){	
+int conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){
 
 	if (metricaelegida == 1)
 
@@ -73,13 +73,13 @@ int conecta4::jugada(Tablero t, int met) {
 	metricaelegida = met ;
 	arbol.AsignaRaiz(t);
 
-	int columna =	((recursiva (arbol.raiz())).first) ; 
+	int columna =	((recursiva (arbol.raiz())).first) ;
 
 	return columna ;
 }
 
 
-pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) { 
+pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) {
 
 	// cout << n->etiqueta ;
 
@@ -102,14 +102,14 @@ pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) {
 				ArbolGeneral<Tablero> a(t);
 				arbol.insertar_hijomasizquierda(n, a);
 				puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>
-				
+
 			}
 		}
 																																						// Devuelve o el máximo o el mínimo de las
 		if ( (nivel(n) % 2) == 1 ) 																							// posibles jugadas dependiendo de si el movimiento
 			return minimo(puntuaciones);																					// es del jugador automático o del adversario
 
-		else 
+		else
 			return maximo(puntuaciones);
 
 	}

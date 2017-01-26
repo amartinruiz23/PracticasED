@@ -17,14 +17,43 @@ int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 
 int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) { 
 
-		if (t->etiqueta.quienGana() == 2) 
-			return 1 ;
-		else {
-			if (t->etiqueta.quienGana() == 1) 
-				return -1 ;
-			else
-				return 0 ;
-		}
+	nodo* aux = t;
+	int puntuacion = 0;
+	int hermanosderecha =0;
+	int hermanosizquierda =0;
+	int diferencia;
+
+	if (t->etiqueta.quienGana() == 2) 
+	  puntuacion += 20-(nivel(t)) ;
+	else {
+	  if (t->etiqueta.quienGana() == 1)
+	    puntuacion += -20+(nivel(t)) ;  
+	}
+
+	while(aux.izqda != NULL){
+  	hermanosizquierda++;
+  	aux = aux.izqda;
+	}
+
+	aux = t;
+
+	while(aux.drcha != NULL){
+  	hermanosderecha++;
+  	aux = aux.drcha;
+	}
+
+	if(hermanosderecha > hermanosizquierda)
+  	diferencia = hermanosderecha - hermanosizquierda;
+	else
+  	diferencia = hermanosizquierda - hermanosderecha;
+
+	if (t->etiqueta.GetTurno() == 1)
+  	puntuacion += diferencia;
+	else
+	  puntuacion -= diferencia;
+
+
+	return puntuacion;
 }
 
 int conecta4::metrica (ArbolGeneral<Tablero>::nodo* t){	

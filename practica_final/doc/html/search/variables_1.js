@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['columnas',['columnas',['../classTablero.html#ac70289ec91b44d05da648770cc46801d',1,'Tablero']]]
+  ['base',['base',['../classMando.html#ad914a93d7fb6c085a26d5d70bbb7fecd',1,'Mando']]]
 ];

@@ -6,5 +6,5 @@ var searchData=
   ['getjugador',['GetJugador',['../classMando.html#aaf8c918ecbce5c8173fcf40e04c8b0b7',1,'Mando']]],
   ['getmando',['GetMando',['../classMando.html#a7e02a04343208f949a88e720ba63a281',1,'Mando']]],
   ['gettablero',['GetTablero',['../classTablero.html#ad9ddec339ebecf5e081433b0509c8c47',1,'Tablero']]],
-  ['getturno',['GetTurno',['../classTablero.html#abf7a05a4b7463c1bd605d0b0a04add4f',1,'Tablero']]]
+  ['getturno',['GetTurno',['../classTablero.html#aa4e7d217d20988c41f800b35b1c4129f',1,'Tablero']]]
 ];

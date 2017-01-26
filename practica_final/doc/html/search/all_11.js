@@ -12,7 +12,9 @@ var searchData=
   ['recorrer_5freverse_5fpreorden',['recorrer_reverse_preorden',['../classArbolGeneral.html#a7830b2566ef7611aa2fc6f7b4d07ad52',1,'ArbolGeneral']]],
   ['recorrer_5freverse_5fpreorden_5fal_5freves',['recorrer_reverse_preorden_al_reves',['../classArbolGeneral.html#ad4b95219bb5b0cb512719edb1406fd71',1,'ArbolGeneral']]],
   ['recuperar_5farbol',['recuperar_arbol',['../classArbolGeneral.html#a5fd1c0acc26d4229042ecd9af6e3a24e',1,'ArbolGeneral']]],
+  ['recursiva',['recursiva',['../classconecta4.html#a19e596653962db117fe9e802a12e97a2',1,'conecta4']]],
   ['reflejado',['reflejado',['../classArbolGeneral.html#a9b498b5302c63aa8ad0cd847d77a6315',1,'ArbolGeneral']]],
+  ['rep_20del_20tda_20apo',['Rep del TDA APO',['../repConjunto.html',1,'']]],
   ['reserve',['reserve',['../classTablero.html#ac2a20883f540c4d010dafab236390cb3',1,'Tablero']]],
   ['reverse_5fpreorden_5fiterador',['reverse_preorden_iterador',['../classArbolGeneral_1_1preorden__iterador.html#ad7df6535fb84021c7c3804850af9fdcd',1,'ArbolGeneral::preorden_iterador::reverse_preorden_iterador()'],['../classArbolGeneral_1_1reverse__preorden__iterador.html#a80a523317a7f93ef2359d16048d7bd7e',1,'ArbolGeneral::reverse_preorden_iterador::reverse_preorden_iterador()'],['../classArbolGeneral_1_1reverse__preorden__iterador.html#aab2e21080ac46472a8a5a572c3b79ca9',1,'ArbolGeneral::reverse_preorden_iterador::reverse_preorden_iterador(const Nodo &amp;n)'],['../classArbolGeneral_1_1reverse__preorden__iterador.html#a0fb07f7fb272f8257a912e1941d06f40',1,'ArbolGeneral::reverse_preorden_iterador::reverse_preorden_iterador(const reverse_preorden_iterador &amp;i)']]],
   ['reverse_5fpreorden_5fiterador',['reverse_preorden_iterador',['../classArbolGeneral_1_1reverse__preorden__iterador.html',1,'ArbolGeneral']]]

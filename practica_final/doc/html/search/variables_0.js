@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['base',['base',['../classMando.html#ad914a93d7fb6c085a26d5d70bbb7fecd',1,'Mando']]]
+  ['arbol',['arbol',['../classconecta4.html#ad43e13dbc348258afc4995fa5c3239a6',1,'conecta4']]]
 ];

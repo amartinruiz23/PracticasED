@@ -1,3 +1,11 @@
+/**
+* 	Practica hecha por:
+* 
+* Álvaro López Jiménez y Antonio Martín Ruíz
+
+*/
+
+
 #ifndef __MANDO_H__
 #define __MANDO_H__
 

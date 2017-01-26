@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mando',['Mando',['../classMando.html#a2e2ed3e8f3502f7d99cee3e1278cafb9',1,'Mando']]]
+  ['lee_5farbol',['lee_arbol',['../classArbolGeneral.html#a73927127a9f5c4e96eccb615ee09077a',1,'ArbolGeneral']]]
 ];

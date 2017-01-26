@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['reverse_5fpreorden_5fiterador',['reverse_preorden_iterador',['../classArbolGeneral_1_1reverse__preorden__iterador.html',1,'ArbolGeneral']]]
+  ['postorden_5fiterador',['postorden_iterador',['../classArbolGeneral_1_1postorden__iterador.html',1,'ArbolGeneral']]],
+  ['preorden_5fiterador',['preorden_iterador',['../classArbolGeneral_1_1preorden__iterador.html',1,'ArbolGeneral']]]
 ];

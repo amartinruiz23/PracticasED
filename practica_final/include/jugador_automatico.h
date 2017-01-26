@@ -1,3 +1,11 @@
+/**
+* 	Practica hecha por:
+* 
+* Álvaro López Jiménez y Antonio Martín Ruíz
+
+*/
+
+
 #ifndef __CONECTA_4__
 #define __CONECTA_4__
 

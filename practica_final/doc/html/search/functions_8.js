@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lee_5farbol',['lee_arbol',['../classArbolGeneral.html#a73927127a9f5c4e96eccb615ee09077a',1,'ArbolGeneral']]]
+  ['jugada',['jugada',['../classconecta4.html#ac7d01569f1ced02ec3181eca20c744cc',1,'conecta4']]]
 ];

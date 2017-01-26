@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['izqda',['izqda',['../structArbolGeneral_1_1nodo.html#a3b8075b9fd0dc27c2272ba48bd9a9221',1,'ArbolGeneral::nodo']]]
+  ['filas',['filas',['../classTablero.html#a6b1f04a8502106c33bf5469f791320e6',1,'Tablero']]]
 ];

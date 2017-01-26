@@ -1,3 +1,10 @@
+/**
+* 	Practica hecha por:
+* 
+* Álvaro López Jiménez y Antonio Martín Ruíz
+
+*/
+
 #ifndef __ArbolGeneral_h__
 #define __ArbolGeneral_h__
 

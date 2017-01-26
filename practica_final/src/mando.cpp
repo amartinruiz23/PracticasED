@@ -1,3 +1,11 @@
+/**
+* 	Practica hecha por:
+* 
+* Álvaro López Jiménez y Antonio Martín Ruíz
+
+*/
+
+
 #include <iostream>
 #include "mando.h"
 

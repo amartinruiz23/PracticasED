@@ -1,0 +1,300 @@
+\hypertarget{classconecta4}{\subsection{Referencia de la Clase conecta4}
+\label{classconecta4}\index{conecta4@{conecta4}}
+}
+
+
+T.\-D.\-A. \hyperlink{classconecta4}{conecta4}.  
+
+
+
+
+{\ttfamily \#include $<$jugador\-\_\-automatico.\-h$>$}
+
+\subsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classconecta4_ac7d01569f1ced02ec3181eca20c744cc}{jugada} (\hyperlink{classTablero}{Tablero} t, int met=1)
+\begin{DoxyCompactList}\small\item\em Función que construye un objeto de la clase \hyperlink{classconecta4}{conecta4}, y llama sobre el nodo raíz a la función recursiva. \end{DoxyCompactList}\item 
+\hyperlink{classconecta4_a5a8081caded05340a5d807b79b55fb04}{conecta4} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de \hyperlink{classconecta4}{conecta4}, llama a los constructores por defecto de sus datos miembro, que ya existen. \end{DoxyCompactList}\item 
+\hyperlink{classconecta4_abd5f1ce0e6ade3986a62184b72c87ca6}{$\sim$conecta4} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor de \hyperlink{classconecta4}{conecta4}, libera los recursos ocupados por el árbol. \end{DoxyCompactList}\item 
+pair$<$ int, int $>$ \hyperlink{classconecta4_a19e596653962db117fe9e802a12e97a2}{recursiva} (\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$\-::nodo $\ast$t)
+\begin{DoxyCompactList}\small\item\em Función que dado un nodo del árbol crea evalúa (llamando a métrica) dicho nodo a partir de sus hijos (creándolos y evaluándolos) \end{DoxyCompactList}\item 
+int \hyperlink{classconecta4_a97f1de7e07d9a3acfb4d59e87f78246b}{metrica} (\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$\-::nodo $\ast$t)
+\begin{DoxyCompactList}\small\item\em Función que evalua un nodo hoja del árbol en función de los intereses del jugador automático de cara a ganar la partida, llamando a las funciones evalua según el dato miembro metrica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classconecta4_a8026618b8383bd3eda1770d8ef4ec06e}{evalua1} (\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$\-::nodo $\ast$t)
+\begin{DoxyCompactList}\small\item\em Función que evalua la idoneidad o no de un tablero de cara a los intereses del jugador automático de cara a ganar la partida. \end{DoxyCompactList}\item 
+int \hyperlink{classconecta4_a13b6086c29c962d40784657acfcc4b46}{evalua2} (\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$\-::nodo $\ast$t)
+\item 
+int \hyperlink{classconecta4_aac1d8f52d6c71490a042ea4b6d24422d}{evalua3} (\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$\-::nodo $\ast$t)
+\item 
+int \hyperlink{classconecta4_a1ead7236bbcca6da7597902fc0896eda}{evalua4} (\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$\-::nodo $\ast$t)
+\item 
+pair$<$ int, int $>$ \hyperlink{classconecta4_a611b78528b208a7f58b9eaa50266c3cb}{maximo} (vector$<$ pair$<$ int, int $>$ $>$ v)
+\begin{DoxyCompactList}\small\item\em Función auxiliar que calcula el máximo valor del segundo campo de los pares de elementos enteros de un vector. \end{DoxyCompactList}\item 
+pair$<$ int, int $>$ \hyperlink{classconecta4_a61f4344f9f597a55d89bb19cae1ad2d4}{minimo} (vector$<$ pair$<$ int, int $>$ $>$ v)
+\begin{DoxyCompactList}\small\item\em Función auxiliar que calcula el mínimo valor del segundo campo de los pares de elementos enteros de un vector. \end{DoxyCompactList}\item 
+pair$<$ int, int $>$ \hyperlink{classconecta4_a3340f1ebb7b854812d9548381135dd4d}{casohoja} (\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$\-::nodo $\ast$n)
+\begin{DoxyCompactList}\small\item\em Función auxiliar que llama a funciones que evalúan el nodo. \end{DoxyCompactList}\item 
+int \hyperlink{classconecta4_ad0c86056a0611fdf8032c25cccaf3d76}{nivel} (\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$\-::nodo $\ast$n)
+\begin{DoxyCompactList}\small\item\em Función que determina el nivel de profundidad de un nodo de nuestro árbol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classArbolGeneral}{Arbol\-General}$<$ \hyperlink{classTablero}{Tablero} $>$ \hyperlink{classconecta4_ad43e13dbc348258afc4995fa5c3239a6}{arbol}
+\item 
+int \hyperlink{classconecta4_a864ebc749eeed1ce602f2244c11bf85c}{metricaelegida}
+\end{DoxyCompactItemize}
+\subsubsection*{Atributos privados estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{classconecta4_abcb731b830e10e986e26775961c33e88}{P\-R\-O\-F\-U\-N\-D\-I\-D\-A\-D} = 4
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+T.\-D.\-A. \hyperlink{classconecta4}{conecta4}. 
+
+Practica hecha por\-:
+
+Álvaro López Jiménez y Antonio Martín Ruíz {\bfseries Definición\-:} Una instancia {\itshape c} del tipo de dato abstracto \hyperlink{classconecta4}{conecta4} se se puede construir como
+
+
+\begin{DoxyItemize}
+\item Un árbol que contiene un elemento destacado, el nodo raíz, indispensable para crear el árbol, y dos valores, {\itshape P\-R\-O\-F\-U\-N\-D\-I\-D\-A\-D} cuyo valor será decidido por los autores, y {\itshape metrica} valor suministrado por el usuario que indicará en cierta medida el grado de dificultad.
+
+En definitiva un objeto del tipo de dato abstracto \hyperlink{classconecta4}{conecta4} es el conjunto de todos los movimientos posibles del jugador automático, que son almacenados en una estructura de tipo \hyperlink{classArbolGeneral}{Arbol\-General}
+\end{DoxyItemize}
+
+Para poder usar el tipo de dato \hyperlink{classconecta4}{conecta4} se debe incluir el fichero
+
+{\ttfamily \#include \hyperlink{jugador__automatico_8h}{jugador\-\_\-automatico.\-h}}
+
+El espacio requerido para el almacenamiento es O(n), donde n es el número de nodos del árbol.
+
+\begin{DoxyAuthor}{Autores}
+Álvaro López Jiménez y Antonio Martín Ruíz. 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+Enero de 2017 
+\end{DoxyDate}
+
+
+\subsubsection{Documentación del constructor y destructor}
+\hypertarget{classconecta4_a5a8081caded05340a5d807b79b55fb04}{\index{conecta4@{conecta4}!conecta4@{conecta4}}
+\index{conecta4@{conecta4}!conecta4@{conecta4}}
+\paragraph[{conecta4}]{\setlength{\rightskip}{0pt plus 5cm}conecta4\-::conecta4 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}}\label{classconecta4_a5a8081caded05340a5d807b79b55fb04}
+
+
+Constructor por defecto de \hyperlink{classconecta4}{conecta4}, llama a los constructores por defecto de sus datos miembro, que ya existen. 
+
+\hypertarget{classconecta4_abd5f1ce0e6ade3986a62184b72c87ca6}{\index{conecta4@{conecta4}!$\sim$conecta4@{$\sim$conecta4}}
+\index{$\sim$conecta4@{$\sim$conecta4}!conecta4@{conecta4}}
+\paragraph[{$\sim$conecta4}]{\setlength{\rightskip}{0pt plus 5cm}conecta4\-::$\sim$conecta4 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}}\label{classconecta4_abd5f1ce0e6ade3986a62184b72c87ca6}
+
+
+Destructor de \hyperlink{classconecta4}{conecta4}, libera los recursos ocupados por el árbol. 
+
+
+
+\subsubsection{Documentación de las funciones miembro}
+\hypertarget{classconecta4_a3340f1ebb7b854812d9548381135dd4d}{\index{conecta4@{conecta4}!casohoja@{casohoja}}
+\index{casohoja@{casohoja}!conecta4@{conecta4}}
+\paragraph[{casohoja}]{\setlength{\rightskip}{0pt plus 5cm}pair$<$int,int$>$ conecta4\-::casohoja (
+\begin{DoxyParamCaption}
+\item[{{\bf Arbol\-General}$<$ {\bf Tablero} $>$\-::nodo $\ast$}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_a3340f1ebb7b854812d9548381135dd4d}
+
+
+Función auxiliar que llama a funciones que evalúan el nodo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em n} & nodo a ser evaluado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+pareja formada por la columna del tablero que corresponde a la jugada y la puntuación de dicho tablero 
+\end{DoxyReturn}
+\hypertarget{classconecta4_a8026618b8383bd3eda1770d8ef4ec06e}{\index{conecta4@{conecta4}!evalua1@{evalua1}}
+\index{evalua1@{evalua1}!conecta4@{conecta4}}
+\paragraph[{evalua1}]{\setlength{\rightskip}{0pt plus 5cm}int conecta4\-::evalua1 (
+\begin{DoxyParamCaption}
+\item[{{\bf Arbol\-General}$<$ {\bf Tablero} $>$\-::nodo $\ast$}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_a8026618b8383bd3eda1770d8ef4ec06e}
+
+
+Función que evalua la idoneidad o no de un tablero de cara a los intereses del jugador automático de cara a ganar la partida. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em t} & \hyperlink{classTablero}{Tablero} a evaluar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+entero con la puntuación obtenida 
+\end{DoxyReturn}
+\hypertarget{classconecta4_a13b6086c29c962d40784657acfcc4b46}{\index{conecta4@{conecta4}!evalua2@{evalua2}}
+\index{evalua2@{evalua2}!conecta4@{conecta4}}
+\paragraph[{evalua2}]{\setlength{\rightskip}{0pt plus 5cm}int conecta4\-::evalua2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Arbol\-General}$<$ {\bf Tablero} $>$\-::nodo $\ast$}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_a13b6086c29c962d40784657acfcc4b46}
+\hypertarget{classconecta4_aac1d8f52d6c71490a042ea4b6d24422d}{\index{conecta4@{conecta4}!evalua3@{evalua3}}
+\index{evalua3@{evalua3}!conecta4@{conecta4}}
+\paragraph[{evalua3}]{\setlength{\rightskip}{0pt plus 5cm}int conecta4\-::evalua3 (
+\begin{DoxyParamCaption}
+\item[{{\bf Arbol\-General}$<$ {\bf Tablero} $>$\-::nodo $\ast$}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_aac1d8f52d6c71490a042ea4b6d24422d}
+\hypertarget{classconecta4_a1ead7236bbcca6da7597902fc0896eda}{\index{conecta4@{conecta4}!evalua4@{evalua4}}
+\index{evalua4@{evalua4}!conecta4@{conecta4}}
+\paragraph[{evalua4}]{\setlength{\rightskip}{0pt plus 5cm}int conecta4\-::evalua4 (
+\begin{DoxyParamCaption}
+\item[{{\bf Arbol\-General}$<$ {\bf Tablero} $>$\-::nodo $\ast$}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_a1ead7236bbcca6da7597902fc0896eda}
+\hypertarget{classconecta4_ac7d01569f1ced02ec3181eca20c744cc}{\index{conecta4@{conecta4}!jugada@{jugada}}
+\index{jugada@{jugada}!conecta4@{conecta4}}
+\paragraph[{jugada}]{\setlength{\rightskip}{0pt plus 5cm}int conecta4\-::jugada (
+\begin{DoxyParamCaption}
+\item[{{\bf Tablero}}]{t, }
+\item[{int}]{met = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classconecta4_ac7d01569f1ced02ec3181eca20c744cc}
+
+
+Función que construye un objeto de la clase \hyperlink{classconecta4}{conecta4}, y llama sobre el nodo raíz a la función recursiva. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em t} & \hyperlink{classTablero}{Tablero} actual de la partida que será el nodo raíz del árbol \\
+\hline
+{\em met,métrica} & que decidirá qué función evaluará los nodos del árbol \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+qué hijo será el elegido para que el jugador automático inserte la ficha 
+\end{DoxyReturn}
+\hypertarget{classconecta4_a611b78528b208a7f58b9eaa50266c3cb}{\index{conecta4@{conecta4}!maximo@{maximo}}
+\index{maximo@{maximo}!conecta4@{conecta4}}
+\paragraph[{maximo}]{\setlength{\rightskip}{0pt plus 5cm}pair$<$int, int$>$ conecta4\-::maximo (
+\begin{DoxyParamCaption}
+\item[{vector$<$ pair$<$ int, int $>$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_a611b78528b208a7f58b9eaa50266c3cb}
+
+
+Función auxiliar que calcula el máximo valor del segundo campo de los pares de elementos enteros de un vector. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em v} & vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+devuelve la pareja de elementos cuyo segundo campo es el mayor del vector 
+\end{DoxyReturn}
+\hypertarget{classconecta4_a97f1de7e07d9a3acfb4d59e87f78246b}{\index{conecta4@{conecta4}!metrica@{metrica}}
+\index{metrica@{metrica}!conecta4@{conecta4}}
+\paragraph[{metrica}]{\setlength{\rightskip}{0pt plus 5cm}int conecta4\-::metrica (
+\begin{DoxyParamCaption}
+\item[{{\bf Arbol\-General}$<$ {\bf Tablero} $>$\-::nodo $\ast$}]{t}
+\end{DoxyParamCaption}
+)}}\label{classconecta4_a97f1de7e07d9a3acfb4d59e87f78246b}
+
+
+Función que evalua un nodo hoja del árbol en función de los intereses del jugador automático de cara a ganar la partida, llamando a las funciones evalua según el dato miembro metrica. 
+
+\hypertarget{classconecta4_a61f4344f9f597a55d89bb19cae1ad2d4}{\index{conecta4@{conecta4}!minimo@{minimo}}
+\index{minimo@{minimo}!conecta4@{conecta4}}
+\paragraph[{minimo}]{\setlength{\rightskip}{0pt plus 5cm}pair$<$int, int$>$ conecta4\-::minimo (
+\begin{DoxyParamCaption}
+\item[{vector$<$ pair$<$ int, int $>$ $>$}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_a61f4344f9f597a55d89bb19cae1ad2d4}
+
+
+Función auxiliar que calcula el mínimo valor del segundo campo de los pares de elementos enteros de un vector. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em v} & vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+devuelve la pareja de elementos cuyo segundo campo es el menor del vector 
+\end{DoxyReturn}
+\hypertarget{classconecta4_ad0c86056a0611fdf8032c25cccaf3d76}{\index{conecta4@{conecta4}!nivel@{nivel}}
+\index{nivel@{nivel}!conecta4@{conecta4}}
+\paragraph[{nivel}]{\setlength{\rightskip}{0pt plus 5cm}int conecta4\-::nivel (
+\begin{DoxyParamCaption}
+\item[{{\bf Arbol\-General}$<$ {\bf Tablero} $>$\-::nodo $\ast$}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_ad0c86056a0611fdf8032c25cccaf3d76}
+
+
+Función que determina el nivel de profundidad de un nodo de nuestro árbol. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em n} & nodo del que queremos saber su altura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+el nodo debe estar en un árbol 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Devuelve}
+nivel del nodo (0 si es la raíz) 
+\end{DoxyReturn}
+\hypertarget{classconecta4_a19e596653962db117fe9e802a12e97a2}{\index{conecta4@{conecta4}!recursiva@{recursiva}}
+\index{recursiva@{recursiva}!conecta4@{conecta4}}
+\paragraph[{recursiva}]{\setlength{\rightskip}{0pt plus 5cm}pair$<$int,int$>$ conecta4\-::recursiva (
+\begin{DoxyParamCaption}
+\item[{{\bf Arbol\-General}$<$ {\bf Tablero} $>$\-::nodo $\ast$}]{t}
+\end{DoxyParamCaption}
+)}}\label{classconecta4_a19e596653962db117fe9e802a12e97a2}
+
+
+Función que dado un nodo del árbol crea evalúa (llamando a métrica) dicho nodo a partir de sus hijos (creándolos y evaluándolos) 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em n} & nodo del árbol \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+pareja de enteros donde el primer elemento es el índice del hijo y el segundo valor es la puntuación del nodo 
+\end{DoxyReturn}
+
+
+\subsubsection{Documentación de los datos miembro}
+\hypertarget{classconecta4_ad43e13dbc348258afc4995fa5c3239a6}{\index{conecta4@{conecta4}!arbol@{arbol}}
+\index{arbol@{arbol}!conecta4@{conecta4}}
+\paragraph[{arbol}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Arbol\-General}$<${\bf Tablero}$>$ conecta4\-::arbol\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_ad43e13dbc348258afc4995fa5c3239a6}
+\hypertarget{classconecta4_a864ebc749eeed1ce602f2244c11bf85c}{\index{conecta4@{conecta4}!metricaelegida@{metricaelegida}}
+\index{metricaelegida@{metricaelegida}!conecta4@{conecta4}}
+\paragraph[{metricaelegida}]{\setlength{\rightskip}{0pt plus 5cm}int conecta4\-::metricaelegida\hspace{0.3cm}{\ttfamily [private]}}}\label{classconecta4_a864ebc749eeed1ce602f2244c11bf85c}
+\hypertarget{classconecta4_abcb731b830e10e986e26775961c33e88}{\index{conecta4@{conecta4}!P\-R\-O\-F\-U\-N\-D\-I\-D\-A\-D@{P\-R\-O\-F\-U\-N\-D\-I\-D\-A\-D}}
+\index{P\-R\-O\-F\-U\-N\-D\-I\-D\-A\-D@{P\-R\-O\-F\-U\-N\-D\-I\-D\-A\-D}!conecta4@{conecta4}}
+\paragraph[{P\-R\-O\-F\-U\-N\-D\-I\-D\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}const int conecta4\-::\-P\-R\-O\-F\-U\-N\-D\-I\-D\-A\-D = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{classconecta4_abcb731b830e10e986e26775961c33e88}
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{jugador__automatico_8h}{jugador\-\_\-automatico.\-h}\end{DoxyCompactItemize}

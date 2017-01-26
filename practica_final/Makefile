@@ -1,3 +1,9 @@
+# ************************************************* #
+# ********** Práctica hecha por: ****************** #
+# ************************************************* #
+# ** Álvaro López Jiménez y Antonio Martín Ruíz *** #
+# ************************************************* #
+
 SRC = src
 INC = include
 OBJ = obj
@@ -10,7 +16,7 @@ CPPFLAGS = -Wall -g  -I$(INC) -c
 
 
 
-all: $(BIN)/conecta4 $(BIN)/arboltablero_test
+all: $(BIN)/conecta4 $(BIN)/arboltablero_test documentacion
 # ************ Generación de documentación ******************
 documentacion:
 	doxygen doc/doxys/Doxyfile

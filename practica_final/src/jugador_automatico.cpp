@@ -1,3 +1,11 @@
+/**
+* 	Practica hecha por:
+* 
+* Álvaro López Jiménez y Antonio Martín Ruíz
+
+*/
+
+
 #include "jugador_automatico.h"
 #include <iostream>
 using namespace std;
@@ -15,7 +23,7 @@ int conecta4::evalua1 (ArbolGeneral<Tablero>::nodo* t) {
 		}
 }
 
-int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
+int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {		// NO FINALIZADA
 
 		if (t->etiqueta.quienGana() == 2)
 			return 10 -(nivel(t));
@@ -28,7 +36,7 @@ int conecta4::evalua2 (ArbolGeneral<Tablero>::nodo* t) {
 		}
 }
 
-int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t) {
+int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t) { // NO FINALIZADA
 
 	ArbolGeneral<Tablero>::nodo* aux = t;
 	int puntuacion = 0;
@@ -42,11 +50,9 @@ int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t) {
 
 
 	while(aux->drcha != 0){
-		cout << "estoy dentro" << endl;
   	hermanosderecha++;
   	aux = aux->drcha;
 	}
-	cout <<"hermanosderecha:"<< hermanosderecha << endl;
 
   diferencia = (hermanosderecha - (t->etiqueta.GetColumnas() / 2));
 	if (diferencia < 0){
@@ -57,8 +63,6 @@ int conecta4::evalua3 (ArbolGeneral<Tablero>::nodo* t) {
   	puntuacion += diferencia;
 	if (t->etiqueta.GetTurno() == 2)
 	  puntuacion -= diferencia;
-
-		cout << "PUNTUACIÓN: "<<puntuacion <<"DIFERENCIA:" <<diferencia<< endl;
 
 	return puntuacion;
 }
@@ -114,7 +118,6 @@ int conecta4::jugada(Tablero t, int met) {
 
 pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) {
 
-	// cout << n->etiqueta ;
 
 	if ( (nivel(n) < PROFUNDIDAD) && (metrica(n) == 0) ) {										// CASO GENERAL
 
@@ -124,14 +127,11 @@ pair<int,int> conecta4::recursiva (ArbolGeneral<Tablero>::nodo* n) {
 		for ( i = 0 ; i < n->etiqueta.GetColumnas() ; i++) {										// Para cada columna del tablero
 
 			if (n->etiqueta.hayHueco(i) != -1) {																	// Si hay hueco
-				cout << "1" << endl ;
 
 				Tablero t = n->etiqueta ;																						// Copia el tablero
 				t.colocarFicha(i);																									// Le insertas la ficha en la columna
 				t.cambiarTurno();
-
 																																						// Le insertas el tablero al nodo como hijo a la izqda
-				cout << "2" << endl ;
 				ArbolGeneral<Tablero> a(t);
 				arbol.insertar_hijomasizquierda(n, a);
 				puntuaciones.push_back(make_pair(i,(recursiva(n->izqda)).second));	// LLAMO A RECURSIVA Y METO EN EL VECTOR EL PAR <Nº_NODO,PUNTUACION>

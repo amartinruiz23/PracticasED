@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jugador',['jugador',['../classMando.html#ab4791c4f5bb306c1bbcf95047e010163',1,'Mando']]]
+  ['izqda',['izqda',['../structArbolGeneral_1_1nodo.html#a3b8075b9fd0dc27c2272ba48bd9a9221',1,'ArbolGeneral::nodo']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['tablero',['Tablero',['../classTablero.html#ab4912f28f1db392e1dd44ddc98bd4f59',1,'Tablero::Tablero()'],['../classTablero.html#a51ae562c7dee2909d0fa335b8c3eaf71',1,'Tablero::Tablero(const int filas, const int columnas)'],['../classTablero.html#a95ccd1353038a966ad3304ead106c0d4',1,'Tablero::Tablero(const Tablero &amp;t)']]]
+  ['settablero',['SetTablero',['../classTablero.html#a811481680b64300b21fb4d1e9619e795',1,'Tablero']]],
+  ['size',['size',['../classArbolGeneral.html#a69a2c10bedbf77dbc23baea0a731a02d',1,'ArbolGeneral']]],
+  ['soniguales',['soniguales',['../classArbolGeneral.html#a47e7ab8321b8ae2e11fc279caabf72de',1,'ArbolGeneral']]]
 ];
